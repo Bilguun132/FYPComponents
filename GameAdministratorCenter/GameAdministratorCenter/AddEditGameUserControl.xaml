@@ -1,0 +1,227 @@
+﻿<UserControl xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"  xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"  x:Class="AddEditGameUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GameAdministratorCenter"
+             mc:Ignorable="d" >
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <local:EnumConverterForGridControl x:Key="EnumConverter" />
+            <local:StatusConverterForGridControl x:Key="StatusConverter" />
+            <local:ImageConverterForGridControl x:Key="ImageConverter" />
+            <local:ImageViewerConverterForGridControl x:Key="ImageViewerConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <dxlc:LayoutControl Orientation="Vertical" ItemSpace="10">
+        <dxlc:LayoutGroup View="GroupBox" Header="Game Details" IsCollapsible="True" Orientation="Vertical" VerticalAlignment="Stretch">
+            <dxlc:LayoutItem Label="Game Name: " LabelPosition="Left" VerticalAlignment="Top">
+                <TextBox x:Name="gameNameTextBox" />
+            </dxlc:LayoutItem>
+            <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="10" IsCollapsible="True">
+                <dxlc:LayoutItem Label="Game Image: " LabelPosition="Top" VerticalAlignment="Top" x:Name="imageContainer" MaxHeight="300">
+
+                </dxlc:LayoutItem>
+                <Button Background="White" x:Name="addImageButton" Width="120" Height="50"
+                                            HorizontalAlignment="Right" Margin="0" VerticalAlignment="Top">
+                    <dxlc:LayoutGroup Padding="0" Orientation="Horizontal">
+                        <Image Source="/GameAdministratorCenter;component/Resources/Image.png" VerticalAlignment="Center" Height="40" Width="40" />
+                        <TextBlock Text="Select" VerticalAlignment="Center" FontSize="14" />
+                    </dxlc:LayoutGroup>
+                </Button>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutItem Label="Game Password (Optional): " LabelPosition="Left" VerticalAlignment="Top">
+                <TextBox x:Name="gamePasswordTextBox" />
+            </dxlc:LayoutItem>
+            <dxlc:LayoutItem Label="Game Description: " LabelPosition="Left" VerticalAlignment="Top">
+                <TextBox x:Name="gameDescTextBox" AcceptsReturn="True" TextWrapping="WrapWithOverflow" MinHeight="60"/>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+        
+        <dxlc:LayoutGroup View="GroupBox" Header="Priod Setting" IsCollapsible="True" Orientation="Vertical" VerticalAlignment="Stretch">
+            <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="10" VerticalAlignment="Stretch">
+                <dxlc:LayoutControl Header="Period List" VerticalAlignment="Stretch">
+                    <dxg:GridControl x:Name="periodGridControl" FontSize="12" ClipboardCopyMode="None" SelectionMode="None" MaxHeight="1000"
+                     ShowBorder="False" SnapsToDevicePixels="True">
+                        <dxg:GridColumn FieldName="PERIOD_NAME" Header="Name" HorizontalHeaderContentAlignment="Center">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings TextWrapping="WrapWithOverflow"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="PERIOD_NUMBER" Header="Period Number" HorizontalHeaderContentAlignment="Center">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="EXPECTED_START" Header="Tentative Start" HorizontalHeaderContentAlignment="Center">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:DateEditSettings IsTextEditable="False" IsEnabled="False" Mask="dd/MM/yy hh:mm" MaskUseAsDisplayFormat="True" HorizontalContentAlignment="Center"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="EXPECTED_END" Header="Tentative End" HorizontalHeaderContentAlignment="Center">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:DateEditSettings IsTextEditable="False" IsEnabled="False" Mask="dd/MM/yy hh:mm" MaskUseAsDisplayFormat="True" HorizontalContentAlignment="Center"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="START_TIME" Header="Actual Start" HorizontalHeaderContentAlignment="Center">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:DateEditSettings IsTextEditable="False" IsEnabled="False" Mask="dd/MM/yy hh:mm" MaskUseAsDisplayFormat="True" HorizontalContentAlignment="Center"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="END_TIME" Header="Actual End" HorizontalHeaderContentAlignment="Center">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:DateEditSettings IsTextEditable="False" IsEnabled="False" Mask="dd/MM/yy hh:mm" MaskUseAsDisplayFormat="True" HorizontalContentAlignment="Center"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName= "SIMULATION_DURATION" Header="Simulation Duration" HorizontalHeaderContentAlignment="Center">
+                            <dxg:GridColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock VerticalAlignment="Center" x:Name="PART_Editor" Text="{Binding Converter={StaticResource EnumConverter}}" FontWeight="Normal" FontSize="12" HorizontalAlignment="Center"  />
+                                </DataTemplate>
+                            </dxg:GridColumn.CellTemplate>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn FieldName="STATUS" Header="Status" HorizontalHeaderContentAlignment="Center">
+                            <dxg:GridColumn.CellTemplate>
+                                <DataTemplate>
+                                    <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="5" Padding="3">
+                                        <Image Source="{Binding Converter={StaticResource ImageConverter}}" Stretch="Uniform" Height="20"/>
+                                        <TextBlock  VerticalAlignment="Center" Text="{Binding Converter={StaticResource StatusConverter}}" FontWeight="Normal" FontSize="12"/>
+                                    </dxlc:LayoutGroup>
+                                </DataTemplate>
+                            </dxg:GridColumn.CellTemplate>
+                        </dxg:GridColumn>
+
+                        <dxg:GridControl.View>
+                            <dxg:TableView x:Name="periodGridView" AutoWidth="True" AllowConditionalFormattingMenu="True" ShowTotalSummary="False"
+                           BestFitMode="AllRows" NavigationStyle="Row" ShowGroupPanel="False" AllowEditing="False" ShowColumnHeaders="True" />
+                        </dxg:GridControl.View>
+                    </dxg:GridControl>
+                </dxlc:LayoutControl>
+                <dxlc:LayoutGroup Orientation="Vertical" ItemSpace="7" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button Background="White" x:Name="addButton" Width="120" Height="50"
+                                            HorizontalAlignment="Right" Margin="0" VerticalAlignment="Bottom">
+                        <dxlc:LayoutGroup Padding="0" Orientation="Horizontal">
+                            <Image Source="/GameAdministratorCenter;component/Resources/Add_round.png" VerticalAlignment="Center" Height="40" Width="40" />
+                            <TextBlock Text="Add" VerticalAlignment="Center" FontSize="14" />
+                        </dxlc:LayoutGroup>
+                    </Button>
+                    <Button Background="White" x:Name="deleteButton" Width="120" Height="50"
+                                            HorizontalAlignment="Right" Margin="0" VerticalAlignment="Bottom">
+                        <dxlc:LayoutGroup Padding="0" Orientation="Horizontal">
+                            <Image Source="/GameAdministratorCenter;component/Resources/Trashbin.png" VerticalAlignment="Center" Height="40" Width="40" />
+                            <TextBlock Text="Delete" VerticalAlignment="Center" FontSize="14" />
+                        </dxlc:LayoutGroup>
+                    </Button>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="10" VerticalAlignment="Top">
+                <dxlc:LayoutItem x:Name="periodAddEditContainer" VerticalAlignment="Stretch">
+
+                </dxlc:LayoutItem>
+                <dxlc:LayoutGroup Orientation="Vertical" ItemSpace="7" HorizontalAlignment="Right" VerticalAlignment="Stretch">
+                    <Button Background="White" x:Name="saveButton" Width="120" Height="50"
+                                            HorizontalAlignment="Right" Margin="0" VerticalAlignment="Bottom">
+                        <dxlc:LayoutGroup Padding="0" Orientation="Horizontal">
+                            <Image Source="/GameAdministratorCenter;component/Resources/Done_round.png" VerticalAlignment="Center" Height="40" Width="40" />
+                            <TextBlock Text="Save" VerticalAlignment="Center" FontSize="14" />
+                        </dxlc:LayoutGroup>
+                    </Button>
+                    <Button Background="White" x:Name="cancelButton" Width="120" Height="50"
+                                            HorizontalAlignment="Right" Margin="0" VerticalAlignment="Bottom">
+                        <dxlc:LayoutGroup Padding="0" Orientation="Horizontal">
+                            <Image Source="/GameAdministratorCenter;component/Resources/Cancel_round.png" VerticalAlignment="Center" Height="40" Width="40" />
+                            <TextBlock Text="Cancel" VerticalAlignment="Center" FontSize="14" />
+                        </dxlc:LayoutGroup>
+                    </Button>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutGroup>
+
+        <dxlc:LayoutGroup View="GroupBox" Header="User Setting" IsCollapsible="True" Orientation="Vertical" VerticalAlignment="Stretch">
+            <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="10" VerticalAlignment="Top">
+                <dxlc:LayoutGroup Orientation="Vertical" ItemSpace="5">
+                    <dxlc:LayoutControl Header="User List">
+                        <dxg:GridControl x:Name="userGridControl" FontSize="12" ClipboardCopyMode="None" SelectionMode="None" MaxHeight="1000"
+                     ShowBorder="False" SnapsToDevicePixels="True">
+                            <dxg:GridColumn FieldName="IMAGE_MANAGER_LINK_ID" Header="Profile Picture" HorizontalHeaderContentAlignment="Center">
+                                <dxg:GridColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <dxlc:LayoutItem Content="{Binding Converter={StaticResource ImageViewerConverter}}">
+                                        </dxlc:LayoutItem>
+                                    </DataTemplate>
+                                </dxg:GridColumn.CellTemplate>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="USER_NAME" Header="Username" HorizontalHeaderContentAlignment="Center">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:TextEditSettings TextWrapping="WrapWithOverflow"/>
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="GROUP" Header="Group" HorizontalHeaderContentAlignment="Center"/>
+                            <dxg:GridControl.View>
+                                <dxg:TableView x:Name="userGridView" AutoWidth="True" AllowConditionalFormattingMenu="True" ShowTotalSummary="False"
+                           BestFitMode="AllRows" NavigationStyle="Row" ShowGroupPanel="False" AllowEditing="False" ShowColumnHeaders="True" />
+                            </dxg:GridControl.View>
+                        </dxg:GridControl>
+                    </dxlc:LayoutControl>
+                    <dxlc:LayoutGroup x:Name="addUserLayoutGroup" Orientation="Horizontal" ItemSpace="6">
+                        <dxlc:LayoutItem Label="Select User" LabelPosition="Top">
+                            <dxg:LookUpEdit Name="userSelectCombobox" HorizontalAlignment="Stretch" DisplayMember="USER_NAME" Height="40"
+                                    EditMode="Standalone" SeparatorString=" " AutoPopulateColumns="False" Visibility="Collapsed">
+                                <dxg:LookUpEdit.StyleSettings>
+                                    <dxg:SearchLookUpEditStyleSettings SelectionMode="Multiple" />
+                                </dxg:LookUpEdit.StyleSettings>
+                                <dxg:LookUpEdit.PopupContentTemplate>
+                                    <ControlTemplate>
+                                        <dxg:GridControl x:Name="PART_GridControl">
+                                            <dxg:GridControl.View>
+                                                <dxg:TableView AutoWidth="True" AllowEditing="False" ShowCheckBoxSelectorColumn="True" ShowGroupPanel="False"/>
+                                            </dxg:GridControl.View>
+                                            <dxg:GridControl.Columns>
+                                                <dxg:GridColumn FieldName="USER_NAME" Header="Username"/>
+                                            </dxg:GridControl.Columns>
+                                        </dxg:GridControl>
+                                    </ControlTemplate>
+                                </dxg:LookUpEdit.PopupContentTemplate>
+                            </dxg:LookUpEdit>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Assign Firm" HorizontalAlignment="Right" LabelPosition="Top" VerticalAlignment="Center">
+                            <dxe:ComboBoxEdit x:Name="firmAssignComboBox" IsTextEditable="False"/>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup Orientation="Vertical" ItemSpace="7" HorizontalAlignment="Right">
+                    <Button Background="White" x:Name="addUserButton" Width="120" Height="50"
+                                            HorizontalAlignment="Right" Margin="0" VerticalAlignment="Bottom">
+                        <dxlc:LayoutGroup Padding="0" Orientation="Horizontal">
+                            <Image Source="/GameAdministratorCenter;component/Resources/Add_round.png" VerticalAlignment="Center" Height="40" Width="40" />
+                            <TextBlock Text="Add" VerticalAlignment="Center" FontSize="14" />
+                        </dxlc:LayoutGroup>
+                    </Button>
+                    <Popup x:Name="selectFirmPopup" StaysOpen="False" PlacementTarget="{Binding ElementName=addUserButton}" Placement="Left">
+                        <Border BorderBrush="DarkGray" BorderThickness="2" Background="White">
+                            <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="10" Height="80" Width="250">
+                                
+                            </dxlc:LayoutGroup>
+                        </Border>
+                    </Popup>
+                    <Button Background="White" x:Name="deleteUserButton" Width="120" Height="50"
+                                            HorizontalAlignment="Right" Margin="0" VerticalAlignment="Bottom">
+                        <dxlc:LayoutGroup Padding="0" Orientation="Horizontal">
+                            <Image Source="/GameAdministratorCenter;component/Resources/Trashbin.png" VerticalAlignment="Center" Height="40" Width="40" />
+                            <TextBlock Text="Delete" VerticalAlignment="Center" FontSize="14" />
+                        </dxlc:LayoutGroup>
+                    </Button>
+                    <Button Background="White" x:Name="cancelAddUserButton" Width="120" Height="50"
+                                            HorizontalAlignment="Right" Margin="0" VerticalAlignment="Bottom">
+                        <dxlc:LayoutGroup Padding="0" Orientation="Horizontal">
+                            <Image Source="/GameAdministratorCenter;component/Resources/Cancel_round.png" VerticalAlignment="Center" Height="40" Width="40" />
+                            <TextBlock Text="Cancel" VerticalAlignment="Center" FontSize="14" />
+                        </dxlc:LayoutGroup>
+                    </Button>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
+</UserControl>

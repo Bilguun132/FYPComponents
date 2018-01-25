@@ -1,0 +1,33 @@
+﻿<UserControl xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GameAdministratorCenter"
+             xmlns:Custom="http://schemas.devexpress.com/winfx/2008/xaml/charts/rangecontrolclient"  x:Class="AddEditGamePeriod"
+             mc:Ignorable="d" >
+    <dxlc:LayoutControl Orientation="Vertical" ItemSpace="5" >
+        <dxlc:LayoutItem Label="Period Name: " LabelPosition="Left">
+            <TextBox x:Name="periodNameTextBox" TextWrapping="WrapWithOverflow" />
+        </dxlc:LayoutItem>
+        <dxlc:LayoutItem Label="Tentative Start: " LabelPosition="Left">
+            <dxe:DateEdit x:Name="expectedStartDateEdit" FontWeight="Normal" MaskType="DateTime" IsTextEditable="False"
+                          Mask="dd/MM/yyyy HH:mm" DisplayFormatString="dd/MM/yyyy HH:mm" MaskUseAsDisplayFormat="True">
+                <dxe:DateEdit.StyleSettings>
+                    <dxe:DateEditPickerStyleSettings />
+                </dxe:DateEdit.StyleSettings>
+            </dxe:DateEdit>
+        </dxlc:LayoutItem>
+        <dxlc:LayoutItem Label="Tentative End: " LabelPosition="Left">
+            <dxe:DateEdit x:Name="expectedEndDateEdit" FontWeight="Normal" MaskType="DateTime" Mask="dd/MM/yyyy HH:mm"
+                          DisplayFormatString="dd/MM/yyyy HH:mm" MaskUseAsDisplayFormat="True" IsTextEditable="False">
+                <dxe:DateEdit.StyleSettings>
+                    <dxe:DateEditPickerStyleSettings />
+                </dxe:DateEdit.StyleSettings>
+            </dxe:DateEdit>
+        </dxlc:LayoutItem>
+        <dxlc:LayoutItem Label="Simulation Duration (In days): " LabelPosition="Left">
+            <dxe:SpinEdit x:Name="simulationDurationSpinEdit" MinValue="0"/>
+        </dxlc:LayoutItem>
+    </dxlc:LayoutControl>
+</UserControl>

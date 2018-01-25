@@ -1,0 +1,85 @@
+﻿<UserControl xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"  x:Class="EditMarketInfoUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GameAdministratorCenter"
+             mc:Ignorable="d" >
+    <dxlc:LayoutControl Orientation="Vertical" ItemSpace="7">
+        <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="5">
+            <Image Stretch="Uniform" Height="40" Source="/GameAdministratorCenter;component/Resources/Pie.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <dxlc:LayoutItem Label="Market Size: " FontSize="16" FontWeight="DemiBold" LabelPosition="Left" VerticalAlignment="Stretch">
+                <dxe:SpinEdit x:Name="marketSizeTextEdit" VerticalAlignment="Stretch" EditValue="{Binding Path=MARKET_SIZE, Mode=TwoWay}"/>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+        <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="5">
+            <Image Stretch="Uniform" Height="40" Source="/GameAdministratorCenter;component/Resources/Growth.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <dxlc:LayoutItem Label="Market Growth Rate: " FontSize="16" FontWeight="DemiBold" LabelPosition="Left" VerticalAlignment="Stretch">
+                <dxe:SpinEdit x:Name="marketGrowthRateTextEdit" VerticalAlignment="Stretch" EditValue="{Binding Path=GROWTH_RATE, Mode=TwoWay}"/>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+        <!--<dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="5">
+            <Image Stretch="Uniform" Height="40" Source="/GameAdministratorCenter;component/Resources/Quality.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <dxlc:LayoutItem Label="Initial Quality: " FontSize="16" FontWeight="DemiBold" LabelPosition="Left" VerticalAlignment="Stretch">
+                <dxe:SpinEdit x:Name="initialQualityTextEdit" VerticalAlignment="Stretch" EditValue="{Binding Path=INITIAL_QUALITY, Mode=TwoWay}"/>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>-->
+        <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="5">
+            <Image Stretch="Uniform" Height="40" Source="/GameAdministratorCenter;component/Resources/Variation.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <dxlc:LayoutItem Label="Market Variation Type: " FontSize="16" FontWeight="DemiBold" LabelPosition="Left" VerticalAlignment="Stretch">
+                <dxe:ComboBoxEdit x:Name="marketVariationTypeComboBox" VerticalAlignment="Stretch">
+                    <dxe:ComboBoxEditItem>Uniform Distribution</dxe:ComboBoxEditItem>
+                    <dxe:ComboBoxEditItem>Normal Distribution</dxe:ComboBoxEditItem>
+                    <dxe:ComboBoxEditItem>Exponential</dxe:ComboBoxEditItem>
+                    <dxe:ComboBoxEditItem>Linear</dxe:ComboBoxEditItem>
+                </dxe:ComboBoxEdit>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+        <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="5">
+            <Image Stretch="Uniform" Height="40" Source="/GameAdministratorCenter;component/Resources/Type.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <dxlc:LayoutItem Label="Market Variation Param 1: " FontSize="16" FontWeight="DemiBold" LabelPosition="Left" VerticalAlignment="Stretch">
+                <dxe:SpinEdit x:Name="marketVariationParam1TextEdit" VerticalAlignment="Stretch" EditValue="{Binding Path=VARIATION_PARAM_1, Mode=TwoWay}"/>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+        <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="5">
+            <Image Stretch="Uniform" Height="40" Source="/GameAdministratorCenter;component/Resources/Type.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <dxlc:LayoutItem Label="Market Variation Param 2: " FontSize="16" FontWeight="DemiBold" LabelPosition="Left" VerticalAlignment="Stretch">
+                <dxe:SpinEdit x:Name="marketVariationParam2TextEdit" VerticalAlignment="Stretch" EditValue="{Binding Path=VARIATION_PARAM_2, Mode=TwoWay}"/>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+        <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="5">
+            <Image Stretch="Uniform" Height="40" Source="/GameAdministratorCenter;component/Resources/Type.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <dxlc:LayoutItem Label="Market Variation Param 3: " FontSize="16" FontWeight="DemiBold" LabelPosition="Left" VerticalAlignment="Stretch">
+                <dxe:SpinEdit x:Name="marketVariationParam3TextEdit" VerticalAlignment="Stretch" EditValue="{Binding Path=VARIATION_PARAM_3, Mode=TwoWay}"/>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+        <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="5">
+            <Image Stretch="Uniform" Height="40" Source="/GameAdministratorCenter;component/Resources/Type.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <dxlc:LayoutItem Label="Alpha Value: " FontSize="16" FontWeight="DemiBold" LabelPosition="Left" VerticalAlignment="Stretch">
+                <dxe:SpinEdit x:Name="alphaValue" VerticalAlignment="Stretch" EditValue="{Binding Path=ALPHA, Mode=TwoWay}"/>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+        <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="5">
+            <Image Stretch="Uniform" Height="40" Source="/GameAdministratorCenter;component/Resources/Type.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <dxlc:LayoutItem Label="Beta Value: " FontSize="16" FontWeight="DemiBold" LabelPosition="Left" VerticalAlignment="Stretch">
+                <dxe:SpinEdit x:Name="betaValue" VerticalAlignment="Stretch" EditValue="{Binding Path=BETA, Mode=TwoWay}"/>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+        <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="20" VerticalAlignment="Bottom">
+            <Button Background="White" x:Name="saveButton" Width="120" Height="50"
+                                            HorizontalAlignment="Right" Margin="0" VerticalAlignment="Bottom">
+                <dxlc:LayoutGroup Padding="0" Orientation="Horizontal">
+                    <Image Source="/GameAdministratorCenter;component/Resources/Done_round.png" VerticalAlignment="Center" Height="40" Width="40" />
+                    <TextBlock Text="Save" VerticalAlignment="Center" FontSize="14" />
+                </dxlc:LayoutGroup>
+            </Button>
+            <Button Background="White" x:Name="cancelButton" Width="120" Height="50"
+                                            HorizontalAlignment="Right" Margin="0" VerticalAlignment="Bottom">
+                <dxlc:LayoutGroup Padding="0" Orientation="Horizontal">
+                    <Image Source="/GameAdministratorCenter;component/Resources/Cancel_round.png" VerticalAlignment="Center" Height="40" Width="40" />
+                    <TextBlock Text="Cancel" VerticalAlignment="Center" FontSize="14" />
+                </dxlc:LayoutGroup>
+            </Button>
+        </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
+</UserControl>

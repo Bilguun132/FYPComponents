@@ -1,0 +1,226 @@
+﻿<UserControl xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"  xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"  x:Class="AddEditFirm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GameAdministratorCenter"
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <local:CashflowTypeConverterForGridControl x:Key="CashflowTypeConverter" />
+            <local:PaymentTypeConverterForGridControl x:Key="PaymentTypeConverter" />
+            <local:TargetTypeConverterForGridControl x:Key="TargetTypeConverter" />
+            <local:IsEnabledConverterForGridControl x:Key="IsEnabledConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <dxlc:LayoutControl Orientation="Vertical" ItemSpace="7">
+        <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="15">
+            <dxlc:LayoutItem Label="Firm Name: " LabelPosition="Left">
+                <TextBox x:Name="firmNameTextBox" TextWrapping="WrapWithOverflow" />
+            </dxlc:LayoutItem>
+            <dxlc:LayoutItem Label="Max Number Of PLayer: " LabelPosition="Left">
+                <dxe:SpinEdit x:Name="maxPlayerSpinEdit" MinValue="1" Increment="1" EditValue="1"/>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+        <dxlc:LayoutItem Label="Description: " LabelPosition="Left">
+            <TextBox x:Name="descriptionTextBox" TextWrapping="WrapWithOverflow" AcceptsReturn="True" MinHeight="70"/>
+        </dxlc:LayoutItem>
+        <dxlc:LayoutItem Label="Initial Asset: " LabelPosition="Left">
+            <dxe:SpinEdit x:Name="initialAssetSpinEdit" EditValue="0"/>
+        </dxlc:LayoutItem>
+        <dxlc:LayoutItem Label="Initial Liability: " LabelPosition="Left">
+            <dxe:SpinEdit x:Name="initialLiabilitySpinEdit" EditValue="0"/>
+        </dxlc:LayoutItem>
+        <dxlc:LayoutItem Label="Initial Equity: " LabelPosition="Left">
+            <dxe:SpinEdit x:Name="initialEquitySpinEdit" EditValue="0"/>
+        </dxlc:LayoutItem>
+        <dxlc:LayoutItem Label="Initial Price: " LabelPosition="Left">
+            <dxe:SpinEdit x:Name="productionPriceSpinEdit" EditValue="0"/>
+        </dxlc:LayoutItem>
+        <dxlc:LayoutItem Label="Initial Production Cost: " LabelPosition="Left">
+            <dxe:SpinEdit x:Name="productionCostSpinEdit" EditValue="0"/>
+        </dxlc:LayoutItem>
+        <dxlc:LayoutItem Label="Initial Quality: " LabelPosition="Left">
+            <dxe:SpinEdit x:Name="productionQualitySpinEdit" EditValue="0"/>
+        </dxlc:LayoutItem>
+        <dxlc:LayoutControl Header="Period List" VerticalAlignment="Top" Padding="0" Orientation="Vertical">
+            <TextBlock Text="Revenue and Cost sources" FontWeight="DemiBold" FontSize="14"></TextBlock>
+            <dxg:GridControl x:Name="revenueCostGrid" FontSize="12" ClipboardCopyMode="None" SelectionMode="None" MaxHeight="1000"
+                     ShowBorder="False" SnapsToDevicePixels="True">
+                <dxg:GridColumn FieldName="NAME" Header="Name" HorizontalHeaderContentAlignment="Center">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings TextWrapping="WrapWithOverflow" HorizontalContentAlignment="Center"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName= "FLOW_TYPE" Header="Transaction Type" HorizontalHeaderContentAlignment="Center">
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock VerticalAlignment="Center" x:Name="PART_Editor" Text="{Binding Converter={StaticResource CashflowTypeConverter}}" FontWeight="Normal" FontSize="12" HorizontalAlignment="Center"  />
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName= "PAYMENT_TYPE" Header="Payment Type" HorizontalHeaderContentAlignment="Center">
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock VerticalAlignment="Center" x:Name="PART_Editor" Text="{Binding Converter={StaticResource PaymentTypeConverter}}" FontWeight="Normal" FontSize="12" HorizontalAlignment="Center"  />
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="RECURSIVE_DURATION" Header="Number Of Payment" HorizontalHeaderContentAlignment="Center">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings TextWrapping="WrapWithOverflow" HorizontalContentAlignment="Center"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="PAYMENT_AMOUNT" Header="Payment Amount ($)" HorizontalHeaderContentAlignment="Center">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings TextWrapping="WrapWithOverflow" HorizontalContentAlignment="Center"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="FIRST_PAYMENT_DATE" Header="First Payment" HorizontalHeaderContentAlignment="Center">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName= "TARGET_TYPE" Header="Target Type" HorizontalHeaderContentAlignment="Center">
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock VerticalAlignment="Center" x:Name="PART_Editor" Text="{Binding Converter={StaticResource TargetTypeConverter}}" FontWeight="Normal" FontSize="12" HorizontalAlignment="Center"  />
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="PERIOD_NUMBER" Header="Applied Period" HorizontalHeaderContentAlignment="Center">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings TextWrapping="WrapWithOverflow" HorizontalContentAlignment="Center"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                
+                <dxg:GridControl.View>
+                    <dxg:TableView x:Name="revenueCostGridView" AutoWidth="True" AllowConditionalFormattingMenu="True" ShowTotalSummary="False"
+                           BestFitMode="AllRows" NavigationStyle="Row" ShowGroupPanel="False" AllowEditing="False" ShowColumnHeaders="True" />
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+            <dxlc:LayoutGroup Orientation="Horizontal" VerticalAlignment="Top" ItemSpace="7" HorizontalAlignment="Stretch">
+                <Button Background="Transparent" x:Name="addButton" Height="60" Width="70"  Visibility="{Binding ElementName=tabControl, Path=Visibility}"
+                                            HorizontalAlignment="Right" Margin="2">
+                    <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                        <Image Source="/GameAdministratorCenter;component/Resources/Add_round.png" VerticalAlignment="Center" Height="25" Width="25" />
+                        <TextBlock Text="Add" VerticalAlignment="Center" FontSize="14"  TextAlignment="Center"/>
+                    </dxlc:LayoutGroup>
+                </Button>
+                <Button Background="Transparent" x:Name="editButton" Height="60" Width="70" IsEnabled="{Binding ElementName=revenueCostGrid, Path=SelectedItem, Converter={StaticResource IsEnabledConverter}}" Visibility="{Binding ElementName=tabControl, Path=Visibility}"
+                                            HorizontalAlignment="Right" Margin="2">
+                    <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                        <Image Source="/GameAdministratorCenter;component/Resources/Edit_pen.png" VerticalAlignment="Center" Height="25" Width="25" />
+                        <TextBlock Text="Edit" VerticalAlignment="Center" FontSize="17"  TextAlignment="Center"/>
+                    </dxlc:LayoutGroup>
+                </Button>
+                <Button Background="Transparent" x:Name="deleteButton" Height="60" Width="70" IsEnabled="{Binding ElementName=revenueCostGrid, Path=SelectedItem, Converter={StaticResource IsEnabledConverter}}" Visibility="{Binding ElementName=tabControl, Path=Visibility}"
+                                            HorizontalAlignment="Right" Margin="2">
+                    <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                        <Image Source="/GameAdministratorCenter;component/Resources/Trashbin.png" VerticalAlignment="Center" Height="25" Width="25" />
+                        <TextBlock Text="Delete" VerticalAlignment="Center" FontSize="14"  TextAlignment="Center"/>
+                    </dxlc:LayoutGroup>
+                </Button>
+            </dxlc:LayoutGroup>
+            <Border BorderBrush="DarkGray" BorderThickness="1.5" x:Name="AddEditRevenueCostGroup" Visibility="Collapsed">
+                <dxlc:LayoutGroup Orientation="Vertical" ItemSpace="5" Padding="5">
+                    <dxlc:LayoutControl Orientation="Horizontal" ItemSpace="15" Padding="0">
+                        <dxlc:LayoutGroup Orientation="Vertical" ItemSpace="5">
+                            <dxlc:LayoutItem Label="Name: " LabelPosition="Left">
+                                <TextBox x:Name="revenueCostNameTextbox" Text="{Binding Path=NAME}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Cashflow Type: " LabelPosition="Left">
+                                <dxe:ComboBoxEdit x:Name="flowTypeComboBox" SelectedIndex="{Binding Path=FLOW_TYPE}" IsTextEditable="False">
+                                    <dxe:ComboBoxEditItem>Revenue</dxe:ComboBoxEditItem>
+                                    <dxe:ComboBoxEditItem>Cost</dxe:ComboBoxEditItem>
+                                </dxe:ComboBoxEdit>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Payment Type: " LabelPosition="Left">
+                                <dxe:ComboBoxEdit  x:Name="paymentTypeCombobox" SelectedIndex="{Binding Path=PAYMENT_TYPE}" IsTextEditable="False">
+                                    <dxe:ComboBoxEditItem>One Time</dxe:ComboBoxEditItem>
+                                    <dxe:ComboBoxEditItem>Weekly Recursive</dxe:ComboBoxEditItem>
+                                    <dxe:ComboBoxEditItem>Monthly Recursive</dxe:ComboBoxEditItem>
+                                    <dxe:ComboBoxEditItem>Yearly Recursive</dxe:ComboBoxEditItem>
+                                </dxe:ComboBoxEdit>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Payment Amount " LabelPosition="Left">
+                                <dxe:SpinEdit x:Name="paymentAmountSpinEdit" MinValue="0" EditValue="{Binding Path=PAYMENT_AMOUNT}"/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup Orientation="Vertical" ItemSpace="5">
+                            <dxlc:LayoutItem Label="Assigned Period: " LabelPosition="Left">
+                                <dxe:TextEdit x:Name="assignedPeriodSpinEdit"  EditValue="{Binding Path=PERIOD_NUMBER}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Target: " LabelPosition="Left">
+                                <dxe:ComboBoxEdit  x:Name="targetcomboBox" SelectedIndex="{Binding Path=TARGET_TYPE}" IsTextEditable="False">
+                                    <dxe:ComboBoxEditItem>Asset</dxe:ComboBoxEditItem>
+                                    <dxe:ComboBoxEditItem>Liability</dxe:ComboBoxEditItem>
+                                    <dxe:ComboBoxEditItem>Equity</dxe:ComboBoxEditItem>
+                                </dxe:ComboBoxEdit>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Number of Payments: " LabelPosition="Left">
+                                <dxe:TextEdit x:Name="numberOfPaymentSpinEdit"  EditValue="{Binding Path=RECURSIVE_DURATION}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="Date of first payment: " LabelPosition="Left">
+                                <dxe:TextEdit x:Name="firstPaymentDateSpinEdit"  EditValue="{Binding Path=FIRST_PAYMENT_DATE}"/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutControl>
+                    <dxlc:LayoutItem Label="Description: " LabelPosition="Top">
+                        <TextBox x:Name="revenueCostDescriptionTextBox" AcceptsReturn="True" TextWrapping="WrapWithOverflow" MinHeight="50" Text="{Binding Path=DESCRIPTION}"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="15">
+                        <Button Background="Transparent" x:Name="confirmButton" Height="60" Width="80"  Visibility="{Binding ElementName=tabControl, Path=Visibility}"
+                                            HorizontalAlignment="Right" Margin="2">
+                            <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                                <Image Source="/GameAdministratorCenter;component/Resources/Done_round.png" VerticalAlignment="Center" Height="25" Width="25" />
+                                <TextBlock Text="Confirm" VerticalAlignment="Center" FontSize="14"  TextAlignment="Center"/>
+                            </dxlc:LayoutGroup>
+                        </Button>
+                        <Button Background="Transparent" x:Name="cancelButton" Height="60" Width="80"  Visibility="{Binding ElementName=tabControl, Path=Visibility}"
+                                            HorizontalAlignment="Right" Margin="2">
+                            <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                                <Image Source="/GameAdministratorCenter;component/Resources/Cancel_round.png" VerticalAlignment="Center" Height="25" Width="25" />
+                                <TextBlock Text="Cancel" VerticalAlignment="Center" FontSize="17"  TextAlignment="Center"/>
+                            </dxlc:LayoutGroup>
+                        </Button>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutGroup>
+            </Border>
+            <dxlc:LayoutGroup Orientation="Horizontal" VerticalAlignment="Top" ItemSpace="7" HorizontalAlignment="Stretch">
+                <Button Background="Transparent" x:Name="backButton" Height="60" Width="70"  Visibility="{Binding ElementName=tabControl, Path=Visibility}"
+                                            HorizontalAlignment="Left" Margin="2">
+                    <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                        <Image Source="/GameAdministratorCenter;component/Resources/Back_round.png" VerticalAlignment="Center" Height="25" Width="25" />
+                        <TextBlock Text="Back" VerticalAlignment="Center" FontSize="14"  TextAlignment="Center"/>
+                    </dxlc:LayoutGroup>
+                </Button>
+                <Button Background="Transparent" x:Name="saveButton" Height="60" Width="70"  Visibility="{Binding ElementName=tabControl, Path=Visibility}"
+                                            HorizontalAlignment="Right" Margin="2">
+                    <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                        <Image Source="/GameAdministratorCenter;component/Resources/done_round.png" VerticalAlignment="Center" Height="25" Width="25" />
+                        <TextBlock Text="Save" VerticalAlignment="Center" FontSize="14"  TextAlignment="Center"/>
+                    </dxlc:LayoutGroup>
+                </Button>
+            </dxlc:LayoutGroup>
+            <Popup x:Name="passwordInputPopup" StaysOpen="False" PlacementTarget="{Binding ElementName=saveButton}">
+                <Border BorderBrush="DarkGray" BorderThickness="2" Background="White">
+                    <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="10" Height="80" Width="250">
+                        <dxlc:LayoutItem Label="Admin Password:" LabelPosition="Top" VerticalAlignment="Center">
+                            <dxe:TextEdit x:Name="passwordTextEdit" TextWrapping="WrapWithOverflow"/>
+                        </dxlc:LayoutItem>
+                        <Button Background="Transparent" x:Name="confirmPasswordButton" Height="60" Width="70"  
+                                            HorizontalAlignment="Right" Margin="2" VerticalAlignment="Center">
+                            <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                                <Image Source="/GameAdministratorCenter;component/Resources/Done_round.png" VerticalAlignment="Center" Height="20" Width="20" />
+                                <TextBlock Text="Confirm" VerticalAlignment="Center" FontSize="12"  TextAlignment="Center"/>
+                            </dxlc:LayoutGroup>
+                        </Button>
+                    </dxlc:LayoutGroup>
+                </Border>
+            </Popup>
+
+        </dxlc:LayoutControl>
+    </dxlc:LayoutControl>
+</UserControl>

@@ -1,0 +1,71 @@
+﻿<UserControl xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"  x:Class="ManageGamePLayUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GameAdministratorCenter"
+             mc:Ignorable="d" >
+    <dxlc:LayoutControl Orientation="Vertical" ItemSpace="7">
+        <dxlc:LayoutGroup View="GroupBox" Header="Period Information" IsCollapsible="True" Orientation="Vertical" ItemSpace="5">
+            <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="15">
+                <dxlc:LayoutGroup Orientation="Vertical" ItemSpace="5">
+                    <dxlc:LayoutItem Label="Current Period Name: " LabelPosition="Left">
+                        <TextBlock x:Name="currentPeriodNameTextblock" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Expected Start: " LabelPosition="Left">
+                        <TextBlock x:Name="expectedStartDateTextBlock" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Actual Start: " LabelPosition="Left">
+                        <TextBlock x:Name="actualStartDateTextBlock" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Current Run Time: " LabelPosition="Left">
+                        <TextBlock x:Name="currentRunTimeTextblock" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Current Period Status: ">
+                        <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="5">
+                            <TextBlock x:Name="currentPeriodStatusTextBlock" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Image x:Name="currentPeriodStatusImage" Stretch="Uniform" Height="30" HorizontalAlignment="Left"/>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup Orientation="Vertical" ItemSpace="5">
+                    <dxlc:LayoutItem Label="Current Period Number: " LabelPosition="Left">
+                        <TextBlock x:Name="currentPeriodNumberTextblock" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Expected End: " LabelPosition="Left">
+                        <TextBlock x:Name="expectedEndDateTextBlock" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Actual End: " LabelPosition="Left">
+                        <TextBlock x:Name="actualEndDateTextBlock" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Current Simulation Time: " LabelPosition="Left">
+                        <TextBlock x:Name="currentSimulationTextblock" />
+                    </dxlc:LayoutItem>
+                    <dxe:ProgressBarEdit x:Name="progressBarEdit" IsPercent="False" ContentDisplayMode="Value" DisplayFormatString="#0.00"
+                                         Minimum="0" Maximum="100"/>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+
+
+            <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="15">
+                <Button Background="Transparent" x:Name="startButton"  IsEnabled="False" Visibility="{Binding ElementName=tabControl, Path=Visibility}"
+                                            HorizontalAlignment="Center" Margin="2">
+                    <dxlc:LayoutGroup Padding="0" Orientation="Horizontal">
+                        <Image Source="/GameAdministratorCenter;component/Resources/Play.png" VerticalAlignment="Center" Height="40" Width="40" />
+                        <TextBlock Text="Start" VerticalAlignment="Center" FontSize="17"  TextAlignment="Center" FontWeight="DemiBold"/>
+                    </dxlc:LayoutGroup>
+                </Button>
+                <Button Background="Transparent" x:Name="stopButton" IsEnabled="False" Visibility="{Binding ElementName=tabControl, Path=Visibility}"
+                                            HorizontalAlignment="Center" Margin="2">
+                    <dxlc:LayoutGroup Padding="0" Orientation="Horizontal">
+                        <Image Source="/GameAdministratorCenter;component/Resources/Pause.png" VerticalAlignment="Center" Height="40" Width="40" />
+                        <TextBlock Text="Stop" VerticalAlignment="Center" FontSize="17"  TextAlignment="Center" FontWeight="DemiBold"/>
+                    </dxlc:LayoutGroup>
+                </Button>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutGroup>
+        <Border BorderBrush="DarkGray" BorderThickness="1.5" Visibility="{Binding ElementName=firmListContainer, Path=Visibility}" Padding="3">
+            <dxlc:LayoutItem x:Name="firmListContainer" Visibility="Visible"/>
+        </Border>
+    </dxlc:LayoutControl>
+</UserControl>

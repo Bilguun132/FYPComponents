@@ -1,0 +1,38 @@
+﻿<UserControl xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"  x:Class="ImageViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ContentManager"
+             mc:Ignorable="d" >
+    <dxlc:LayoutControl x:Name="mainContainer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="0" Orientation="Vertical" ItemSpace="5">
+        <dxlc:LayoutItem x:Name="border" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Image x:Name="image" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" IsManipulationEnabled="True">
+            </Image>
+        </dxlc:LayoutItem>
+        <dxlc:LayoutGroup x:Name="buttonPanel" Orientation="Horizontal" ItemSpace="10" VerticalAlignment="Bottom">
+            <Button Background="Transparent" x:Name="originalSizeButton" Height="50" Width="160" 
+                                            HorizontalAlignment="Right" Margin="2">
+                <dxlc:LayoutGroup Padding="0">
+                    <Image Source="/ContentManager;component/Resources/Original_size.png" VerticalAlignment="Center" Height="30" Width="30" />
+                    <TextBlock Text="Original Size" VerticalAlignment="Center" FontSize="17" />
+                </dxlc:LayoutGroup>
+            </Button>
+            <Button Background="Transparent" x:Name="fullScreenSizeButton" Height="50" Width="160" 
+                                            HorizontalAlignment="Right" Margin="2">
+                <dxlc:LayoutGroup Padding="0">
+                    <Image Source="/ContentManager;component/Resources/Full_screen.png" VerticalAlignment="Center" Height="30" Width="30" />
+                    <TextBlock Text="Full Screen" VerticalAlignment="Center" FontSize="17" />
+                </dxlc:LayoutGroup>
+            </Button>
+            <Button Background="Transparent" x:Name="closeButton" Height="50" Width="160" 
+                                            HorizontalAlignment="Right" Margin="2">
+                <dxlc:LayoutGroup Padding="0">
+                    <Image Source="/ContentManager;component/Resources/Cancel_round.png" VerticalAlignment="Center" Height="30" Width="30" />
+                    <TextBlock Text="Close" VerticalAlignment="Center" FontSize="17" />
+                </dxlc:LayoutGroup>
+            </Button>
+        </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
+</UserControl>

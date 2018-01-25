@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Publish\FypWebApi</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApplicationInsights.config">
+      <publishTime>09/05/2017 15:59:32</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>09/05/2017 16:00:01</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>09/05/2017 16:00:01</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>09/05/2017 15:59:32</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>01/12/2018 11:24:37</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>01/12/2018 11:24:37</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>09/05/2017 15:59:53</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>09/05/2017 15:59:53</publishTime>
+    </File>
+    <File Include="bin/FypWebApi.dll">
+      <publishTime>01/12/2018 11:24:28</publishTime>
+    </File>
+    <File Include="bin/FypWebApi.pdb">
+      <publishTime>01/12/2018 11:24:28</publishTime>
+    </File>
+    <File Include="bin/FypWebApi.xml">
+      <publishTime>01/12/2018 11:24:28</publishTime>
+    </File>
+    <File Include="bin/GameAdministratorCenter.Contracts.dll">
+      <publishTime>01/11/2018 23:31:43</publishTime>
+    </File>
+    <File Include="bin/GameAdministratorCenter.Contracts.dll.config">
+      <publishTime>01/10/2018 14:45:46</publishTime>
+    </File>
+    <File Include="bin/GameAdministratorCenter.Contracts.pdb">
+      <publishTime>01/11/2018 23:31:43</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>09/05/2017 16:00:05</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>09/05/2017 16:00:04</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>09/05/2017 16:00:01</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>09/05/2017 15:59:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>09/05/2017 15:59:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>09/05/2017 16:00:03</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>09/05/2017 16:00:01</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>09/05/2017 15:59:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>09/05/2017 15:59:50</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>09/05/2017 15:59:48</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>09/05/2017 15:59:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>09/05/2017 15:59:47</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>09/05/2017 15:59:47</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>09/05/2017 15:59:47</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>09/05/2017 15:59:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>09/05/2017 15:59:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>09/05/2017 15:59:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>09/05/2017 15:59:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>09/05/2017 15:59:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>09/05/2017 15:59:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>09/05/2017 15:59:46</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>09/05/2017 15:59:47</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>09/05/2017 16:00:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>09/05/2017 15:59:52</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>09/05/2017 16:00:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>09/05/2017 16:00:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>09/05/2017 16:00:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>09/05/2017 16:00:03</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>09/05/2017 15:59:53</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>09/05/2017 15:59:52</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>09/05/2017 15:59:52</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>09/05/2017 15:59:52</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>09/05/2017 16:00:00</publishTime>
+    </File>
+    <File Include="FypDatabaseModels.edmx.diagram">
+      <publishTime>11/11/2017 16:17:37</publishTime>
+    </File>
+    <File Include="FYP_DATABASEEntities.edmx.diagram">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Models/FypDatabaseModels.edmx">
+      <publishTime>05/09/2017 13:57:10</publishTime>
+    </File>
+    <File Include="Models/FypDatabaseModels.edmx.diagram">
+      <publishTime>09/05/2017 13:57:10</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>09/05/2017 15:59:32</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>01/12/2018 11:24:30</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>01/10/2018 14:47:40</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

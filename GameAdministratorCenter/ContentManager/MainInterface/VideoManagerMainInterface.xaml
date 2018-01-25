@@ -1,0 +1,120 @@
+﻿<UserControl xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"  xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"  x:Class="VideoManagerMainInterface"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ContentManager"
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="IconCellTemplate">
+                <Image Height="50" Width="50" Source="{Binding Value}" />
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <dxlc:LayoutControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Horizontal" ItemSpace="15">
+        <dxlc:LayoutGroup Orientation="Vertical" ItemSpace="10" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+            <Button Background="Transparent" x:Name="addButton" Height="80" Width="90" 
+                                            HorizontalAlignment="Left" Margin="2">
+                <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                    <Image Source="/ContentManager;component/Resources/Add_round.png" VerticalAlignment="Center" Height="40" Width="40" />
+                    <TextBlock Text="Add" VerticalAlignment="Center" FontSize="17"  TextAlignment="Center"/>
+                </dxlc:LayoutGroup>
+            </Button>
+            <Button Background="Transparent" x:Name="editButton" Height="80" Width="90" 
+                                            HorizontalAlignment="Left" Margin="2">
+                <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                    <Image Source="/ContentManager;component/Resources/Edit_pen.png" VerticalAlignment="Center" Height="40" Width="40" />
+                    <TextBlock Text="Edit" VerticalAlignment="Center" FontSize="17"  TextAlignment="Center"/>
+                </dxlc:LayoutGroup>
+            </Button>
+            <Button Background="Transparent" x:Name="deleteButton" Height="80" Width="90" 
+                                            HorizontalAlignment="Left" Margin="2">
+                <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                    <Image Source="/ContentManager;component/Resources/Trashbin.png" VerticalAlignment="Center" Height="40" Width="40" />
+                    <TextBlock Text="Delete" VerticalAlignment="Center" FontSize="17"  TextAlignment="Center"/>
+                </dxlc:LayoutGroup>
+            </Button>
+            <Button Background="Transparent" x:Name="selectButton" Height="80" Width="90" 
+                                            HorizontalAlignment="Left" Margin="2">
+                <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                    <Image Source="/ContentManager;component/Resources/Done_round.png" VerticalAlignment="Center" Height="40" Width="40" />
+                    <TextBlock Text="Select" VerticalAlignment="Center" FontSize="17"  TextAlignment="Center"/>
+                </dxlc:LayoutGroup>
+            </Button>
+            <Button Background="Transparent" x:Name="downloadButton" Height="80" Width="90" 
+                                            HorizontalAlignment="Left" Margin="2">
+                <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                    <Image Source="/ContentManager;component/Resources/Download.png" VerticalAlignment="Center" Height="40" Width="40" />
+                    <TextBlock Text="Download" VerticalAlignment="Center" FontSize="14"  TextAlignment="Center"/>
+                </dxlc:LayoutGroup>
+            </Button>
+            <Button Background="Transparent" x:Name="closeButton" Height="80" Width="90" 
+                                            HorizontalAlignment="Left" Margin="2">
+                <dxlc:LayoutGroup Padding="0" Orientation="Vertical">
+                    <Image Source="/ContentManager;component/Resources/Cancel_round.png" VerticalAlignment="Center" Height="40" Width="40" />
+                    <TextBlock Text="Close" VerticalAlignment="Center" FontSize="17"  TextAlignment="Center"/>
+                </dxlc:LayoutGroup>
+            </Button>
+        </dxlc:LayoutGroup>
+
+        <dxlc:LayoutItem HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <dxg:GridControl x:Name="videoManagerGridControl" AutoGenerateColumns="None" MaxHeight="2000" CustomUnboundColumnData="videoManagerGridControl_CustomUnboundColumnData"
+                             FontSize="12" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ClipboardCopyMode="None" 
+                             IsHitTestVisible="True" SelectionMode="None" ShowBorder="False" SnapsToDevicePixels="True">
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn Header="ID" FieldName="ID" Visible="False"/>
+                    <!--The fieldname for the unbound column must be different from all the existing fieldnames in the source for the event CustomUnboundcolumnData to be fired-->
+                    <dxg:GridColumn FieldName="THUMBNAIL"  Header = "Preview"
+                                    HorizontalHeaderContentAlignment="Center" UnboundType="Object" CellTemplate="{StaticResource IconCellTemplate}">
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="CONTENT_NAME"  Header = "Name"
+                                    HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="CONTENT_TYPE"  Header = "Video Type"
+                                    HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="CONTENT_GROUP"  Header = "Video Group"
+                                    HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="CONTENT_CATEGORY"  Header = "Video Category"
+                                    HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="VERSION_NUMBER"  Header = "Video Version"
+                                    HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.View>
+                    <dxg:TableView
+                                x:Name="videoManagerGridView" AutoWidth="True" AllowConditionalFormattingMenu="False" ShowIndicator="False"
+                                ShowTotalSummary="True" BestFitMode="VisibleRows" NavigationStyle="Row" 
+                                ShowGroupPanel="False" AllowEditing="False" ShowColumnHeaders="True" ShowVerticalLines="False" 
+                                ShowSearchPanelMRUButton="True" ShowSearchPanelMode="Always" SearchString="" SearchDelay="0">
+                        <dxg:TableView.SearchControl>
+                            <dxg:GridSearchControl/>
+                        </dxg:TableView.SearchControl>
+                    </dxg:TableView>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </dxlc:LayoutItem>
+        <dxlc:LayoutItem x:Name="detailPage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+        </dxlc:LayoutItem>
+    </dxlc:LayoutControl>
+</UserControl>

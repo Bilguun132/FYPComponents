@@ -1,0 +1,34 @@
+﻿<UserControl xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"  x:Class="GameCardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GameAdministratorCenter"
+             mc:Ignorable="d" >
+    <Border BorderBrush="LightBlue" BorderThickness="2">
+        <dxlc:LayoutControl Orientation="Vertical" ItemSpace="7" Padding="5">
+            <TextBlock x:Name="gameNameTextBlock" FontSize="16" FontWeight="DemiBold" VerticalAlignment="Top" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow"/>
+            <dxlc:LayoutItem x:Name="imageContainer" Height="70" VerticalAlignment="Top" />
+            <dxlc:LayoutControl Orientation="Vertical" ItemSpace="4" x:Name="extraInfo" Visibility="Collapsed">
+                <dxlc:LayoutGroup Orientation="Horizontal">
+                    <dxlc:LayoutItem Label="Current Status: " LabelPosition="Left">
+                        <TextBlock x:Name="statusTextblock" />
+                    </dxlc:LayoutItem>
+                    <Image x:Name="statusImage" Height="18" HorizontalAlignment="Right"/>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutItem Label="Number of Period: " LabelPosition="Left">
+                    <TextBlock x:Name="numberOfPeriodTextBlock" />
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Current Period: " LabelPosition="Left">
+                    <TextBlock x:Name="periodTextBlock" />
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Number Of Firms: " LabelPosition="Left">
+                    <TextBlock x:Name="numberOfFirmsTextBlock" />
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Number Of Players: " LabelPosition="Left">
+                    <TextBlock x:Name="numberOfPlayersTextBlock" />
+                </dxlc:LayoutItem>
+            </dxlc:LayoutControl>
+        </dxlc:LayoutControl>
+    </Border>
+</UserControl>

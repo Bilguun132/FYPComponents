@@ -1,0 +1,86 @@
+﻿<UserControl xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"  x:Class="ContentManagerDetailPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ContentManager"
+             mc:Ignorable="d" >
+    <dxlc:LayoutControl Orientation="Horizontal" ItemSpace="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="0">
+        <dxlc:LayoutGroup x:Name="extraViewPageContainer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed" Padding="0">
+
+        </dxlc:LayoutGroup>
+        <dxlc:LayoutGroup x:Name="mainContainter"  Orientation="Vertical" View="GroupBox" ItemSpace="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <dxlc:LayoutGroup x:Name="versionBrowserGroup" Orientation="Horizontal" ItemSpace="10" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <dxlc:LayoutItem Label="Version Browser:" HorizontalAlignment="Stretch" VerticalAlignment="Center" LabelPosition="Left" LabelVerticalAlignment="Center">
+                    <dxe:ComboBoxEdit x:Name="versionComboBox" IsTextEditable="False"/>
+                </dxlc:LayoutItem>
+                <Button Background="Transparent" x:Name="createSubversionButton" Height="50" Width="120" 
+                                            HorizontalAlignment="Left" Margin="2">
+                    <dxlc:LayoutGroup Padding="0" Orientation="Vertical" ItemSpace="0">
+                        <Image Source="/ContentManager;component/Resources/Flowchart.png" VerticalAlignment="Center" Height="30" Width="30" />
+                        <TextBlock Text="Create subversion" VerticalAlignment="Center" FontSize="12"  TextAlignment="Center"/>
+                    </dxlc:LayoutGroup>
+                </Button>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="20" VerticalAlignment="Top" HorizontalAlignment="Left">
+
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup Orientation="Horizontal" ItemSpace="10" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <dxlc:LayoutItem x:Name="versionNumberContainer" Label="Version Number:" HorizontalAlignment="Stretch" VerticalAlignment="Center" LabelPosition="Left" LabelVerticalAlignment="Center">
+                    <dxe:TextEdit x:Name="versionNumberTextbox" FontWeight="Bold"/>
+                </dxlc:LayoutItem>
+                <Button Background="Transparent" x:Name="setDefaultVersionButton" Height="50" Width="120" 
+                                            HorizontalAlignment="Left" Margin="2">
+                    <dxlc:LayoutGroup Padding="0" Orientation="Vertical" ItemSpace="0">
+                        <Image Source="/ContentManager;component/Resources/star.png" VerticalAlignment="Center" Height="30" Width="30" />
+                        <TextBlock Text="Set default" VerticalAlignment="Center" FontSize="12"  TextAlignment="Center"/>
+                    </dxlc:LayoutGroup>
+                </Button>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup View="GroupBox" IsCollapsible="True" Orientation="Vertical" ItemSpace="5">
+                <dxlc:LayoutItem Label="Original File Name:" HorizontalAlignment="Stretch" VerticalAlignment="Top" LabelPosition="Left" LabelVerticalAlignment="Center">
+                    <dxe:TextEdit x:Name="originalFileNameTextBox" IsEnabled="False"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem x:Name="nameContainer" HorizontalAlignment="Stretch" VerticalAlignment="Top" LabelPosition="Left" LabelVerticalAlignment="Center">
+                    <dxe:TextEdit x:Name="nameTextbox"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem x:Name="typeContainer"  HorizontalAlignment="Stretch" VerticalAlignment="Top" LabelPosition="Left" LabelVerticalAlignment="Center">
+                    <dxe:TextEdit x:Name="typeTextbox"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem x:Name="groupContainer"  HorizontalAlignment="Stretch" VerticalAlignment="Top" LabelPosition="Left" LabelVerticalAlignment="Center">
+                    <dxe:TextEdit x:Name="groupTextBox"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem x:Name="categoryContainer"  HorizontalAlignment="Stretch" VerticalAlignment="Top" LabelPosition="Left" LabelVerticalAlignment="Center">
+                    <dxe:TextEdit x:Name="categoryTextBox"/>
+                </dxlc:LayoutItem>
+
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutItem x:Name="previewContainer" LabelPosition="Top"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+            </dxlc:LayoutItem>
+            <dxlc:LayoutGroup x:Name="buttonGroup" Visibility="Collapsed" Orientation="Horizontal" ItemSpace="20" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+                <Button Background="Transparent" x:Name="uploadButton" Height="50" Width="120"  VerticalAlignment="Bottom"
+                                            HorizontalAlignment="Right" Margin="2">
+                    <dxlc:LayoutGroup Padding="0" Orientation="Vertical" ItemSpace="0">
+                        <Image Source="/ContentManager;component/Resources/Upload.png" VerticalAlignment="Center" Height="30" Width="30" />
+                        <TextBlock Text="Upload" VerticalAlignment="Center" FontSize="12"  TextAlignment="Center"/>
+                    </dxlc:LayoutGroup>
+                </Button>
+                <Button Background="Transparent" x:Name="saveButton" Height="50" Width="120"  VerticalAlignment="Bottom"
+                                            HorizontalAlignment="Right" Margin="2">
+                    <dxlc:LayoutGroup Padding="0" Orientation="Vertical" ItemSpace="0">
+                        <Image Source="/ContentManager;component/Resources/Save.png" VerticalAlignment="Center" Height="30" Width="30" />
+                        <TextBlock Text="Save" VerticalAlignment="Center" FontSize="12"  TextAlignment="Center"/>
+                    </dxlc:LayoutGroup>
+                </Button>
+                <Button Background="Transparent" x:Name="cancelButton" Height="50" Width="120"  VerticalAlignment="Bottom"
+                                            HorizontalAlignment="Right" Margin="2">
+                    <dxlc:LayoutGroup Padding="0" Orientation="Vertical" ItemSpace="0">
+                        <Image Source="/ContentManager;component/Resources/Cancel_round.png" VerticalAlignment="Center" Height="30" Width="30" />
+                        <TextBlock Text="Cancel" VerticalAlignment="Center" FontSize="12"  TextAlignment="Center"/>
+                    </dxlc:LayoutGroup>
+                </Button>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
+</UserControl>

@@ -1,0 +1,14 @@
+﻿<UserControl xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"  x:Class="GameTypeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GameAdministratorCenter"
+             mc:Ignorable="d" >
+    <dxlc:LayoutGroup x:Name="mainLayoutGroup" Orientation="Vertical" Height="200" Width="400">
+        <Border BorderBrush="LightBlue" BorderThickness="1" CornerRadius="3" VerticalAlignment="Stretch">
+            <dxlc:LayoutItem x:Name="imageContainer"/>
+        </Border>
+        <TextBlock x:Name="gameTypeName" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+    </dxlc:LayoutGroup>
+</UserControl>

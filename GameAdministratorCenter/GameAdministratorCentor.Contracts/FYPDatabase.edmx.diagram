@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e66783f424d74111b0c4956597e85ae3" Name="Diagram1">
+        <EntityTypeShape EntityType="FYP_DATABASEModel.ACTION_TRANSACTIONS" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.APP_DEVICES" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.AUDIO_STORAGE" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.CONTENT_MANAGER" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.FILE_STORAGE" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.FIRM_USER_RELATIONSHIP" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.GAME" Width="1.5" PointX="3.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.GAME_FIRM" Width="1.5" PointX="6" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.GAME_TYPE" Width="1.5" PointX="1.5" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.IMAGE_STRING" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.PERIOD" Width="1.5" PointX="1.5" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.sysdiagram" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.USER" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.USER_ROLE" Width="1.5" PointX="3.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.USER_USER_ROLE_GAME_RELATIONSHIP" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.VIDEO_STORAGE" Width="1.5" PointX="0.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.WEB_API_AUTHORIZATION" Width="1.5" PointX="3" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="FYP_DATABASEModel.WEB_API_TRANSACTION" Width="1.5" PointX="5.25" PointY="27" IsExpanded="true" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_ARC_APP_ACTION_TRANSACTIONS_ARC_APP_DEVICES" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_ARC_APP_ACTION_TRANSACTIONS_PERSONNEL" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_ARC_APP_DEVICES_PERSONNEL" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_CONTENT_MANAGER_AUDIO_STORAGE" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_CONTENT_MANAGER_CONTENT_MANAGER" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_CONTENT_MANAGER_FILE_STORAGE" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_CONTENT_MANAGER_VIDEO_STORAGE" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_IMAGE_STRING_MANAGER_IMAGE_STRING" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_IMAGE_STRING_MANAGER_PERSONNEL" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_GAME_FIRM_GAME" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_GAME_GAME_TYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_GAME_PERIOD" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_WEB_API_AUTHORIZATION_PERSONNEL" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER_ROLE" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_WEB_API_TRANSACTION_WEB_API_AUTHORIZATION" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_FIRM_USER_RELATIONSHIP_GAME_FIRM" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_FIRM_USER_RELATIONSHIP_USER" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
