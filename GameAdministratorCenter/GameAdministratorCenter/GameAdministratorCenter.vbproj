@@ -250,6 +250,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\FypWebApi\FypWebApi\FypWebApi.vbproj">
+      <Project>{88053e4b-61e7-4c5a-bbe9-08e453e9f2e1}</Project>
+      <Name>FypWebApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ContentManager\ContentManager.vbproj">
       <Project>{8A7D2432-E68F-4BA4-8A60-58707A19D18F}</Project>
       <Name>ContentManager</Name>

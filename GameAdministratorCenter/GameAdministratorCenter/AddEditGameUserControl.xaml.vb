@@ -225,15 +225,53 @@ Public Class AddEditGameUserControl
     End Sub
 
     Private Sub userSelectCombobox_PopupClosed(sender As Object, e As ClosePopupEventArgs) Handles userSelectCombobox.PopupClosed
+        'If firmAssignComboBox.EditValue Is Nothing OrElse firmAssignComboBox.EditValue.ToString.Trim.Length = 0 Then
+        '    MessageBox.Show("Please select a firm to asign the user to before selecting the user")
+        '    firmAssignComboBox.Focus()
+        'Else
+        '    Dim selectedUsers As New List(Of USER)
+        '    Dim assignedFirmId = Integer.Parse(firmAssignComboBox.EditValue.ToString)
+
+        '    For Each item In userSelectCombobox.SelectedItem
+        '        Dim user As USER = DirectCast(item, USER)
+        '        Dim relationship As New USER_USER_ROLE_GAME_FIRM_RELATIONSHIP
+        '        relationship.IS_DELETED = False
+        '        relationship.USER_LINK_ID = user.ID
+        '        relationship.GAME = selectedGame
+        '        relationship.FIRM_LINK_ID = assignedFirmId
+        '        getDatabaseEntity.USER_USER_ROLE_GAME_FIRM_RELATIONSHIP.Add(relationship)
+        '        getDatabaseEntity.SaveChanges()
+        '        selectedUsers.Add(user)
+        '    Next
+
+        '    Dim currentItemSource = DirectCast(userGridControl.ItemsSource, List(Of USER))
+        '    For Each user In selectedUsers
+        '        availableUserList.Remove(user)
+        '        currentItemSource.Add(user)
+        '    Next
+        '    userSelectCombobox.UnselectAllItems()
+        '    userSelectCombobox.RefreshData()
+        '    userSelectCombobox.UpdateLayout()
+        '    updateUserGridLayout()
+        'End If
+    End Sub
+
+    Private Sub AddEditGameUserControl_RequestBringIntoView(sender As Object, e As RequestBringIntoViewEventArgs) Handles Me.RequestBringIntoView
+        e.Handled = True
+    End Sub
+
+    Private Sub userSelectCombobox_EditValueChanged(sender As Object, e As EditValueChangedEventArgs)
+        If userSelectCombobox.EditValue Is Nothing Then
+            Return
+        End If
         If firmAssignComboBox.EditValue Is Nothing OrElse firmAssignComboBox.EditValue.ToString.Trim.Length = 0 Then
             MessageBox.Show("Please select a firm to asign the user to before selecting the user")
             firmAssignComboBox.Focus()
         Else
-            userSelectCombobox.Visibility = Visibility.Collapsed
             Dim selectedUsers As New List(Of USER)
             Dim assignedFirmId = Integer.Parse(firmAssignComboBox.EditValue.ToString)
 
-            For Each item In userSelectCombobox.SelectedItems
+            For Each item In userSelectCombobox.EditValue
                 Dim user As USER = DirectCast(item, USER)
                 Dim relationship As New USER_USER_ROLE_GAME_FIRM_RELATIONSHIP
                 relationship.IS_DELETED = False
@@ -254,11 +292,10 @@ Public Class AddEditGameUserControl
             userSelectCombobox.RefreshData()
             userSelectCombobox.UpdateLayout()
             updateUserGridLayout()
-
         End If
     End Sub
 
-    Private Sub AddEditGameUserControl_RequestBringIntoView(sender As Object, e As RequestBringIntoViewEventArgs) Handles Me.RequestBringIntoView
-        e.Handled = True
+    Private Sub firmAssignComboBox_EditValueChanged(sender As Object, e As EditValueChangedEventArgs)
+        userSelectCombobox.EditValue = Nothing
     End Sub
 End Class

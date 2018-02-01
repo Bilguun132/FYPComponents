@@ -169,7 +169,6 @@
     <Compile Include="REVENUE_AND_COST.vb">
       <DependentUpon>FYP_DATABASE.tt</DependentUpon>
     </Compile>
-    <Compile Include="RndThreadClass.vb" />
     <Compile Include="RND_DECISIONS.vb">
       <DependentUpon>FYP_DATABASE.tt</DependentUpon>
     </Compile>

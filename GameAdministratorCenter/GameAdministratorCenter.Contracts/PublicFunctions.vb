@@ -55,7 +55,7 @@ Public Module PublicFunctions
                     revenueAndCost.BUSINESS_ASPECT = BusinessAspect.production
                     databaseEntities.REVENUE_AND_COST.Add(revenueAndCost)
 
-                    subscribeRevenueAndCost(revenueAndCost.ID)
+                    '  subscribeRevenueAndCost(revenueAndCost.ID)
                 End If
             Next
 
@@ -99,24 +99,24 @@ Public Module PublicFunctions
         Return Nothing
     End Function
 
-    Public Sub subscribeRevenueAndCost(revenueAndCostId As Integer)
-        Dim runnerClass As New ServiceThreadClass
-        runnerClass.idType = IdType.revenueAndCost
-        runnerClass.id = revenueAndCostId
-        revenueAndCostThreadList.Add(runnerClass)
-        runnerClass.runRevenueAndCostService()
-    End Sub
+    'Public Sub subscribeRevenueAndCost(revenueAndCostId As Integer)
+    '    Dim runnerClass As New ServiceThreadClass
+    '    runnerClass.idType = IdType.revenueAndCost
+    '    runnerClass.id = revenueAndCostId
+    '    revenueAndCostThreadList.Add(runnerClass)
+    '    runnerClass.runRevenueAndCostService()
+    'End Sub
 
-    Public Sub unsubsribeRevenueAndcost(iD As Integer)
-        Dim revenueAndCostService As ServiceThreadClass = revenueAndCostThreadList.Find(Function(x)
-                                                                                            If x.idType = IdType.revenueAndCost AndAlso x.id = iD Then
-                                                                                                Return True
-                                                                                            Else
-                                                                                                Return False
-                                                                                            End If
-                                                                                        End Function)
-        If revenueAndCostService IsNot Nothing Then
-            revenueAndCostService.stopRevenueAndCostService()
-        End If
-    End Sub
+    'Public Sub unsubsribeRevenueAndcost(iD As Integer)
+    '    Dim revenueAndCostService As ServiceThreadClass = revenueAndCostThreadList.Find(Function(x)
+    '                                                                                        If x.idType = IdType.revenueAndCost AndAlso x.id = iD Then
+    '                                                                                            Return True
+    '                                                                                        Else
+    '                                                                                            Return False
+    '                                                                                        End If
+    '                                                                                    End Function)
+    '    If revenueAndCostService IsNot Nothing Then
+    '        revenueAndCostService.stopRevenueAndCostService()
+    '    End If
+    'End Sub
 End Module

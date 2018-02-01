@@ -168,9 +168,9 @@
                     <dxlc:LayoutGroup x:Name="addUserLayoutGroup" Orientation="Horizontal" ItemSpace="6">
                         <dxlc:LayoutItem Label="Select User" LabelPosition="Top">
                             <dxg:LookUpEdit Name="userSelectCombobox" HorizontalAlignment="Stretch" DisplayMember="USER_NAME" Height="40"
-                                    EditMode="Standalone" SeparatorString=" " AutoPopulateColumns="False" Visibility="Collapsed">
+                                    EditMode="Standalone" SeparatorString=" " EditValueChanged="userSelectCombobox_EditValueChanged" AutoPopulateColumns="False" Visibility="Visible">
                                 <dxg:LookUpEdit.StyleSettings>
-                                    <dxg:SearchLookUpEditStyleSettings SelectionMode="Multiple" />
+                                    <dxg:SearchTokenLookUpEditStyleSettings SelectionMode="Multiple" NewTokenPosition="Far" AllowEditTokens="False" ShowTokenButtons="True"/>
                                 </dxg:LookUpEdit.StyleSettings>
                                 <dxg:LookUpEdit.PopupContentTemplate>
                                     <ControlTemplate>
@@ -187,7 +187,7 @@
                             </dxg:LookUpEdit>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="Assign Firm" HorizontalAlignment="Right" LabelPosition="Top" VerticalAlignment="Center">
-                            <dxe:ComboBoxEdit x:Name="firmAssignComboBox" IsTextEditable="False"/>
+                            <dxe:ComboBoxEdit x:Name="firmAssignComboBox" EditValueChanged="firmAssignComboBox_EditValueChanged" IsTextEditable="False"/>
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
                 </dxlc:LayoutGroup>

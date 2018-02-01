@@ -133,9 +133,12 @@ Public Module GameService
             Dim productionDecisionList As List(Of PRODUCTION_DECISIONS) = (From query In databaseEntities.PRODUCTION_DECISIONS Where query.FIRM_LINK_ID = firmId AndAlso query.PERIOD_LINK_ID = periodId AndAlso
                                                                                                                                    (query.IS_DELETED Is Nothing OrElse query.IS_DELETED = False)).ToList
             If productionDecisionList IsNot Nothing Then
-                For Each productionDecision In productionDecisionList
-                    incomeStatement.productionDecisions.Add(mapProductionDecision(productionDecision))
-                Next
+                Dim productionDecision = productionDecisionList.Last
+                Dim productionQuantity = If(productionDecision.QUANTITY < firm.MARKET_SHARE_QTY, productionDecision.QUANTITY, firm.MARKET_SHARE_QTY)
+                incomeStatement.productionDecisions.Add(mapProductionDecision(productionDecision))
+                incomeStatement.totalRevenue += productionQuantity * firm.PRODUCTION_PRICE
+                incomeStatement.productionCost += productionQuantity * firm.PRODUCTION_COST
+                incomeStatement.totalCost += productionQuantity * firm.PRODUCTION_COST
             End If
 
             Dim marketingDecisionList As List(Of MARKETING_DECISIONS) = (From query In databaseEntities.MARKETING_DECISIONS Where query.FIRM_LINK_ID = firmId AndAlso query.PERIOD_LINK_ID = periodId AndAlso
@@ -146,22 +149,31 @@ Public Module GameService
                 Next
             End If
 
-            For Each revenue In incomeStatement.revenueTransactions
-                incomeStatement.totalRevenue += revenue.transactionAmount
-            Next
+            Dim rndDecision As RND_DECISIONS = (From query In databaseEntities.RND_DECISIONS Where query.FIRM_LINK_ID = firmId AndAlso query.PERIOD_LINK_ID = periodId AndAlso
+                                                                                                                                (query.IS_DELETED Is Nothing OrElse query.IS_DELETED = False)).ToList.Last
+            Dim endDate As Date = period.EXPECTED_END
+            Dim startDate As Date = period.EXPECTED_START
+            Dim duration = ((DateDiff(DateInterval.Minute, startDate, endDate) * period.SIMULATION_DURATION) / 30)
+            If rndDecision IsNot Nothing Then
+                incomeStatement.rndCost = duration * rndDecision.REVENUE_AND_COST.PAYMENT_AMOUNT
+            End If
+            'For Each revenue In incomeStatement.revenueTransactions
+            '    incomeStatement.totalRevenue += revenue.transactionAmount
+            'Next
 
-            For Each cost In incomeStatement.costTransactions
-                incomeStatement.totalCost += -cost.transactionAmount
-                If cost.transactionName = "ProductionCost" Then
-                    incomeStatement.productionCost += -cost.transactionAmount
-                ElseIf cost.transactionName = "RndMonthlyCost" Then
-                    incomeStatement.rndCost += -cost.transactionAmount
-                Else
-                    incomeStatement.otherCost += -cost.transactionAmount
-                End If
-            Next
+            'For Each cost In incomeStatement.costTransactions
+            '    incomeStatement.totalCost += -cost.transactionAmount
+            '    If cost.transactionName = "ProductionCost" Then
+            '        incomeStatement.productionCost += -cost.transactionAmount
+            '    ElseIf cost.transactionName = "RndMonthlyCost" Then
+            '        incomeStatement.rndCost += -cost.transactionAmount
+            '    Else
+            '        incomeStatement.otherCost += -cost.transactionAmount
+            '    End If
+            'Next
 
-            incomeStatement.totalProfit = incomeStatement.totalRevenue - incomeStatement.totalCost
+            incomeStatement.totalProfit = incomeStatement.totalRevenue - incomeStatement.totalCost - incomeStatement.rndCost
+
 
             returnedMessage.StatusCode = Net.HttpStatusCode.OK
             returnedMessage.Content = New StringContent(JsonConvert.SerializeObject(incomeStatement), Text.Encoding.UTF8, "application/json")
@@ -231,12 +243,12 @@ Public Module GameService
 
             Dim currentRndRevenueAndCost As REVENUE_AND_COST = findCurrentFirmRndRevenueAndCost(firm.ID, period.ID)
             If currentRndRevenueAndCost IsNot Nothing Then
-                unsubsribeRevenueAndcost(currentRndRevenueAndCost.ID)
+                ' unsubsribeRevenueAndcost(currentRndRevenueAndCost.ID)
                 currentRndRevenueAndCost.IS_DELETED = True
             End If
             databaseEntities.SaveChanges()
 
-            subscribeRevenueAndCost(revenueAndCost.ID)
+            ' subscribeRevenueAndCost(revenueAndCost.ID)
         Catch ex As Exception
             Dim wrapperObject = New BaseModel(Enums.fail, "An error has occured" + Environment.NewLine + ex.Message)
             returnedMessage.StatusCode = Net.HttpStatusCode.OK
@@ -392,14 +404,14 @@ Public Module GameService
             revenueAndCost.GAME_FIRM = firm
             revenueAndCost.PERIOD = period
             revenueAndCost.IS_DELETED = False
-            revenueAndCost.TARGET_TYPE = PaymentTargetType.equity
+            revenueAndCost.TARGET_TYPE = PaymentTargetType.asset
             revenueAndCost.FIRST_PAYMENT_DATE = productionDecision.IN_GAME_TIME_IN_DAY
             revenueAndCost.BUSINESS_ASPECT = BusinessAspect.production
             databaseEntities.REVENUE_AND_COST.Add(revenueAndCost)
 
             productionDecision.REVENUE_AND_COST = revenueAndCost
             databaseEntities.SaveChanges()
-            subscribeRevenueAndCost(revenueAndCost.ID)
+            ' subscribeRevenueAndCost(revenueAndCost.ID)
 
         Catch ex As Exception
             Dim wrapperObject = New BaseModel(Enums.fail, "An error has occured" + Environment.NewLine + ex.Message)
