@@ -37,5 +37,6 @@ Partial Public Class GAME_FIRM
     Public Overridable Property REVENUE_AND_COST As ICollection(Of REVENUE_AND_COST) = New HashSet(Of REVENUE_AND_COST)
     Public Overridable Property RND_DECISIONS As ICollection(Of RND_DECISIONS) = New HashSet(Of RND_DECISIONS)
     Public Overridable Property USER_USER_ROLE_GAME_FIRM_RELATIONSHIP As ICollection(Of USER_USER_ROLE_GAME_FIRM_RELATIONSHIP) = New HashSet(Of USER_USER_ROLE_GAME_FIRM_RELATIONSHIP)
+    Public Overridable Property FINANCE_DECISIONS As ICollection(Of FINANCE_DECISIONS) = New HashSet(Of FINANCE_DECISIONS)
 
 End Class

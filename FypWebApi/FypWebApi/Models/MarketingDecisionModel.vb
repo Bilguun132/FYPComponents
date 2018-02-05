@@ -13,4 +13,5 @@ Public Class MarketingDecisionModel
     Public Property firmLinkId As Integer?
     Public Property userLinkId As Integer?
     Public Property periodLinkId As Integer?
+    Public Property marketShareQtyChange As Decimal?
 End Class

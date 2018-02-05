@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bbc34fd8b80e41719b131f7e573efdd7" Name="Diagram1" ZoomLevel="75">
+      <Diagram DiagramId="bbc34fd8b80e41719b131f7e573efdd7" Name="Diagram1" ZoomLevel="46">
         <EntityTypeShape EntityType="FYP_DATABASEModel.ACTION_TRANSACTIONS" Width="1.5" PointX="6" PointY="43" IsExpanded="true" />
         <EntityTypeShape EntityType="FYP_DATABASEModel.APP_DEVICES" Width="1.5" PointX="3.75" PointY="44.125" IsExpanded="true" />
         <EntityTypeShape EntityType="FYP_DATABASEModel.AUDIO_STORAGE" Width="1.5" PointX="1.5" PointY="35.25" IsExpanded="true" />
@@ -79,6 +79,9 @@
         <AssociationConnector Association="FYP_DATABASEModel.FK_WEB_API_AUTHORIZATION_PERSONNEL" ManuallyRouted="false" />
         <AssociationConnector Association="FYP_DATABASEModel.FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER_ROLE" ManuallyRouted="false" />
         <AssociationConnector Association="FYP_DATABASEModel.FK_WEB_API_TRANSACTION_WEB_API_AUTHORIZATION" ManuallyRouted="false" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS" />
+        <AssociationConnector Association="FYP_DATABASEModel.FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

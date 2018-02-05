@@ -30,5 +30,6 @@ Partial Public Class PERIOD
     Public Overridable Property RESULTs As ICollection(Of RESULT) = New HashSet(Of RESULT)
     Public Overridable Property REVENUE_AND_COST As ICollection(Of REVENUE_AND_COST) = New HashSet(Of REVENUE_AND_COST)
     Public Overridable Property RND_DECISIONS As ICollection(Of RND_DECISIONS) = New HashSet(Of RND_DECISIONS)
+    Public Overridable Property FINANCE_DECISIONS As ICollection(Of FINANCE_DECISIONS) = New HashSet(Of FINANCE_DECISIONS)
 
 End Class

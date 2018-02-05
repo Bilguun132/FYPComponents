@@ -132,7 +132,7 @@ Public Module GameService
 
             Dim productionDecisionList As List(Of PRODUCTION_DECISIONS) = (From query In databaseEntities.PRODUCTION_DECISIONS Where query.FIRM_LINK_ID = firmId AndAlso query.PERIOD_LINK_ID = periodId AndAlso
                                                                                                                                    (query.IS_DELETED Is Nothing OrElse query.IS_DELETED = False)).ToList
-            If productionDecisionList IsNot Nothing Then
+            If productionDecisionList IsNot Nothing AndAlso productionDecisionList.Count > 0 Then
                 Dim productionDecision = productionDecisionList.Last
                 Dim productionQuantity = If(productionDecision.QUANTITY < firm.MARKET_SHARE_QTY, productionDecision.QUANTITY, firm.MARKET_SHARE_QTY)
                 incomeStatement.productionDecisions.Add(mapProductionDecision(productionDecision))
@@ -143,37 +143,42 @@ Public Module GameService
 
             Dim marketingDecisionList As List(Of MARKETING_DECISIONS) = (From query In databaseEntities.MARKETING_DECISIONS Where query.FIRM_LINK_ID = firmId AndAlso query.PERIOD_LINK_ID = periodId AndAlso
                                                                                                                                 (query.IS_DELETED Is Nothing OrElse query.IS_DELETED = False)).ToList
-            If marketingDecisionList IsNot Nothing Then
+            If marketingDecisionList IsNot Nothing AndAlso marketingDecisionList.Count > 0 Then
                 For Each marketingDecision In marketingDecisionList
                     incomeStatement.marketingDecisions.Add(mapMarketingDecision(marketingDecision))
                 Next
             End If
 
-            Dim rndDecision As RND_DECISIONS = (From query In databaseEntities.RND_DECISIONS Where query.FIRM_LINK_ID = firmId AndAlso query.PERIOD_LINK_ID = periodId AndAlso
-                                                                                                                                (query.IS_DELETED Is Nothing OrElse query.IS_DELETED = False)).ToList.Last
+            Dim rndDecisions As List(Of RND_DECISIONS) = (From query In databaseEntities.RND_DECISIONS Where query.FIRM_LINK_ID = firmId AndAlso query.PERIOD_LINK_ID = periodId AndAlso
+                                                                                                                                (query.IS_DELETED Is Nothing OrElse query.IS_DELETED = False)).ToList
             Dim endDate As Date = period.EXPECTED_END
             Dim startDate As Date = period.EXPECTED_START
             Dim duration = ((DateDiff(DateInterval.Minute, startDate, endDate) * period.SIMULATION_DURATION) / 30)
-            If rndDecision IsNot Nothing Then
-                incomeStatement.rndCost = duration * rndDecision.REVENUE_AND_COST.PAYMENT_AMOUNT
+            If rndDecisions IsNot Nothing AndAlso rndDecisions.Count > 0 Then
+                Dim rndDecision = rndDecisions.Last
+                If rndDecision IsNot Nothing Then
+                    Dim rndCost As Decimal = (duration * rndDecision.REVENUE_AND_COST.PAYMENT_AMOUNT)
+                    incomeStatement.rndCost = Math.Round(rndCost)
+                End If
             End If
-            'For Each revenue In incomeStatement.revenueTransactions
-            '    incomeStatement.totalRevenue += revenue.transactionAmount
-            'Next
 
-            'For Each cost In incomeStatement.costTransactions
-            '    incomeStatement.totalCost += -cost.transactionAmount
-            '    If cost.transactionName = "ProductionCost" Then
-            '        incomeStatement.productionCost += -cost.transactionAmount
-            '    ElseIf cost.transactionName = "RndMonthlyCost" Then
-            '        incomeStatement.rndCost += -cost.transactionAmount
-            '    Else
-            '        incomeStatement.otherCost += -cost.transactionAmount
-            '    End If
-            'Next
 
-            incomeStatement.totalProfit = incomeStatement.totalRevenue - incomeStatement.totalCost - incomeStatement.rndCost
+            Dim financeDecisions As List(Of FINANCE_DECISIONS) = (From query In databaseEntities.FINANCE_DECISIONS Where query.FIRM_LINK_ID = firmId AndAlso query.PERIOD_LINK_ID = periodId AndAlso
+                                                                                                                                (query.IS_DELETED Is Nothing OrElse query.IS_DELETED = False)).ToList
 
+            If financeDecisions IsNot Nothing AndAlso financeDecisions.Count > 0 Then
+                Dim financeDecision = financeDecisions.Last
+                Dim stLoanInterestExpense As Decimal = financeDecision.ST_LOAN * (1 + 0.2 / 12) ^ (12 * duration) - financeDecision.ST_LOAN
+                Dim ltLoanInterestExpense As Decimal = financeDecision.LT_LOAN * (1 + 0.1 / 12) ^ (12 * duration) - financeDecision.LT_LOAN
+                incomeStatement.stInterestExpense = Math.Round(stLoanInterestExpense)
+                incomeStatement.ltInterestExpense = Math.Round(ltLoanInterestExpense)
+                incomeStatement.totalInterestExpense = incomeStatement.stInterestExpense + incomeStatement.ltInterestExpense
+            End If
+
+
+            incomeStatement.operatingProfit = Math.Round(incomeStatement.totalRevenue - incomeStatement.productionCost)
+            incomeStatement.tax = Math.Round(incomeStatement.operatingProfit * 0.35)
+            incomeStatement.totalProfit = Math.Round(incomeStatement.totalRevenue - incomeStatement.totalCost - incomeStatement.rndCost - incomeStatement.totalInterestExpense - incomeStatement.tax)
 
             returnedMessage.StatusCode = Net.HttpStatusCode.OK
             returnedMessage.Content = New StringContent(JsonConvert.SerializeObject(incomeStatement), Text.Encoding.UTF8, "application/json")
@@ -182,6 +187,55 @@ Public Module GameService
             returnedMessage.StatusCode = Net.HttpStatusCode.OK
             returnedMessage.Content = New StringContent(JsonConvert.SerializeObject(wrapperObject), Text.Encoding.UTF8, "application/json")
         End Try
+        Return returnedMessage
+    End Function
+
+    Friend Function makeFinanceDecision(userId As Integer, firmId As Integer, stLoan As Decimal, ltLoan As Decimal) As HttpResponseMessage
+        Dim databaseEntities = getDatabaseEntity()
+        Dim returnedMessage As New HttpResponseMessage
+
+        Try
+            Dim firm As GAME_FIRM = (From query In databaseEntities.GAME_FIRM Where query.ID = firmId AndAlso (query.IS_DELETED Is Nothing OrElse query.IS_DELETED = False)).FirstOrDefault
+            If firm Is Nothing Then
+                Dim wrapperObject = New BaseModel(Enums.notFound, "Unable to find the specified firm")
+                returnedMessage.StatusCode = Net.HttpStatusCode.OK
+                returnedMessage.Content = New StringContent(JsonConvert.SerializeObject(wrapperObject), Text.Encoding.UTF8, "application/json")
+                Return returnedMessage
+            End If
+
+            Dim user As USER = (From query In databaseEntities.USERs Where query.ID = userId AndAlso (query.IS_DELETED Is Nothing OrElse query.IS_DELETED = False)).FirstOrDefault
+            If user Is Nothing Then
+                Dim wrapperObject = New BaseModel(Enums.notFound, "Unable to find the specified user")
+                returnedMessage.StatusCode = Net.HttpStatusCode.OK
+                returnedMessage.Content = New StringContent(JsonConvert.SerializeObject(wrapperObject), Text.Encoding.UTF8, "application/json")
+                Return returnedMessage
+            End If
+
+            Dim period As PERIOD = findCurrentActivePeriod(firmId, databaseEntities)
+            If period Is Nothing Then
+                Dim wrapperObject = New BaseModel(Enums.notFound, "There is no currently active priod in play for the command to take effect")
+                returnedMessage.StatusCode = Net.HttpStatusCode.OK
+                returnedMessage.Content = New StringContent(JsonConvert.SerializeObject(wrapperObject), Text.Encoding.UTF8, "application/json")
+                Return returnedMessage
+            End If
+
+            Dim financeDecision As New FINANCE_DECISIONS With {
+                .FIRM_LINK_ID = firmId,
+                .PERIOD_LINK_ID = period.ID,
+                .USER_LINK_ID = user.ID,
+                .ST_LOAN = stLoan,
+                .LT_LOAN = ltLoan
+                }
+            databaseEntities.FINANCE_DECISIONS.Add(financeDecision)
+            databaseEntities.SaveChanges()
+
+        Catch ex As Exception
+            Dim wrapperObject = New BaseModel(Enums.fail, "An error has occured" + Environment.NewLine + ex.Message)
+            returnedMessage.StatusCode = Net.HttpStatusCode.OK
+            returnedMessage.Content = New StringContent(JsonConvert.SerializeObject(wrapperObject), Text.Encoding.UTF8, "application/json")
+        End Try
+
+
         Return returnedMessage
     End Function
 

@@ -12,7 +12,16 @@ Imports System.Collections.Generic
 
 Partial Public Class FINANCE_DECISIONS
     Public Property ID As Integer
+    Public Property ST_LOAN As Nullable(Of Decimal)
+    Public Property LT_LOAN As Nullable(Of Decimal)
+    Public Property FIRM_LINK_ID As Nullable(Of Integer)
+    Public Property PERIOD_LINK_ID As Nullable(Of Integer)
+    Public Property USER_LINK_ID As Nullable(Of Integer)
+    Public Property IS_DELETED As Nullable(Of Boolean)
 
     Public Overridable Property RESULTs As ICollection(Of RESULT) = New HashSet(Of RESULT)
+    Public Overridable Property GAME_FIRM As GAME_FIRM
+    Public Overridable Property PERIOD As PERIOD
+    Public Overridable Property USER As USER
 
 End Class

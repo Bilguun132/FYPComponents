@@ -43,5 +43,6 @@ Partial Public Class USER
     Public Overridable Property RND_DECISIONS As ICollection(Of RND_DECISIONS) = New HashSet(Of RND_DECISIONS)
     Public Overridable Property USER_USER_ROLE_GAME_FIRM_RELATIONSHIP As ICollection(Of USER_USER_ROLE_GAME_FIRM_RELATIONSHIP) = New HashSet(Of USER_USER_ROLE_GAME_FIRM_RELATIONSHIP)
     Public Overridable Property WEB_API_AUTHORIZATION As ICollection(Of WEB_API_AUTHORIZATION) = New HashSet(Of WEB_API_AUTHORIZATION)
+    Public Overridable Property FINANCE_DECISIONS As ICollection(Of FINANCE_DECISIONS) = New HashSet(Of FINANCE_DECISIONS)
 
 End Class

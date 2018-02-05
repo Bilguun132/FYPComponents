@@ -140,5 +140,16 @@ Namespace Controllers
 
             Return GameService.addCosting(costModel, firmId)
         End Function
+
+        <Route("games/firms/{firmId}/financeDecision")>
+        <HttpPost>
+        Public Function makeFinanceDecision(firmId As Integer) As HttpResponseMessage
+            Dim returnedMessage As New HttpResponseMessage
+            Dim content As Task(Of NameValueCollection) = Request.Content.ReadAsFormDataAsync
+            Dim userId = Integer.Parse(content.Result.Item("userId"))
+            Dim stLoan = Decimal.Parse(content.Result.Item("stLoan"))
+            Dim ltLoan = Decimal.Parse(content.Result.Item("ltLoan"))
+            Return GameService.makeFinanceDecision(userId, firmId, stLoan, ltLoan)
+        End Function
     End Class
 End Namespace

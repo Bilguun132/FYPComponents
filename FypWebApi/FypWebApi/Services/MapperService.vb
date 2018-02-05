@@ -83,8 +83,8 @@ Public Module MapperService
             .firmLinkId = marketingDecision.FIRM_LINK_ID
             .userLinkId = marketingDecision.USER_LINK_ID
             .periodLinkId = marketingDecision.PERIOD_LINK_ID
+            .marketShareQtyChange = marketingDecision.RESULTs.Where(Function(p) p.TARGET_FIRM_ID = marketingDecision.GAME_FIRM.ID).FirstOrDefault.MARKET_SHARE_CHANGE
         End With
-
         Return returnedModel
     End Function
 

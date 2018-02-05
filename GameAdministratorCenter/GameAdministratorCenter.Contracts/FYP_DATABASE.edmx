@@ -115,6 +115,12 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ST_LOAN" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="LT_LOAN" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="FIRM_LINK_ID" Type="int" />
+          <Property Name="PERIOD_LINK_ID" Type="int" />
+          <Property Name="USER_LINK_ID" Type="int" />
+          <Property Name="IS_DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="GAME">
           <Key>
@@ -474,6 +480,42 @@
             </Principal>
             <Dependent Role="CONTENT_MANAGER">
               <PropertyRef Name="VIDEO_STORAGE_LINK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS">
+          <End Role="GAME_FIRM" Type="Self.GAME_FIRM" Multiplicity="0..1" />
+          <End Role="FINANCE_DECISIONS" Type="Self.FINANCE_DECISIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GAME_FIRM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FINANCE_DECISIONS">
+              <PropertyRef Name="FIRM_LINK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS">
+          <End Role="PERIOD" Type="Self.PERIOD" Multiplicity="0..1" />
+          <End Role="FINANCE_DECISIONS" Type="Self.FINANCE_DECISIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERIOD">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FINANCE_DECISIONS">
+              <PropertyRef Name="PERIOD_LINK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="FINANCE_DECISIONS" Type="Self.FINANCE_DECISIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FINANCE_DECISIONS">
+              <PropertyRef Name="USER_LINK_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1011,6 +1053,18 @@
             <End Role="VIDEO_STORAGE" EntitySet="VIDEO_STORAGE" />
             <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
           </AssociationSet>
+          <AssociationSet Name="FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS" Association="Self.FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS">
+            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+            <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS" Association="Self.FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS">
+            <End Role="PERIOD" EntitySet="PERIOD" />
+            <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS" Association="Self.FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
+          </AssociationSet>
           <AssociationSet Name="FK_GAME_CONTENT_MANAGER" Association="Self.FK_GAME_CONTENT_MANAGER">
             <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
             <End Role="GAME" EntitySet="GAME" />
@@ -1303,6 +1357,15 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="RESULTs" Relationship="Self.FK_RESULT_FINANCE_DECISIONS" FromRole="FINANCE_DECISIONS" ToRole="RESULT" />
+          <Property Name="ST_LOAN" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LT_LOAN" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="FIRM_LINK_ID" Type="Int32" />
+          <Property Name="PERIOD_LINK_ID" Type="Int32" />
+          <Property Name="USER_LINK_ID" Type="Int32" />
+          <Property Name="IS_DELETED" Type="Boolean" />
+          <NavigationProperty Name="GAME_FIRM" Relationship="FYP_DATABASEModel.FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS" FromRole="FINANCE_DECISIONS" ToRole="GAME_FIRM" />
+          <NavigationProperty Name="PERIOD" Relationship="FYP_DATABASEModel.FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS" FromRole="FINANCE_DECISIONS" ToRole="PERIOD" />
+          <NavigationProperty Name="USER" Relationship="FYP_DATABASEModel.FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS" FromRole="FINANCE_DECISIONS" ToRole="USER" />
         </EntityType>
         <EntityType Name="GAME">
           <Key>
@@ -1351,6 +1414,7 @@
           <NavigationProperty Name="RND_DECISIONS" Relationship="Self.FK_RND_DECISIONS_GAME_FIRM" FromRole="GAME_FIRM" ToRole="RND_DECISIONS" />
           <NavigationProperty Name="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Relationship="Self.FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME_FIRM" FromRole="GAME_FIRM" ToRole="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" />
           <Property Name="PRODUCTION_COST" Type="Double" />
+          <NavigationProperty Name="FINANCE_DECISIONS" Relationship="FYP_DATABASEModel.FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS" FromRole="GAME_FIRM" ToRole="FINANCE_DECISIONS" />
         </EntityType>
         <EntityType Name="GAME_TYPE">
           <Key>
@@ -1444,6 +1508,7 @@
           <NavigationProperty Name="RESULTs" Relationship="Self.FK_RESULT_PERIOD" FromRole="PERIOD" ToRole="RESULT" />
           <NavigationProperty Name="REVENUE_AND_COST" Relationship="Self.FK_REVENUE_AND_COST_PERIOD" FromRole="PERIOD" ToRole="REVENUE_AND_COST" />
           <NavigationProperty Name="RND_DECISIONS" Relationship="Self.FK_RND_DECISIONS_PERIOD" FromRole="PERIOD" ToRole="RND_DECISIONS" />
+          <NavigationProperty Name="FINANCE_DECISIONS" Relationship="FYP_DATABASEModel.FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS" FromRole="PERIOD" ToRole="FINANCE_DECISIONS" />
         </EntityType>
         <EntityType Name="PRODUCTION_DECISIONS">
           <Key>
@@ -1566,6 +1631,7 @@
           <NavigationProperty Name="RND_DECISIONS" Relationship="Self.FK_RND_DECISIONS_USER" FromRole="USER" ToRole="RND_DECISIONS" />
           <NavigationProperty Name="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Relationship="Self.FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER" FromRole="USER" ToRole="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" />
           <NavigationProperty Name="WEB_API_AUTHORIZATION" Relationship="Self.FK_WEB_API_AUTHORIZATION_PERSONNEL" FromRole="USER" ToRole="WEB_API_AUTHORIZATION" />
+          <NavigationProperty Name="FINANCE_DECISIONS" Relationship="FYP_DATABASEModel.FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS" FromRole="USER" ToRole="FINANCE_DECISIONS" />
         </EntityType>
         <EntityType Name="USER_ROLE">
           <Key>
@@ -2430,7 +2496,55 @@
           <FunctionImport Name="GetEntityClass">
           <Parameter Name="TableName" Mode="In" Type="String" />
           </FunctionImport>
+          <AssociationSet Name="FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS" Association="FYP_DATABASEModel.FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS">
+            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+            <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS" Association="FYP_DATABASEModel.FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS">
+            <End Role="PERIOD" EntitySet="PERIODs" />
+            <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS" Association="FYP_DATABASEModel.FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS">
+          <End Type="FYP_DATABASEModel.GAME_FIRM" Role="GAME_FIRM" Multiplicity="0..1" />
+          <End Type="FYP_DATABASEModel.FINANCE_DECISIONS" Role="FINANCE_DECISIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GAME_FIRM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FINANCE_DECISIONS">
+              <PropertyRef Name="FIRM_LINK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS">
+          <End Type="FYP_DATABASEModel.PERIOD" Role="PERIOD" Multiplicity="0..1" />
+          <End Type="FYP_DATABASEModel.FINANCE_DECISIONS" Role="FINANCE_DECISIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERIOD">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FINANCE_DECISIONS">
+              <PropertyRef Name="PERIOD_LINK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS">
+          <End Type="FYP_DATABASEModel.USER" Role="USER" Multiplicity="0..1" />
+          <End Type="FYP_DATABASEModel.FINANCE_DECISIONS" Role="FINANCE_DECISIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FINANCE_DECISIONS">
+              <PropertyRef Name="USER_LINK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2552,6 +2666,12 @@
           <EntitySetMapping Name="FINANCE_DECISIONS">
             <EntityTypeMapping TypeName="FYP_DATABASEModel.FINANCE_DECISIONS">
               <MappingFragment StoreEntitySet="FINANCE_DECISIONS">
+                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+                <ScalarProperty Name="USER_LINK_ID" ColumnName="USER_LINK_ID" />
+                <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
+                <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
+                <ScalarProperty Name="LT_LOAN" ColumnName="LT_LOAN" />
+                <ScalarProperty Name="ST_LOAN" ColumnName="ST_LOAN" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
