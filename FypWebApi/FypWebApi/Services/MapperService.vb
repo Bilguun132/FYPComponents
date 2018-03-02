@@ -88,6 +88,19 @@ Public Module MapperService
         Return returnedModel
     End Function
 
+    Public Function mapFinanceDecision(financeDecision As FINANCE_DECISIONS) As FinanceDecisionModel
+        Dim returnedModel As New FinanceDecisionModel(Nothing, Nothing)
+        With returnedModel
+            .id = financeDecision.ID
+            .stLoan = financeDecision.ST_LOAN
+            .ltLoan = financeDecision.LT_LOAN
+            .firmLinkId = financeDecision.FIRM_LINK_ID
+            .periodLinkId = financeDecision.PERIOD_LINK_ID
+            .userLinkId = financeDecision.USER_LINK_ID
+        End With
+        Return returnedModel
+    End Function
+
     Public Function mapProductionDecision(productionDecision As PRODUCTION_DECISIONS) As ProductionDecisionModel
         Dim returnedModel As New ProductionDecisionModel(Nothing, Nothing)
         With returnedModel

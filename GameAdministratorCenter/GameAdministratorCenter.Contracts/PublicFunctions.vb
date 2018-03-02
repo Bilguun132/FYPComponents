@@ -63,7 +63,7 @@ Public Module PublicFunctions
     End Sub
 
     Public Sub updateMarketInfo(ByRef passedInMarketInfo As MARKET_INFO, numberOfYearPassed As Decimal)
-        If passedInMarketInfo.MARKET_SIZE IsNot Nothing AndAlso passedInMarketInfo.GROWTH_RATE IsNot Nothing Then
+        If passedInMarketInfo IsNot Nothing AndAlso passedInMarketInfo.MARKET_SIZE IsNot Nothing AndAlso passedInMarketInfo.GROWTH_RATE IsNot Nothing Then
             Dim absoluteGrowth As Decimal = passedInMarketInfo.MARKET_SIZE * passedInMarketInfo.GROWTH_RATE * numberOfYearPassed / 100
             passedInMarketInfo.MARKET_SIZE += absoluteGrowth
             getDatabaseEntity.SaveChanges()

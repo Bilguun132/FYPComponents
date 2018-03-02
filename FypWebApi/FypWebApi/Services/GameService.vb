@@ -79,6 +79,8 @@ Public Module GameService
             If firmEntity IsNot Nothing Then
                 'ReturnMarketShare(firmEntity)
                 firm = mapFirm(firmEntity)
+                firm.stLoanLimit = firmEntity.ST_LOAN_LIMIT
+                firm.ltLoanLimit = firmEntity.LT_LOAN_LIMIT
                 databaseEntities.SaveChanges()
             End If
 
@@ -135,10 +137,12 @@ Public Module GameService
             If productionDecisionList IsNot Nothing AndAlso productionDecisionList.Count > 0 Then
                 Dim productionDecision = productionDecisionList.Last
                 Dim productionQuantity = If(productionDecision.QUANTITY < firm.MARKET_SHARE_QTY, productionDecision.QUANTITY, firm.MARKET_SHARE_QTY)
-                incomeStatement.productionDecisions.Add(mapProductionDecision(productionDecision))
                 incomeStatement.totalRevenue += productionQuantity * firm.PRODUCTION_PRICE
                 incomeStatement.productionCost += productionQuantity * firm.PRODUCTION_COST
                 incomeStatement.totalCost += productionQuantity * firm.PRODUCTION_COST
+                For Each prodDecision In productionDecisionList
+                    incomeStatement.productionDecisions.Add(mapProductionDecision(prodDecision))
+                Next
             End If
 
             Dim marketingDecisionList As List(Of MARKETING_DECISIONS) = (From query In databaseEntities.MARKETING_DECISIONS Where query.FIRM_LINK_ID = firmId AndAlso query.PERIOD_LINK_ID = periodId AndAlso
@@ -173,8 +177,10 @@ Public Module GameService
                 incomeStatement.stInterestExpense = Math.Round(stLoanInterestExpense)
                 incomeStatement.ltInterestExpense = Math.Round(ltLoanInterestExpense)
                 incomeStatement.totalInterestExpense = incomeStatement.stInterestExpense + incomeStatement.ltInterestExpense
+                For Each decision In financeDecisions
+                    incomeStatement.financeDecisions.Add(mapFinanceDecision(decision))
+                Next
             End If
-
 
             incomeStatement.operatingProfit = Math.Round(incomeStatement.totalRevenue - incomeStatement.productionCost)
             incomeStatement.tax = Math.Round(incomeStatement.operatingProfit * 0.35)
@@ -202,6 +208,9 @@ Public Module GameService
                 returnedMessage.Content = New StringContent(JsonConvert.SerializeObject(wrapperObject), Text.Encoding.UTF8, "application/json")
                 Return returnedMessage
             End If
+
+            firm.ST_LOAN_LIMIT = If(firm.ST_LOAN_LIMIT > stLoan, firm.ST_LOAN_LIMIT - stLoan, 0)
+            firm.LT_LOAN_LIMIT = If(firm.LT_LOAN_LIMIT > ltLoan, firm.LT_LOAN_LIMIT - ltLoan, 0)
 
             Dim user As USER = (From query In databaseEntities.USERs Where query.ID = userId AndAlso (query.IS_DELETED Is Nothing OrElse query.IS_DELETED = False)).FirstOrDefault
             If user Is Nothing Then

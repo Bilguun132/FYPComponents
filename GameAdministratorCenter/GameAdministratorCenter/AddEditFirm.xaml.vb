@@ -57,6 +57,7 @@ Public Class AddEditFirm
             productionCostSpinEdit.EditValue = firmEntity.PRODUCTION_COST
             productionPriceSpinEdit.EditValue = firmEntity.PRODUCTION_PRICE
             productionQualitySpinEdit.EditValue = firmEntity.PRODUCTION_QUALITY
+            marketInfoSpinEdit.EditValue = firmEntity.MARKET_INFO_LINK_ID
 
             If firmEntity.BALANCE_SHEET IsNot Nothing Then
                 If firmEntity.BALANCE_SHEET.INITIAL_ASSET IsNot Nothing Then
@@ -138,6 +139,10 @@ Public Class AddEditFirm
     End Sub
 
     Private Sub saveButton_Click(sender As Object, e As RoutedEventArgs) Handles saveButton.Click
+        If PublicVariables.hasAccess Then
+            saveFirm()
+            Return
+        End If
         passwordTextEdit.Text = ""
         passwordInputPopup.IsOpen = True
     End Sub
@@ -158,7 +163,13 @@ Public Class AddEditFirm
             firmEntity.PRODUCTION_QUALITY = Decimal.Parse(productionQualitySpinEdit.EditValue)
         End If
 
-        firmEntity.MARKET_INFO_LINK_ID = 1
+        If marketInfoSpinEdit.EditValue IsNot Nothing Then
+            firmEntity.MARKET_INFO_LINK_ID = Decimal.Parse(marketInfoSpinEdit.EditValue)
+        End If
+
+        firmEntity.ALPHA_VALUE = 0.3
+        firmEntity.ST_LOAN_LIMIT = 5000
+        firmEntity.LT_LOAN_LIMIT = 10000
 
         If maxPlayerSpinEdit.EditValue IsNot Nothing Then
             firmEntity.MAX_NUMBER_OF_PLAYER = Integer.Parse(maxPlayerSpinEdit.EditValue)
@@ -197,6 +208,19 @@ Public Class AddEditFirm
                 getDatabaseEntity.REVENUE_AND_COST.Add(source)
             End If
         Next
+
+        getDatabaseEntity.SaveChanges()
+
+        Dim marketInfo As MARKET_INFO = getDatabaseEntity.MARKET_INFO.Where(Function(p) p.ID = firmEntity.MARKET_INFO_LINK_ID).FirstOrDefault
+        If marketInfo IsNot Nothing Then
+            Dim firms As List(Of GAME_FIRM) = marketInfo.GAME_FIRM.ToList
+            Dim marketSize = marketInfo.MARKET_SIZE / firms.Count
+            Dim marketPercentage = marketSize / marketInfo.MARKET_SIZE
+            For Each firm In firms
+                firm.MARKET_SHARE = marketPercentage
+                firm.MARKET_SHARE_QTY = marketSize
+            Next
+        End If
 
         getDatabaseEntity.SaveChanges()
 

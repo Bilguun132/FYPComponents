@@ -59,7 +59,7 @@
                     </dxg:GridControl>
                 </dxlc:LayoutItem>
                 <dx:GroupFrame Header="Available Templates:" Margin="0" Padding="3" VerticalAlignment="Top" Visibility="Collapsed" x:Name="templateContainer">
-                    <dxg:LookUpEdit Name="templateFirmCombobox" HorizontalAlignment="Stretch" EditMode="Standalone" AutoPopulateColumns="False"
+                    <dxg:LookUpEdit Name="templateFirmCombobox" PopupClosed="templateFirmCombobox_PopupClosed" HorizontalAlignment="Stretch" EditMode="Standalone" AutoPopulateColumns="False"
                                                                     SeparatorString="; " IsTextEditable="False">
                         <dxg:LookUpEdit.StyleSettings>
                             <dxg:SearchLookUpEditStyleSettings SelectionMode="Multiple" />

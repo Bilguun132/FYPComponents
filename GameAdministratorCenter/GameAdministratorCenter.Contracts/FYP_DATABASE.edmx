@@ -4,1225 +4,1224 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FYP_DATABASEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ACTION_TRANSACTIONS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DEVICE_LINK_ID" Type="int" />
-          <Property Name="PERSONNEL_LINK_ID" Type="int" />
-          <Property Name="ACTION_PERFORMED" Type="int" />
-          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
-          <Property Name="DATE_TIME" Type="datetime" />
-          <Property Name="IS_DELETED" Type="bit" />
-        </EntityType>
-        <EntityType Name="APP_DEVICES">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PERSONNEL_LINK_ID" Type="int" />
-          <Property Name="DEVICE_TYPE" Type="int" />
-          <Property Name="DEVICE_UNIQUE_ID" Type="nvarchar(max)" />
-          <Property Name="AUTHENTICATION_TOKEN" Type="nvarchar(max)" />
-          <Property Name="PUSH_NOTIFICATION_TOKEN" Type="nvarchar(max)" />
-          <Property Name="CURRENT_ARC_APP_VERSION" Type="nvarchar" MaxLength="800" />
-          <Property Name="CURRENT_API_VERSION" Type="nvarchar" MaxLength="800" />
-          <Property Name="LOCATION" Type="nvarchar(max)" />
-          <Property Name="LAST_ACCESSED_DATE_TIME" Type="datetime" />
-          <Property Name="DATE_TIME_DEVICE_ADDED" Type="datetime" />
-          <Property Name="IS_DELETED" Type="bit" />
-        </EntityType>
-        <EntityType Name="AUDIO_STORAGE">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NAME" Type="nvarchar" MaxLength="500" />
-          <Property Name="AUDIO_STRING" Type="nvarchar(max)" />
-          <Property Name="IS_DELETED" Type="bit" />
-        </EntityType>
-        <EntityType Name="BALANCE_SHEET">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TOTAL_ASSET" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="TOTAL_LIABILITY" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="TOTAL_EQUITY" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="INITIAL_ASSET" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="INITIAL_LIABILITY" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="INITIAL_EQUITY" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="IS_DELETED" Type="bit" />
-          <Property Name="LAST_MODIFIED" Type="datetime" />
-        </EntityType>
-        <EntityType Name="BALANCE_SHEET_TRANSACTION">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TRANSACTION_STATUS" Type="int" />
-          <Property Name="BALANCE_SHEET_LINK_ID" Type="int" />
-          <Property Name="TRANSACTION_AMOUNT" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="TRANSACTION_NAME" Type="nvarchar(max)" />
-          <Property Name="TRANSACTION_TYPE" Type="int" />
-          <Property Name="TRANSACTION_JSON" Type="nvarchar(max)" />
-          <Property Name="IS_DELETED" Type="bit" />
-          <Property Name="DATE_TIME_INSERTED" Type="datetime" />
-          <Property Name="REVENUE_AND_COST_LINK_ID" Type="int" />
-        </EntityType>
-        <EntityType Name="CONTENT_MANAGER">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CONTENT_NAME" Type="nvarchar" MaxLength="500" />
-          <Property Name="CONTENT_TYPE" Type="nvarchar" MaxLength="500" />
-          <Property Name="CONTENT_GROUP" Type="nvarchar" MaxLength="500" />
-          <Property Name="CONTENT_CATEGORY" Type="nvarchar" MaxLength="500" />
-          <Property Name="CONTENT_THUMBNAIL" Type="varchar(max)" />
-          <Property Name="IMAGE_STRING_ID_LINK" Type="int" />
-          <Property Name="IS_DELETED" Type="bit" />
-          <Property Name="PERSONNEL_LINK_ID" Type="int" />
-          <Property Name="CREATED_DATE_TIME" Type="datetime" />
-          <Property Name="EDIT_DATE_TIME" Type="datetime" />
-          <Property Name="NOTES" Type="nvarchar(max)" />
-          <Property Name="CONTENT_MANAGER_TYPE" Type="int" />
-          <Property Name="FILE_STORAGE_LINK_ID" Type="int" />
-          <Property Name="AUDIO_STORAGE_LINK_ID" Type="int" />
-          <Property Name="VIDEO_STORAGE_LINK_ID" Type="int" />
-          <Property Name="PARENT_VERSION_LINK_ID" Type="int" />
-          <Property Name="VERSION_NUMBER" Type="nvarchar" MaxLength="500" />
-          <Property Name="IS_ARCHIVED" Type="bit" />
-          <Property Name="IS_DEFAULT" Type="bit" />
-        </EntityType>
-        <EntityType Name="FILE_STORAGE">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FILE_NAME" Type="nvarchar" MaxLength="200" />
-          <Property Name="DIRECTORY" Type="nvarchar" MaxLength="800" />
-          <Property Name="DATABASE_TABLE" Type="smallint" />
-          <Property Name="DATABASE_TABLE_ID" Type="int" />
-          <Property Name="SALES_SCHEDULING_ID" Type="int" />
-          <Property Name="IS_DELETED" Type="bit" />
-          <Property Name="FILE_STRING" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="FINANCE_DECISIONS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ST_LOAN" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="LT_LOAN" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="FIRM_LINK_ID" Type="int" />
-          <Property Name="PERIOD_LINK_ID" Type="int" />
-          <Property Name="USER_LINK_ID" Type="int" />
-          <Property Name="IS_DELETED" Type="bit" />
-        </EntityType>
-        <EntityType Name="GAME">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="GAME_NAME" Type="nvarchar(max)" />
-          <Property Name="GAME_TYPE_LINK_ID" Type="int" />
-          <Property Name="IS_DELETED" Type="bit" />
-          <Property Name="IMAGE_MANAGER_LINK_ID" Type="int" />
-          <Property Name="STATUS" Type="int" />
-          <Property Name="GAME_PASSWORD" Type="nvarchar" MaxLength="500" />
-          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="GAME_FIRM">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FIRM_NAME" Type="nvarchar(max)" />
-          <Property Name="GAME_LINK_ID" Type="int" />
-          <Property Name="IS_DELETED" Type="bit" />
-          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
-          <Property Name="MAX_NUMBER_OF_PLAYER" Type="int" />
-          <Property Name="BALANCE_SHEET_LINK_ID" Type="int" />
-          <Property Name="PRODUCTION_PRICE" Type="float" />
-          <Property Name="PRODUCTION_COST" Type="float" />
-          <Property Name="PRODUCTION_QUALITY" Type="int" />
-          <Property Name="MARKET_SHARE" Type="float" />
-          <Property Name="MARKET_SHARE_QTY" Type="int" />
-          <Property Name="MARKET_INFO_LINK_ID" Type="int" />
-          <Property Name="ALPHA_VALUE" Type="float" />
-        </EntityType>
-        <EntityType Name="GAME_TYPE">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="GAME_TYPE_NAME" Type="nvarchar(max)" />
-          <Property Name="IS_DELETED" Type="bit" />
-          <Property Name="IMAGE_MANAGER_LINK_ID" Type="int" />
-          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="IMAGE_STRING">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NAME" Type="varchar" MaxLength="500" />
-          <Property Name="IMAGE_HEX_STRING" Type="varchar(max)" />
-          <Property Name="IS_DELETED" Type="bit" />
-          <Property Name="IMAGE_STRING_ID_FOR_INTERNAL_REFERENCE_TO_UNDO_AND_REDO" Type="int" />
-        </EntityType>
-        <EntityType Name="INCOME_STATEMENT">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="REVENUE_JSON" Type="float" />
-          <Property Name="COST_JSON" Type="float" />
-          <Property Name="PROFIT" Type="float" />
-          <Property Name="FIRM_LINK_ID" Type="int" />
-          <Property Name="PERIOD_LINK_ID" Type="int" />
-        </EntityType>
-        <EntityType Name="MARKET_INFO">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MARKET_SIZE" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="GROWTH_RATE" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="VARIATION_TYPE" Type="nvarchar" MaxLength="50" />
-          <Property Name="VARIATION_SD" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="INITIAL_QUALITY" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="VARIATION_PARAM_1" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="VARIATION_PARAM_2" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="VARIATION_PARAM_3" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="IS_DELETED" Type="bit" />
-          <Property Name="ALPHA" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="BETA" Type="decimal" Precision="18" Scale="5" />
-        </EntityType>
-        <EntityType Name="MARKETING_DECISIONS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PRICE" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="IN_GAME_TIME_IN_DAY" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="FIRM_LINK_ID" Type="int" />
-          <Property Name="PERIOD_LINK_ID" Type="int" />
-          <Property Name="USER_LINK_ID" Type="int" />
-          <Property Name="IS_DELETED" Type="bit" />
-        </EntityType>
-        <EntityType Name="PERIOD">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PERIOD_NAME" Type="nvarchar(max)" />
-          <Property Name="PERIOD_NUMBER" Type="int" />
-          <Property Name="STATUS" Type="int" />
-          <Property Name="START_TIME" Type="datetime" />
-          <Property Name="END_TIME" Type="datetime" />
-          <Property Name="IS_DELETED" Type="bit" />
-          <Property Name="EXPECTED_START" Type="datetime" />
-          <Property Name="EXPECTED_END" Type="datetime" />
-          <Property Name="SIMULATION_DURATION" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="GAME_LINK_ID" Type="int" />
-        </EntityType>
-        <EntityType Name="PRODUCTION_DECISIONS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="QUANTITY" Type="int" />
-          <Property Name="FIRM_LINK_ID" Type="int" />
-          <Property Name="PERIOD_LINK_ID" Type="int" />
-          <Property Name="IN_GAME_TIME_IN_DAY" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="USER_LINK_ID" Type="int" />
-          <Property Name="REVENUE_AND_COST_LINK_ID" Type="int" />
-          <Property Name="IS_DELETED" Type="bit" />
-        </EntityType>
-        <EntityType Name="RESULT">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MARKETING_DECISION_LINK_ID" Type="int" />
-          <Property Name="PRODUCTION_DECISION_LINK_ID" Type="int" />
-          <Property Name="RND_DECISION_LINK_ID" Type="int" />
-          <Property Name="FINANCE_DECISION_LINK_ID" Type="int" />
-          <Property Name="QUALITY_CHANGE" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="MARKET_SHARE_CHANGE" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="ACTION_FIRM_LINK_ID" Type="int" />
-          <Property Name="PERIOD_LINK_ID" Type="int" />
-          <Property Name="IN_GAME_TIME_IN_DAY" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="IS_DELETED" Type="bit" />
-          <Property Name="TARGET_FIRM_ID" Type="int" />
-          <Property Name="PRODUCTION_COST_CHANGE" Type="decimal" Precision="18" Scale="5" />
-        </EntityType>
-        <EntityType Name="REVENUE_AND_COST">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FLOW_TYPE" Type="int" />
-          <Property Name="PAYMENT_TYPE" Type="int" />
-          <Property Name="RECURSIVE_DURATION" Type="int" />
-          <Property Name="PAYMENT_AMOUNT" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="NAME" Type="nvarchar" MaxLength="500" />
-          <Property Name="PARENT_REVENUE_AND_COST_LINK_ID" Type="int" />
-          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
-          <Property Name="FIRM_LINK_ID" Type="int" />
-          <Property Name="PERIOD_LINK_ID" Type="int" />
-          <Property Name="IS_DELETED" Type="bit" />
-          <Property Name="PERIOD_NUMBER" Type="int" />
-          <Property Name="TARGET_TYPE" Type="int" />
-          <Property Name="FIRST_PAYMENT_DATE" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="BUSINESS_ASPECT" Type="int" />
-        </EntityType>
-        <EntityType Name="RND_DECISIONS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FIRM_LINK_ID" Type="int" />
-          <Property Name="PERIOD_LINK_ID" Type="int" />
-          <Property Name="USER_LINK_ID" Type="int" />
-          <Property Name="REVENUE_AND_COST_LINK_ID" Type="int" />
-          <Property Name="IS_DELETED" Type="bit" />
-        </EntityType>
-        <EntityType Name="USER">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USER_NAME" Type="varchar" MaxLength="100" />
-          <Property Name="FIRST_NAME" Type="varchar" MaxLength="100" />
-          <Property Name="LAST_NAME" Type="varchar" MaxLength="100" />
-          <Property Name="POSITION" Type="varchar" MaxLength="100" />
-          <Property Name="DEPARTMENT" Type="varchar" MaxLength="100" />
-          <Property Name="GROUP" Type="varchar" MaxLength="100" />
-          <Property Name="MOBILE_PERSONAL" Type="varchar" MaxLength="50" />
-          <Property Name="MOBILE_OFFICE" Type="varchar" MaxLength="50" />
-          <Property Name="LAND_LINE_OFFICE" Type="varchar" MaxLength="50" />
-          <Property Name="LAND_LINE_HOME" Type="varchar" MaxLength="50" />
-          <Property Name="EMAIL_PRIMARY" Type="varchar" MaxLength="200" />
-          <Property Name="EMAIL_SECONDARY" Type="varchar" MaxLength="200" />
-          <Property Name="SECURITY_LEVEL" Type="smallint" />
-          <Property Name="LOGIN_ALLOWED" Type="bit" />
-          <Property Name="PASSWORD_HASH" Type="varchar" MaxLength="200" />
-          <Property Name="PASSWORD_SALT" Type="varchar" MaxLength="200" />
-          <Property Name="IS_AVAILABLE" Type="bit" />
-          <Property Name="IS_DELETED" Type="bit" />
-          <Property Name="PIN_NUMBER_HASH" Type="varchar" MaxLength="200" />
-          <Property Name="PIN_NUMBER_SALT" Type="varchar(max)" />
-          <Property Name="IMAGE_MANAGER_LINK_ID" Type="int" />
-        </EntityType>
-        <EntityType Name="USER_ROLE">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USER_ROLE_NAME" Type="nvarchar(max)" />
-          <Property Name="AUTHORIZATION_LEVEL" Type="int" />
-          <Property Name="IS_DELETED" Type="bit" />
-        </EntityType>
-        <EntityType Name="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USER_LINK_ID" Type="int" />
-          <Property Name="USER_ROLE_LINK_ID" Type="int" />
-          <Property Name="GAME_LINK_ID" Type="int" />
-          <Property Name="FIRM_LINK_ID" Type="int" />
-          <Property Name="IS_DELETED" Type="bit" />
-        </EntityType>
-        <EntityType Name="VIDEO_STORAGE">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NAME" Type="nvarchar" MaxLength="500" />
-          <Property Name="VIDEO_STRING" Type="nvarchar(max)" />
-          <Property Name="IS_DELETED" Type="bit" />
-        </EntityType>
-        <EntityType Name="WEB_API_AUTHORIZATION">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LOGGED_IN_PERSONNEL_LINK_ID" Type="int" />
-          <Property Name="LOGGED_IN_DATE_TIME" Type="datetime" />
-          <Property Name="UNIQUE_TOKEN" Type="nvarchar(max)" />
-          <Property Name="EXPIRE_DATE_TIME" Type="datetime" />
-          <Property Name="LAST_REQUESTED_DATE_TIME" Type="datetime" />
-          <Property Name="REQUEST_COUNT" Type="int" />
-          <Property Name="IS_DELETED" Type="bit" />
-        </EntityType>
-        <EntityType Name="WEB_API_TRANSACTION">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="WEB_API_AUTHORIZATION_LINK_ID" Type="int" />
-          <Property Name="TRANSACTION_URL" Type="nvarchar(max)" />
-          <Property Name="TRANSACTION_DATE_TIME" Type="nvarchar(max)" />
-          <Property Name="TRANSACTION_TYPE" Type="int" />
-          <Property Name="TRANSACTION_HEADERS" Type="nvarchar(max)" />
-          <Property Name="TRANSACTION_BODY" Type="nvarchar(max)" />
-          <Property Name="USER_AGENT" Type="nvarchar(max)" />
-          <Property Name="SERVER_VARIABLES" Type="nvarchar(max)" />
-        </EntityType>
-        <Association Name="FK_ARC_APP_ACTION_TRANSACTIONS_ARC_APP_DEVICES">
-          <End Role="APP_DEVICES" Type="Self.APP_DEVICES" Multiplicity="0..1" />
-          <End Role="ACTION_TRANSACTIONS" Type="Self.ACTION_TRANSACTIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="APP_DEVICES">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ACTION_TRANSACTIONS">
-              <PropertyRef Name="DEVICE_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ARC_APP_ACTION_TRANSACTIONS_PERSONNEL">
-          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
-          <End Role="ACTION_TRANSACTIONS" Type="Self.ACTION_TRANSACTIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ACTION_TRANSACTIONS">
-              <PropertyRef Name="PERSONNEL_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ARC_APP_DEVICES_PERSONNEL">
-          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
-          <End Role="APP_DEVICES" Type="Self.APP_DEVICES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="APP_DEVICES">
-              <PropertyRef Name="PERSONNEL_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BALANCE_SHEET_TRANSACTION_BALANCE_SHEET">
-          <End Role="BALANCE_SHEET" Type="Self.BALANCE_SHEET" Multiplicity="0..1" />
-          <End Role="BALANCE_SHEET_TRANSACTION" Type="Self.BALANCE_SHEET_TRANSACTION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BALANCE_SHEET">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="BALANCE_SHEET_TRANSACTION">
-              <PropertyRef Name="BALANCE_SHEET_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BALANCE_SHEET_TRANSACTION_REVENUE_AND_COST">
-          <End Role="REVENUE_AND_COST" Type="Self.REVENUE_AND_COST" Multiplicity="0..1" />
-          <End Role="BALANCE_SHEET_TRANSACTION" Type="Self.BALANCE_SHEET_TRANSACTION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="REVENUE_AND_COST">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="BALANCE_SHEET_TRANSACTION">
-              <PropertyRef Name="REVENUE_AND_COST_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CONTENT_MANAGER_AUDIO_STORAGE">
-          <End Role="AUDIO_STORAGE" Type="Self.AUDIO_STORAGE" Multiplicity="0..1" />
-          <End Role="CONTENT_MANAGER" Type="Self.CONTENT_MANAGER" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AUDIO_STORAGE">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CONTENT_MANAGER">
-              <PropertyRef Name="AUDIO_STORAGE_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CONTENT_MANAGER_CONTENT_MANAGER">
-          <End Role="CONTENT_MANAGER" Type="Self.CONTENT_MANAGER" Multiplicity="0..1" />
-          <End Role="CONTENT_MANAGER1" Type="Self.CONTENT_MANAGER" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONTENT_MANAGER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CONTENT_MANAGER1">
-              <PropertyRef Name="PARENT_VERSION_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CONTENT_MANAGER_FILE_STORAGE">
-          <End Role="FILE_STORAGE" Type="Self.FILE_STORAGE" Multiplicity="0..1" />
-          <End Role="CONTENT_MANAGER" Type="Self.CONTENT_MANAGER" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FILE_STORAGE">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CONTENT_MANAGER">
-              <PropertyRef Name="FILE_STORAGE_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CONTENT_MANAGER_VIDEO_STORAGE">
-          <End Role="VIDEO_STORAGE" Type="Self.VIDEO_STORAGE" Multiplicity="0..1" />
-          <End Role="CONTENT_MANAGER" Type="Self.CONTENT_MANAGER" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VIDEO_STORAGE">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CONTENT_MANAGER">
-              <PropertyRef Name="VIDEO_STORAGE_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS">
-          <End Role="GAME_FIRM" Type="Self.GAME_FIRM" Multiplicity="0..1" />
-          <End Role="FINANCE_DECISIONS" Type="Self.FINANCE_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GAME_FIRM">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="FINANCE_DECISIONS">
-              <PropertyRef Name="FIRM_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS">
-          <End Role="PERIOD" Type="Self.PERIOD" Multiplicity="0..1" />
-          <End Role="FINANCE_DECISIONS" Type="Self.FINANCE_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PERIOD">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="FINANCE_DECISIONS">
-              <PropertyRef Name="PERIOD_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS">
-          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
-          <End Role="FINANCE_DECISIONS" Type="Self.FINANCE_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="FINANCE_DECISIONS">
-              <PropertyRef Name="USER_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GAME_CONTENT_MANAGER">
-          <End Role="CONTENT_MANAGER" Type="Self.CONTENT_MANAGER" Multiplicity="0..1" />
-          <End Role="GAME" Type="Self.GAME" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONTENT_MANAGER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="GAME">
-              <PropertyRef Name="IMAGE_MANAGER_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GAME_FIRM_BALANCE_SHEET">
-          <End Role="BALANCE_SHEET" Type="Self.BALANCE_SHEET" Multiplicity="0..1" />
-          <End Role="GAME_FIRM" Type="Self.GAME_FIRM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BALANCE_SHEET">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="GAME_FIRM">
-              <PropertyRef Name="BALANCE_SHEET_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GAME_FIRM_GAME">
-          <End Role="GAME" Type="Self.GAME" Multiplicity="0..1" />
-          <End Role="GAME_FIRM" Type="Self.GAME_FIRM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GAME">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="GAME_FIRM">
-              <PropertyRef Name="GAME_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GAME_FIRM_MARKET_INFO_GAME_FIRM">
-          <End Role="MARKET_INFO" Type="Self.MARKET_INFO" Multiplicity="0..1" />
-          <End Role="GAME_FIRM" Type="Self.GAME_FIRM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MARKET_INFO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="GAME_FIRM">
-              <PropertyRef Name="MARKET_INFO_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GAME_GAME_TYPE">
-          <End Role="GAME_TYPE" Type="Self.GAME_TYPE" Multiplicity="0..1" />
-          <End Role="GAME" Type="Self.GAME" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GAME_TYPE">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="GAME">
-              <PropertyRef Name="GAME_TYPE_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GAME_TYPE_CONTENT_MANAGER">
-          <End Role="CONTENT_MANAGER" Type="Self.CONTENT_MANAGER" Multiplicity="0..1" />
-          <End Role="GAME_TYPE" Type="Self.GAME_TYPE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONTENT_MANAGER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="GAME_TYPE">
-              <PropertyRef Name="IMAGE_MANAGER_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_IMAGE_STRING_MANAGER_IMAGE_STRING">
-          <End Role="IMAGE_STRING" Type="Self.IMAGE_STRING" Multiplicity="0..1" />
-          <End Role="CONTENT_MANAGER" Type="Self.CONTENT_MANAGER" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="IMAGE_STRING">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CONTENT_MANAGER">
-              <PropertyRef Name="IMAGE_STRING_ID_LINK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_IMAGE_STRING_MANAGER_PERSONNEL">
-          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
-          <End Role="CONTENT_MANAGER" Type="Self.CONTENT_MANAGER" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CONTENT_MANAGER">
-              <PropertyRef Name="PERSONNEL_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_INCOME_STATEMENT_FIRM_INCOME_STATEMENT">
-          <End Role="GAME_FIRM" Type="Self.GAME_FIRM" Multiplicity="0..1" />
-          <End Role="INCOME_STATEMENT" Type="Self.INCOME_STATEMENT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GAME_FIRM">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="INCOME_STATEMENT">
-              <PropertyRef Name="FIRM_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_INCOME_STATEMENT_PERIOD_INCOME_STATEMENT">
-          <End Role="PERIOD" Type="Self.PERIOD" Multiplicity="0..1" />
-          <End Role="INCOME_STATEMENT" Type="Self.INCOME_STATEMENT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PERIOD">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="INCOME_STATEMENT">
-              <PropertyRef Name="PERIOD_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MARKETING_DECISIONS_GAME_FIRM">
-          <End Role="GAME_FIRM" Type="Self.GAME_FIRM" Multiplicity="0..1" />
-          <End Role="MARKETING_DECISIONS" Type="Self.MARKETING_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GAME_FIRM">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="MARKETING_DECISIONS">
-              <PropertyRef Name="FIRM_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MARKETING_DECISIONS_PERIOD">
-          <End Role="PERIOD" Type="Self.PERIOD" Multiplicity="0..1" />
-          <End Role="MARKETING_DECISIONS" Type="Self.MARKETING_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PERIOD">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="MARKETING_DECISIONS">
-              <PropertyRef Name="PERIOD_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MARKETING_DECISIONS_USER">
-          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
-          <End Role="MARKETING_DECISIONS" Type="Self.MARKETING_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="MARKETING_DECISIONS">
-              <PropertyRef Name="USER_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PERIOD_GAME">
-          <End Role="GAME" Type="Self.GAME" Multiplicity="0..1" />
-          <End Role="PERIOD" Type="Self.PERIOD" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GAME">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PERIOD">
-              <PropertyRef Name="GAME_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCTION_DECISIONS_GAME_FIRM">
-          <End Role="GAME_FIRM" Type="Self.GAME_FIRM" Multiplicity="0..1" />
-          <End Role="PRODUCTION_DECISIONS" Type="Self.PRODUCTION_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GAME_FIRM">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PRODUCTION_DECISIONS">
-              <PropertyRef Name="FIRM_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCTION_DECISIONS_PERIOD">
-          <End Role="PERIOD" Type="Self.PERIOD" Multiplicity="0..1" />
-          <End Role="PRODUCTION_DECISIONS" Type="Self.PRODUCTION_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PERIOD">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PRODUCTION_DECISIONS">
-              <PropertyRef Name="PERIOD_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCTION_DECISIONS_REVENUE_AND_COST">
-          <End Role="REVENUE_AND_COST" Type="Self.REVENUE_AND_COST" Multiplicity="0..1" />
-          <End Role="PRODUCTION_DECISIONS" Type="Self.PRODUCTION_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="REVENUE_AND_COST">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PRODUCTION_DECISIONS">
-              <PropertyRef Name="REVENUE_AND_COST_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCTION_DECISIONS_USER">
-          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
-          <End Role="PRODUCTION_DECISIONS" Type="Self.PRODUCTION_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PRODUCTION_DECISIONS">
-              <PropertyRef Name="USER_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RESULT_FINANCE_DECISIONS">
-          <End Role="FINANCE_DECISIONS" Type="Self.FINANCE_DECISIONS" Multiplicity="0..1" />
-          <End Role="RESULT" Type="Self.RESULT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FINANCE_DECISIONS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RESULT">
-              <PropertyRef Name="FINANCE_DECISION_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RESULT_GAME_FIRM">
-          <End Role="GAME_FIRM" Type="Self.GAME_FIRM" Multiplicity="0..1" />
-          <End Role="RESULT" Type="Self.RESULT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GAME_FIRM">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RESULT">
-              <PropertyRef Name="ACTION_FIRM_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RESULT_GAME_FIRM1">
-          <End Role="GAME_FIRM" Type="Self.GAME_FIRM" Multiplicity="0..1" />
-          <End Role="RESULT" Type="Self.RESULT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GAME_FIRM">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RESULT">
-              <PropertyRef Name="TARGET_FIRM_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RESULT_MARKETING_DECISIONS">
-          <End Role="MARKETING_DECISIONS" Type="Self.MARKETING_DECISIONS" Multiplicity="0..1" />
-          <End Role="RESULT" Type="Self.RESULT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MARKETING_DECISIONS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RESULT">
-              <PropertyRef Name="MARKETING_DECISION_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RESULT_PERIOD">
-          <End Role="PERIOD" Type="Self.PERIOD" Multiplicity="0..1" />
-          <End Role="RESULT" Type="Self.RESULT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PERIOD">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RESULT">
-              <PropertyRef Name="PERIOD_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RESULT_PRODUCTION_DECISIONS">
-          <End Role="PRODUCTION_DECISIONS" Type="Self.PRODUCTION_DECISIONS" Multiplicity="0..1" />
-          <End Role="RESULT" Type="Self.RESULT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCTION_DECISIONS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RESULT">
-              <PropertyRef Name="PRODUCTION_DECISION_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RESULT_RND_DECISIONS">
-          <End Role="RND_DECISIONS" Type="Self.RND_DECISIONS" Multiplicity="0..1" />
-          <End Role="RESULT" Type="Self.RESULT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RND_DECISIONS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RESULT">
-              <PropertyRef Name="RND_DECISION_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_REVENUE_AND_COST_GAME_FIRM">
-          <End Role="GAME_FIRM" Type="Self.GAME_FIRM" Multiplicity="0..1" />
-          <End Role="REVENUE_AND_COST" Type="Self.REVENUE_AND_COST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GAME_FIRM">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="REVENUE_AND_COST">
-              <PropertyRef Name="FIRM_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_REVENUE_AND_COST_PERIOD">
-          <End Role="PERIOD" Type="Self.PERIOD" Multiplicity="0..1" />
-          <End Role="REVENUE_AND_COST" Type="Self.REVENUE_AND_COST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PERIOD">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="REVENUE_AND_COST">
-              <PropertyRef Name="PERIOD_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_REVENUE_AND_COST_REVENUE_AND_COST">
-          <End Role="REVENUE_AND_COST" Type="Self.REVENUE_AND_COST" Multiplicity="0..1" />
-          <End Role="REVENUE_AND_COST1" Type="Self.REVENUE_AND_COST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="REVENUE_AND_COST">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="REVENUE_AND_COST1">
-              <PropertyRef Name="PARENT_REVENUE_AND_COST_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RND_DECISIONS_GAME_FIRM">
-          <End Role="GAME_FIRM" Type="Self.GAME_FIRM" Multiplicity="0..1" />
-          <End Role="RND_DECISIONS" Type="Self.RND_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GAME_FIRM">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RND_DECISIONS">
-              <PropertyRef Name="FIRM_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RND_DECISIONS_PERIOD">
-          <End Role="PERIOD" Type="Self.PERIOD" Multiplicity="0..1" />
-          <End Role="RND_DECISIONS" Type="Self.RND_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PERIOD">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RND_DECISIONS">
-              <PropertyRef Name="PERIOD_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RND_DECISIONS_REVENUE_AND_COST">
-          <End Role="REVENUE_AND_COST" Type="Self.REVENUE_AND_COST" Multiplicity="0..1" />
-          <End Role="RND_DECISIONS" Type="Self.RND_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="REVENUE_AND_COST">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RND_DECISIONS">
-              <PropertyRef Name="REVENUE_AND_COST_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RND_DECISIONS_USER">
-          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
-          <End Role="RND_DECISIONS" Type="Self.RND_DECISIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RND_DECISIONS">
-              <PropertyRef Name="USER_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USER_CONTENT_MANAGER">
-          <End Role="CONTENT_MANAGER" Type="Self.CONTENT_MANAGER" Multiplicity="0..1" />
-          <End Role="USER" Type="Self.USER" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONTENT_MANAGER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USER">
-              <PropertyRef Name="IMAGE_MANAGER_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME">
-          <End Role="GAME" Type="Self.GAME" Multiplicity="0..1" />
-          <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Type="Self.USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GAME">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
-              <PropertyRef Name="GAME_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME_FIRM">
-          <End Role="GAME_FIRM" Type="Self.GAME_FIRM" Multiplicity="0..1" />
-          <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Type="Self.USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GAME_FIRM">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
-              <PropertyRef Name="FIRM_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER">
-          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
-          <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Type="Self.USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
-              <PropertyRef Name="USER_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER_ROLE">
-          <End Role="USER_ROLE" Type="Self.USER_ROLE" Multiplicity="0..1" />
-          <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Type="Self.USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_ROLE">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
-              <PropertyRef Name="USER_ROLE_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WEB_API_AUTHORIZATION_PERSONNEL">
-          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
-          <End Role="WEB_API_AUTHORIZATION" Type="Self.WEB_API_AUTHORIZATION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="WEB_API_AUTHORIZATION">
-              <PropertyRef Name="LOGGED_IN_PERSONNEL_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WEB_API_TRANSACTION_WEB_API_AUTHORIZATION">
-          <End Role="WEB_API_AUTHORIZATION" Type="Self.WEB_API_AUTHORIZATION" Multiplicity="0..1" />
-          <End Role="WEB_API_TRANSACTION" Type="Self.WEB_API_TRANSACTION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WEB_API_AUTHORIZATION">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="WEB_API_TRANSACTION">
-              <PropertyRef Name="WEB_API_AUTHORIZATION_LINK_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Function Name="GetEntityClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TableName" Type="nvarchar" Mode="In" />
-        </Function>
-        <EntityContainer Name="FYP_DATABASEModelStoreContainer">
-          <EntitySet Name="ACTION_TRANSACTIONS" EntityType="Self.ACTION_TRANSACTIONS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="APP_DEVICES" EntityType="Self.APP_DEVICES" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AUDIO_STORAGE" EntityType="Self.AUDIO_STORAGE" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BALANCE_SHEET" EntityType="Self.BALANCE_SHEET" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BALANCE_SHEET_TRANSACTION" EntityType="Self.BALANCE_SHEET_TRANSACTION" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CONTENT_MANAGER" EntityType="Self.CONTENT_MANAGER" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FILE_STORAGE" EntityType="Self.FILE_STORAGE" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FINANCE_DECISIONS" EntityType="Self.FINANCE_DECISIONS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GAME" EntityType="Self.GAME" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GAME_FIRM" EntityType="Self.GAME_FIRM" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GAME_TYPE" EntityType="Self.GAME_TYPE" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="IMAGE_STRING" EntityType="Self.IMAGE_STRING" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="INCOME_STATEMENT" EntityType="Self.INCOME_STATEMENT" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MARKET_INFO" EntityType="Self.MARKET_INFO" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MARKETING_DECISIONS" EntityType="Self.MARKETING_DECISIONS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PERIOD" EntityType="Self.PERIOD" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PRODUCTION_DECISIONS" EntityType="Self.PRODUCTION_DECISIONS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RESULT" EntityType="Self.RESULT" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="REVENUE_AND_COST" EntityType="Self.REVENUE_AND_COST" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RND_DECISIONS" EntityType="Self.RND_DECISIONS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="USER_ROLE" EntityType="Self.USER_ROLE" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" EntityType="Self.USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VIDEO_STORAGE" EntityType="Self.VIDEO_STORAGE" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WEB_API_AUTHORIZATION" EntityType="Self.WEB_API_AUTHORIZATION" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WEB_API_TRANSACTION" EntityType="Self.WEB_API_TRANSACTION" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_ARC_APP_ACTION_TRANSACTIONS_ARC_APP_DEVICES" Association="Self.FK_ARC_APP_ACTION_TRANSACTIONS_ARC_APP_DEVICES">
-            <End Role="APP_DEVICES" EntitySet="APP_DEVICES" />
-            <End Role="ACTION_TRANSACTIONS" EntitySet="ACTION_TRANSACTIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ARC_APP_ACTION_TRANSACTIONS_PERSONNEL" Association="Self.FK_ARC_APP_ACTION_TRANSACTIONS_PERSONNEL">
-            <End Role="USER" EntitySet="USER" />
-            <End Role="ACTION_TRANSACTIONS" EntitySet="ACTION_TRANSACTIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ARC_APP_DEVICES_PERSONNEL" Association="Self.FK_ARC_APP_DEVICES_PERSONNEL">
-            <End Role="USER" EntitySet="USER" />
-            <End Role="APP_DEVICES" EntitySet="APP_DEVICES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BALANCE_SHEET_TRANSACTION_BALANCE_SHEET" Association="Self.FK_BALANCE_SHEET_TRANSACTION_BALANCE_SHEET">
-            <End Role="BALANCE_SHEET" EntitySet="BALANCE_SHEET" />
-            <End Role="BALANCE_SHEET_TRANSACTION" EntitySet="BALANCE_SHEET_TRANSACTION" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BALANCE_SHEET_TRANSACTION_REVENUE_AND_COST" Association="Self.FK_BALANCE_SHEET_TRANSACTION_REVENUE_AND_COST">
-            <End Role="REVENUE_AND_COST" EntitySet="REVENUE_AND_COST" />
-            <End Role="BALANCE_SHEET_TRANSACTION" EntitySet="BALANCE_SHEET_TRANSACTION" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CONTENT_MANAGER_AUDIO_STORAGE" Association="Self.FK_CONTENT_MANAGER_AUDIO_STORAGE">
-            <End Role="AUDIO_STORAGE" EntitySet="AUDIO_STORAGE" />
-            <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CONTENT_MANAGER_CONTENT_MANAGER" Association="Self.FK_CONTENT_MANAGER_CONTENT_MANAGER">
-            <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
-            <End Role="CONTENT_MANAGER1" EntitySet="CONTENT_MANAGER" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CONTENT_MANAGER_FILE_STORAGE" Association="Self.FK_CONTENT_MANAGER_FILE_STORAGE">
-            <End Role="FILE_STORAGE" EntitySet="FILE_STORAGE" />
-            <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CONTENT_MANAGER_VIDEO_STORAGE" Association="Self.FK_CONTENT_MANAGER_VIDEO_STORAGE">
-            <End Role="VIDEO_STORAGE" EntitySet="VIDEO_STORAGE" />
-            <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS" Association="Self.FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS">
-            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
-            <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS" Association="Self.FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS">
-            <End Role="PERIOD" EntitySet="PERIOD" />
-            <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS" Association="Self.FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS">
-            <End Role="USER" EntitySet="USER" />
-            <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GAME_CONTENT_MANAGER" Association="Self.FK_GAME_CONTENT_MANAGER">
-            <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
-            <End Role="GAME" EntitySet="GAME" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GAME_FIRM_BALANCE_SHEET" Association="Self.FK_GAME_FIRM_BALANCE_SHEET">
-            <End Role="BALANCE_SHEET" EntitySet="BALANCE_SHEET" />
-            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GAME_FIRM_GAME" Association="Self.FK_GAME_FIRM_GAME">
-            <End Role="GAME" EntitySet="GAME" />
-            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GAME_FIRM_MARKET_INFO_GAME_FIRM" Association="Self.FK_GAME_FIRM_MARKET_INFO_GAME_FIRM">
-            <End Role="MARKET_INFO" EntitySet="MARKET_INFO" />
-            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GAME_GAME_TYPE" Association="Self.FK_GAME_GAME_TYPE">
-            <End Role="GAME_TYPE" EntitySet="GAME_TYPE" />
-            <End Role="GAME" EntitySet="GAME" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GAME_TYPE_CONTENT_MANAGER" Association="Self.FK_GAME_TYPE_CONTENT_MANAGER">
-            <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
-            <End Role="GAME_TYPE" EntitySet="GAME_TYPE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IMAGE_STRING_MANAGER_IMAGE_STRING" Association="Self.FK_IMAGE_STRING_MANAGER_IMAGE_STRING">
-            <End Role="IMAGE_STRING" EntitySet="IMAGE_STRING" />
-            <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IMAGE_STRING_MANAGER_PERSONNEL" Association="Self.FK_IMAGE_STRING_MANAGER_PERSONNEL">
-            <End Role="USER" EntitySet="USER" />
-            <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
-          </AssociationSet>
-          <AssociationSet Name="FK_INCOME_STATEMENT_FIRM_INCOME_STATEMENT" Association="Self.FK_INCOME_STATEMENT_FIRM_INCOME_STATEMENT">
-            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
-            <End Role="INCOME_STATEMENT" EntitySet="INCOME_STATEMENT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_INCOME_STATEMENT_PERIOD_INCOME_STATEMENT" Association="Self.FK_INCOME_STATEMENT_PERIOD_INCOME_STATEMENT">
-            <End Role="PERIOD" EntitySet="PERIOD" />
-            <End Role="INCOME_STATEMENT" EntitySet="INCOME_STATEMENT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MARKETING_DECISIONS_GAME_FIRM" Association="Self.FK_MARKETING_DECISIONS_GAME_FIRM">
-            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
-            <End Role="MARKETING_DECISIONS" EntitySet="MARKETING_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MARKETING_DECISIONS_PERIOD" Association="Self.FK_MARKETING_DECISIONS_PERIOD">
-            <End Role="PERIOD" EntitySet="PERIOD" />
-            <End Role="MARKETING_DECISIONS" EntitySet="MARKETING_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MARKETING_DECISIONS_USER" Association="Self.FK_MARKETING_DECISIONS_USER">
-            <End Role="USER" EntitySet="USER" />
-            <End Role="MARKETING_DECISIONS" EntitySet="MARKETING_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PERIOD_GAME" Association="Self.FK_PERIOD_GAME">
-            <End Role="GAME" EntitySet="GAME" />
-            <End Role="PERIOD" EntitySet="PERIOD" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCTION_DECISIONS_GAME_FIRM" Association="Self.FK_PRODUCTION_DECISIONS_GAME_FIRM">
-            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
-            <End Role="PRODUCTION_DECISIONS" EntitySet="PRODUCTION_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCTION_DECISIONS_PERIOD" Association="Self.FK_PRODUCTION_DECISIONS_PERIOD">
-            <End Role="PERIOD" EntitySet="PERIOD" />
-            <End Role="PRODUCTION_DECISIONS" EntitySet="PRODUCTION_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCTION_DECISIONS_REVENUE_AND_COST" Association="Self.FK_PRODUCTION_DECISIONS_REVENUE_AND_COST">
-            <End Role="REVENUE_AND_COST" EntitySet="REVENUE_AND_COST" />
-            <End Role="PRODUCTION_DECISIONS" EntitySet="PRODUCTION_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCTION_DECISIONS_USER" Association="Self.FK_PRODUCTION_DECISIONS_USER">
-            <End Role="USER" EntitySet="USER" />
-            <End Role="PRODUCTION_DECISIONS" EntitySet="PRODUCTION_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RESULT_FINANCE_DECISIONS" Association="Self.FK_RESULT_FINANCE_DECISIONS">
-            <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
-            <End Role="RESULT" EntitySet="RESULT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RESULT_GAME_FIRM" Association="Self.FK_RESULT_GAME_FIRM">
-            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
-            <End Role="RESULT" EntitySet="RESULT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RESULT_GAME_FIRM1" Association="Self.FK_RESULT_GAME_FIRM1">
-            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
-            <End Role="RESULT" EntitySet="RESULT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RESULT_MARKETING_DECISIONS" Association="Self.FK_RESULT_MARKETING_DECISIONS">
-            <End Role="MARKETING_DECISIONS" EntitySet="MARKETING_DECISIONS" />
-            <End Role="RESULT" EntitySet="RESULT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RESULT_PERIOD" Association="Self.FK_RESULT_PERIOD">
-            <End Role="PERIOD" EntitySet="PERIOD" />
-            <End Role="RESULT" EntitySet="RESULT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RESULT_PRODUCTION_DECISIONS" Association="Self.FK_RESULT_PRODUCTION_DECISIONS">
-            <End Role="PRODUCTION_DECISIONS" EntitySet="PRODUCTION_DECISIONS" />
-            <End Role="RESULT" EntitySet="RESULT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RESULT_RND_DECISIONS" Association="Self.FK_RESULT_RND_DECISIONS">
-            <End Role="RND_DECISIONS" EntitySet="RND_DECISIONS" />
-            <End Role="RESULT" EntitySet="RESULT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_REVENUE_AND_COST_GAME_FIRM" Association="Self.FK_REVENUE_AND_COST_GAME_FIRM">
-            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
-            <End Role="REVENUE_AND_COST" EntitySet="REVENUE_AND_COST" />
-          </AssociationSet>
-          <AssociationSet Name="FK_REVENUE_AND_COST_PERIOD" Association="Self.FK_REVENUE_AND_COST_PERIOD">
-            <End Role="PERIOD" EntitySet="PERIOD" />
-            <End Role="REVENUE_AND_COST" EntitySet="REVENUE_AND_COST" />
-          </AssociationSet>
-          <AssociationSet Name="FK_REVENUE_AND_COST_REVENUE_AND_COST" Association="Self.FK_REVENUE_AND_COST_REVENUE_AND_COST">
-            <End Role="REVENUE_AND_COST" EntitySet="REVENUE_AND_COST" />
-            <End Role="REVENUE_AND_COST1" EntitySet="REVENUE_AND_COST" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RND_DECISIONS_GAME_FIRM" Association="Self.FK_RND_DECISIONS_GAME_FIRM">
-            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
-            <End Role="RND_DECISIONS" EntitySet="RND_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RND_DECISIONS_PERIOD" Association="Self.FK_RND_DECISIONS_PERIOD">
-            <End Role="PERIOD" EntitySet="PERIOD" />
-            <End Role="RND_DECISIONS" EntitySet="RND_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RND_DECISIONS_REVENUE_AND_COST" Association="Self.FK_RND_DECISIONS_REVENUE_AND_COST">
-            <End Role="REVENUE_AND_COST" EntitySet="REVENUE_AND_COST" />
-            <End Role="RND_DECISIONS" EntitySet="RND_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RND_DECISIONS_USER" Association="Self.FK_RND_DECISIONS_USER">
-            <End Role="USER" EntitySet="USER" />
-            <End Role="RND_DECISIONS" EntitySet="RND_DECISIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USER_CONTENT_MANAGER" Association="Self.FK_USER_CONTENT_MANAGER">
-            <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
-            <End Role="USER" EntitySet="USER" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME" Association="Self.FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME">
-            <End Role="GAME" EntitySet="GAME" />
-            <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" EntitySet="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME_FIRM" Association="Self.FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME_FIRM">
-            <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
-            <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" EntitySet="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER" Association="Self.FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER">
-            <End Role="USER" EntitySet="USER" />
-            <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" EntitySet="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER_ROLE" Association="Self.FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER_ROLE">
-            <End Role="USER_ROLE" EntitySet="USER_ROLE" />
-            <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" EntitySet="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WEB_API_AUTHORIZATION_PERSONNEL" Association="Self.FK_WEB_API_AUTHORIZATION_PERSONNEL">
-            <End Role="USER" EntitySet="USER" />
-            <End Role="WEB_API_AUTHORIZATION" EntitySet="WEB_API_AUTHORIZATION" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WEB_API_TRANSACTION_WEB_API_AUTHORIZATION" Association="Self.FK_WEB_API_TRANSACTION_WEB_API_AUTHORIZATION">
-            <End Role="WEB_API_AUTHORIZATION" EntitySet="WEB_API_AUTHORIZATION" />
-            <End Role="WEB_API_TRANSACTION" EntitySet="WEB_API_TRANSACTION" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="FYP_DATABASEModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FYP_DATABASEModelStoreContainer">
+    <EntitySet Name="ACTION_TRANSACTIONS" EntityType="FYP_DATABASEModel.Store.ACTION_TRANSACTIONS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="APP_DEVICES" EntityType="FYP_DATABASEModel.Store.APP_DEVICES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AUDIO_STORAGE" EntityType="FYP_DATABASEModel.Store.AUDIO_STORAGE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BALANCE_SHEET" EntityType="FYP_DATABASEModel.Store.BALANCE_SHEET" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BALANCE_SHEET_TRANSACTION" EntityType="FYP_DATABASEModel.Store.BALANCE_SHEET_TRANSACTION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CONTENT_MANAGER" EntityType="FYP_DATABASEModel.Store.CONTENT_MANAGER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FILE_STORAGE" EntityType="FYP_DATABASEModel.Store.FILE_STORAGE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FINANCE_DECISIONS" EntityType="FYP_DATABASEModel.Store.FINANCE_DECISIONS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GAMEs" EntityType="FYP_DATABASEModel.Store.GAMEs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GAME_FIRM" EntityType="FYP_DATABASEModel.Store.GAME_FIRM" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GAME_TYPE" EntityType="FYP_DATABASEModel.Store.GAME_TYPE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IMAGE_STRING" EntityType="FYP_DATABASEModel.Store.IMAGE_STRING" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="INCOME_STATEMENT" EntityType="FYP_DATABASEModel.Store.INCOME_STATEMENT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MARKET_INFO" EntityType="FYP_DATABASEModel.Store.MARKET_INFO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MARKETING_DECISIONS" EntityType="FYP_DATABASEModel.Store.MARKETING_DECISIONS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PERIODs" EntityType="FYP_DATABASEModel.Store.PERIODs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PRODUCTION_DECISIONS" EntityType="FYP_DATABASEModel.Store.PRODUCTION_DECISIONS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RESULTs" EntityType="FYP_DATABASEModel.Store.RESULTs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="REVENUE_AND_COST" EntityType="FYP_DATABASEModel.Store.REVENUE_AND_COST" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RND_DECISIONS" EntityType="FYP_DATABASEModel.Store.RND_DECISIONS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="USERs" EntityType="FYP_DATABASEModel.Store.USERs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="USER_ROLE" EntityType="FYP_DATABASEModel.Store.USER_ROLE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" EntityType="FYP_DATABASEModel.Store.USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VIDEO_STORAGE" EntityType="FYP_DATABASEModel.Store.VIDEO_STORAGE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WEB_API_AUTHORIZATION" EntityType="FYP_DATABASEModel.Store.WEB_API_AUTHORIZATION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WEB_API_TRANSACTION" EntityType="FYP_DATABASEModel.Store.WEB_API_TRANSACTION" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_ARC_APP_ACTION_TRANSACTIONS_ARC_APP_DEVICES" Association="FYP_DATABASEModel.Store.FK_ARC_APP_ACTION_TRANSACTIONS_ARC_APP_DEVICES">
+      <End Role="APP_DEVICES" EntitySet="APP_DEVICES" />
+      <End Role="ACTION_TRANSACTIONS" EntitySet="ACTION_TRANSACTIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ARC_APP_ACTION_TRANSACTIONS_PERSONNEL" Association="FYP_DATABASEModel.Store.FK_ARC_APP_ACTION_TRANSACTIONS_PERSONNEL">
+      <End Role="USER" EntitySet="USERs" />
+      <End Role="ACTION_TRANSACTIONS" EntitySet="ACTION_TRANSACTIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ARC_APP_DEVICES_PERSONNEL" Association="FYP_DATABASEModel.Store.FK_ARC_APP_DEVICES_PERSONNEL">
+      <End Role="USER" EntitySet="USERs" />
+      <End Role="APP_DEVICES" EntitySet="APP_DEVICES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTENT_MANAGER_AUDIO_STORAGE" Association="FYP_DATABASEModel.Store.FK_CONTENT_MANAGER_AUDIO_STORAGE">
+      <End Role="AUDIO_STORAGE" EntitySet="AUDIO_STORAGE" />
+      <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BALANCE_SHEET_TRANSACTION_BALANCE_SHEET" Association="FYP_DATABASEModel.Store.FK_BALANCE_SHEET_TRANSACTION_BALANCE_SHEET">
+      <End Role="BALANCE_SHEET" EntitySet="BALANCE_SHEET" />
+      <End Role="BALANCE_SHEET_TRANSACTION" EntitySet="BALANCE_SHEET_TRANSACTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAME_FIRM_BALANCE_SHEET" Association="FYP_DATABASEModel.Store.FK_GAME_FIRM_BALANCE_SHEET">
+      <End Role="BALANCE_SHEET" EntitySet="BALANCE_SHEET" />
+      <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BALANCE_SHEET_TRANSACTION_REVENUE_AND_COST" Association="FYP_DATABASEModel.Store.FK_BALANCE_SHEET_TRANSACTION_REVENUE_AND_COST">
+      <End Role="REVENUE_AND_COST" EntitySet="REVENUE_AND_COST" />
+      <End Role="BALANCE_SHEET_TRANSACTION" EntitySet="BALANCE_SHEET_TRANSACTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTENT_MANAGER_CONTENT_MANAGER" Association="FYP_DATABASEModel.Store.FK_CONTENT_MANAGER_CONTENT_MANAGER">
+      <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
+      <End Role="CONTENT_MANAGER1" EntitySet="CONTENT_MANAGER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTENT_MANAGER_FILE_STORAGE" Association="FYP_DATABASEModel.Store.FK_CONTENT_MANAGER_FILE_STORAGE">
+      <End Role="FILE_STORAGE" EntitySet="FILE_STORAGE" />
+      <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTENT_MANAGER_VIDEO_STORAGE" Association="FYP_DATABASEModel.Store.FK_CONTENT_MANAGER_VIDEO_STORAGE">
+      <End Role="VIDEO_STORAGE" EntitySet="VIDEO_STORAGE" />
+      <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAME_CONTENT_MANAGER" Association="FYP_DATABASEModel.Store.FK_GAME_CONTENT_MANAGER">
+      <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
+      <End Role="GAME" EntitySet="GAMEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAME_TYPE_CONTENT_MANAGER" Association="FYP_DATABASEModel.Store.FK_GAME_TYPE_CONTENT_MANAGER">
+      <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
+      <End Role="GAME_TYPE" EntitySet="GAME_TYPE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IMAGE_STRING_MANAGER_IMAGE_STRING" Association="FYP_DATABASEModel.Store.FK_IMAGE_STRING_MANAGER_IMAGE_STRING">
+      <End Role="IMAGE_STRING" EntitySet="IMAGE_STRING" />
+      <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IMAGE_STRING_MANAGER_PERSONNEL" Association="FYP_DATABASEModel.Store.FK_IMAGE_STRING_MANAGER_PERSONNEL">
+      <End Role="USER" EntitySet="USERs" />
+      <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_CONTENT_MANAGER" Association="FYP_DATABASEModel.Store.FK_USER_CONTENT_MANAGER">
+      <End Role="CONTENT_MANAGER" EntitySet="CONTENT_MANAGER" />
+      <End Role="USER" EntitySet="USERs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESULT_FINANCE_DECISIONS" Association="FYP_DATABASEModel.Store.FK_RESULT_FINANCE_DECISIONS">
+      <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
+      <End Role="RESULT" EntitySet="RESULTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAME_FIRM_GAME" Association="FYP_DATABASEModel.Store.FK_GAME_FIRM_GAME">
+      <End Role="GAME" EntitySet="GAMEs" />
+      <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAME_GAME_TYPE" Association="FYP_DATABASEModel.Store.FK_GAME_GAME_TYPE">
+      <End Role="GAME_TYPE" EntitySet="GAME_TYPE" />
+      <End Role="GAME" EntitySet="GAMEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PERIOD_GAME" Association="FYP_DATABASEModel.Store.FK_PERIOD_GAME">
+      <End Role="GAME" EntitySet="GAMEs" />
+      <End Role="PERIOD" EntitySet="PERIODs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME" Association="FYP_DATABASEModel.Store.FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME">
+      <End Role="GAME" EntitySet="GAMEs" />
+      <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" EntitySet="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GAME_FIRM_MARKET_INFO_GAME_FIRM" Association="FYP_DATABASEModel.Store.FK_GAME_FIRM_MARKET_INFO_GAME_FIRM">
+      <End Role="MARKET_INFO" EntitySet="MARKET_INFO" />
+      <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INCOME_STATEMENT_FIRM_INCOME_STATEMENT" Association="FYP_DATABASEModel.Store.FK_INCOME_STATEMENT_FIRM_INCOME_STATEMENT">
+      <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+      <End Role="INCOME_STATEMENT" EntitySet="INCOME_STATEMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MARKETING_DECISIONS_GAME_FIRM" Association="FYP_DATABASEModel.Store.FK_MARKETING_DECISIONS_GAME_FIRM">
+      <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+      <End Role="MARKETING_DECISIONS" EntitySet="MARKETING_DECISIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCTION_DECISIONS_GAME_FIRM" Association="FYP_DATABASEModel.Store.FK_PRODUCTION_DECISIONS_GAME_FIRM">
+      <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+      <End Role="PRODUCTION_DECISIONS" EntitySet="PRODUCTION_DECISIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESULT_GAME_FIRM" Association="FYP_DATABASEModel.Store.FK_RESULT_GAME_FIRM">
+      <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+      <End Role="RESULT" EntitySet="RESULTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESULT_GAME_FIRM1" Association="FYP_DATABASEModel.Store.FK_RESULT_GAME_FIRM1">
+      <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+      <End Role="RESULT" EntitySet="RESULTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REVENUE_AND_COST_GAME_FIRM" Association="FYP_DATABASEModel.Store.FK_REVENUE_AND_COST_GAME_FIRM">
+      <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+      <End Role="REVENUE_AND_COST" EntitySet="REVENUE_AND_COST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RND_DECISIONS_GAME_FIRM" Association="FYP_DATABASEModel.Store.FK_RND_DECISIONS_GAME_FIRM">
+      <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+      <End Role="RND_DECISIONS" EntitySet="RND_DECISIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME_FIRM" Association="FYP_DATABASEModel.Store.FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME_FIRM">
+      <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+      <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" EntitySet="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INCOME_STATEMENT_PERIOD_INCOME_STATEMENT" Association="FYP_DATABASEModel.Store.FK_INCOME_STATEMENT_PERIOD_INCOME_STATEMENT">
+      <End Role="PERIOD" EntitySet="PERIODs" />
+      <End Role="INCOME_STATEMENT" EntitySet="INCOME_STATEMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MARKETING_DECISIONS_PERIOD" Association="FYP_DATABASEModel.Store.FK_MARKETING_DECISIONS_PERIOD">
+      <End Role="PERIOD" EntitySet="PERIODs" />
+      <End Role="MARKETING_DECISIONS" EntitySet="MARKETING_DECISIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MARKETING_DECISIONS_USER" Association="FYP_DATABASEModel.Store.FK_MARKETING_DECISIONS_USER">
+      <End Role="USER" EntitySet="USERs" />
+      <End Role="MARKETING_DECISIONS" EntitySet="MARKETING_DECISIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESULT_MARKETING_DECISIONS" Association="FYP_DATABASEModel.Store.FK_RESULT_MARKETING_DECISIONS">
+      <End Role="MARKETING_DECISIONS" EntitySet="MARKETING_DECISIONS" />
+      <End Role="RESULT" EntitySet="RESULTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCTION_DECISIONS_PERIOD" Association="FYP_DATABASEModel.Store.FK_PRODUCTION_DECISIONS_PERIOD">
+      <End Role="PERIOD" EntitySet="PERIODs" />
+      <End Role="PRODUCTION_DECISIONS" EntitySet="PRODUCTION_DECISIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESULT_PERIOD" Association="FYP_DATABASEModel.Store.FK_RESULT_PERIOD">
+      <End Role="PERIOD" EntitySet="PERIODs" />
+      <End Role="RESULT" EntitySet="RESULTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REVENUE_AND_COST_PERIOD" Association="FYP_DATABASEModel.Store.FK_REVENUE_AND_COST_PERIOD">
+      <End Role="PERIOD" EntitySet="PERIODs" />
+      <End Role="REVENUE_AND_COST" EntitySet="REVENUE_AND_COST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RND_DECISIONS_PERIOD" Association="FYP_DATABASEModel.Store.FK_RND_DECISIONS_PERIOD">
+      <End Role="PERIOD" EntitySet="PERIODs" />
+      <End Role="RND_DECISIONS" EntitySet="RND_DECISIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCTION_DECISIONS_REVENUE_AND_COST" Association="FYP_DATABASEModel.Store.FK_PRODUCTION_DECISIONS_REVENUE_AND_COST">
+      <End Role="REVENUE_AND_COST" EntitySet="REVENUE_AND_COST" />
+      <End Role="PRODUCTION_DECISIONS" EntitySet="PRODUCTION_DECISIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCTION_DECISIONS_USER" Association="FYP_DATABASEModel.Store.FK_PRODUCTION_DECISIONS_USER">
+      <End Role="USER" EntitySet="USERs" />
+      <End Role="PRODUCTION_DECISIONS" EntitySet="PRODUCTION_DECISIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESULT_PRODUCTION_DECISIONS" Association="FYP_DATABASEModel.Store.FK_RESULT_PRODUCTION_DECISIONS">
+      <End Role="PRODUCTION_DECISIONS" EntitySet="PRODUCTION_DECISIONS" />
+      <End Role="RESULT" EntitySet="RESULTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESULT_RND_DECISIONS" Association="FYP_DATABASEModel.Store.FK_RESULT_RND_DECISIONS">
+      <End Role="RND_DECISIONS" EntitySet="RND_DECISIONS" />
+      <End Role="RESULT" EntitySet="RESULTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REVENUE_AND_COST_REVENUE_AND_COST" Association="FYP_DATABASEModel.Store.FK_REVENUE_AND_COST_REVENUE_AND_COST">
+      <End Role="REVENUE_AND_COST" EntitySet="REVENUE_AND_COST" />
+      <End Role="REVENUE_AND_COST1" EntitySet="REVENUE_AND_COST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RND_DECISIONS_REVENUE_AND_COST" Association="FYP_DATABASEModel.Store.FK_RND_DECISIONS_REVENUE_AND_COST">
+      <End Role="REVENUE_AND_COST" EntitySet="REVENUE_AND_COST" />
+      <End Role="RND_DECISIONS" EntitySet="RND_DECISIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RND_DECISIONS_USER" Association="FYP_DATABASEModel.Store.FK_RND_DECISIONS_USER">
+      <End Role="USER" EntitySet="USERs" />
+      <End Role="RND_DECISIONS" EntitySet="RND_DECISIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER" Association="FYP_DATABASEModel.Store.FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER">
+      <End Role="USER" EntitySet="USERs" />
+      <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" EntitySet="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WEB_API_AUTHORIZATION_PERSONNEL" Association="FYP_DATABASEModel.Store.FK_WEB_API_AUTHORIZATION_PERSONNEL">
+      <End Role="USER" EntitySet="USERs" />
+      <End Role="WEB_API_AUTHORIZATION" EntitySet="WEB_API_AUTHORIZATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER_ROLE" Association="FYP_DATABASEModel.Store.FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER_ROLE">
+      <End Role="USER_ROLE" EntitySet="USER_ROLE" />
+      <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" EntitySet="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WEB_API_TRANSACTION_WEB_API_AUTHORIZATION" Association="FYP_DATABASEModel.Store.FK_WEB_API_TRANSACTION_WEB_API_AUTHORIZATION">
+      <End Role="WEB_API_AUTHORIZATION" EntitySet="WEB_API_AUTHORIZATION" />
+      <End Role="WEB_API_TRANSACTION" EntitySet="WEB_API_TRANSACTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS" Association="FYP_DATABASEModel.Store.FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS">
+      <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
+      <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS" Association="FYP_DATABASEModel.Store.FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS">
+      <End Role="PERIOD" EntitySet="PERIODs" />
+      <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS" Association="FYP_DATABASEModel.Store.FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS">
+      <End Role="USER" EntitySet="USERs" />
+      <End Role="FINANCE_DECISIONS" EntitySet="FINANCE_DECISIONS" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ACTION_TRANSACTIONS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DEVICE_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="PERSONNEL_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="ACTION_PERFORMED" Type="int" Nullable="true" />
+    <Property Name="DESCRIPTION" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DATE_TIME" Type="datetime" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="APP_DEVICES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERSONNEL_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="DEVICE_TYPE" Type="int" Nullable="true" />
+    <Property Name="DEVICE_UNIQUE_ID" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="AUTHENTICATION_TOKEN" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PUSH_NOTIFICATION_TOKEN" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CURRENT_ARC_APP_VERSION" Type="nvarchar" Nullable="true" MaxLength="800" />
+    <Property Name="CURRENT_API_VERSION" Type="nvarchar" Nullable="true" MaxLength="800" />
+    <Property Name="LOCATION" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="LAST_ACCESSED_DATE_TIME" Type="datetime" Nullable="true" />
+    <Property Name="DATE_TIME_DEVICE_ADDED" Type="datetime" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="AUDIO_STORAGE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="AUDIO_STRING" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="BALANCE_SHEET">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TOTAL_ASSET" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="TOTAL_LIABILITY" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="TOTAL_EQUITY" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="INITIAL_ASSET" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="INITIAL_LIABILITY" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="INITIAL_EQUITY" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+    <Property Name="LAST_MODIFIED" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="BALANCE_SHEET_TRANSACTION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TRANSACTION_STATUS" Type="int" Nullable="true" />
+    <Property Name="BALANCE_SHEET_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="TRANSACTION_AMOUNT" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="TRANSACTION_NAME" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TRANSACTION_TYPE" Type="int" Nullable="true" />
+    <Property Name="TRANSACTION_JSON" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+    <Property Name="DATE_TIME_INSERTED" Type="datetime" Nullable="true" />
+    <Property Name="REVENUE_AND_COST_LINK_ID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="CONTENT_MANAGER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CONTENT_NAME" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="CONTENT_TYPE" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="CONTENT_GROUP" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="CONTENT_CATEGORY" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="CONTENT_THUMBNAIL" Type="varchar(max)" Nullable="true" />
+    <Property Name="IMAGE_STRING_ID_LINK" Type="int" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+    <Property Name="PERSONNEL_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="CREATED_DATE_TIME" Type="datetime" Nullable="true" />
+    <Property Name="EDIT_DATE_TIME" Type="datetime" Nullable="true" />
+    <Property Name="NOTES" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CONTENT_MANAGER_TYPE" Type="int" Nullable="true" />
+    <Property Name="FILE_STORAGE_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="AUDIO_STORAGE_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="VIDEO_STORAGE_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="PARENT_VERSION_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="VERSION_NUMBER" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="IS_ARCHIVED" Type="bit" Nullable="true" />
+    <Property Name="IS_DEFAULT" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="FILE_STORAGE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FILE_NAME" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="DIRECTORY" Type="nvarchar" Nullable="true" MaxLength="800" />
+    <Property Name="DATABASE_TABLE" Type="smallint" Nullable="true" />
+    <Property Name="DATABASE_TABLE_ID" Type="int" Nullable="true" />
+    <Property Name="SALES_SCHEDULING_ID" Type="int" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+    <Property Name="FILE_STRING" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="FINANCE_DECISIONS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ST_LOAN" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="LT_LOAN" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="FIRM_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="PERIOD_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="USER_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="GAMEs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GAME_NAME" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="GAME_TYPE_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+    <Property Name="IMAGE_MANAGER_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="STATUS" Type="int" Nullable="true" />
+    <Property Name="GAME_PASSWORD" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="DESCRIPTION" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="GAME_FIRM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIRM_NAME" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="GAME_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+    <Property Name="DESCRIPTION" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="MAX_NUMBER_OF_PLAYER" Type="int" Nullable="true" />
+    <Property Name="BALANCE_SHEET_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="PRODUCTION_PRICE" Type="float" Nullable="true" />
+    <Property Name="PRODUCTION_QUALITY" Type="int" Nullable="true" />
+    <Property Name="MARKET_SHARE" Type="float" Nullable="true" />
+    <Property Name="MARKET_SHARE_QTY" Type="int" Nullable="true" />
+    <Property Name="MARKET_INFO_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="ALPHA_VALUE" Type="float" Nullable="true" />
+    <Property Name="PRODUCTION_COST" Type="float" Nullable="true" />
+    <Property Name="ST_LOAN_LIMIT" Type="int" Nullable="true" />
+    <Property Name="LT_LOAN_LIMIT" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="GAME_TYPE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GAME_TYPE_NAME" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+    <Property Name="IMAGE_MANAGER_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="DESCRIPTION" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="IMAGE_STRING">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="IMAGE_HEX_STRING" Type="varchar(max)" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+    <Property Name="IMAGE_STRING_ID_FOR_INTERNAL_REFERENCE_TO_UNDO_AND_REDO" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="INCOME_STATEMENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="REVENUE_JSON" Type="float" Nullable="true" />
+    <Property Name="COST_JSON" Type="float" Nullable="true" />
+    <Property Name="PROFIT" Type="float" Nullable="true" />
+    <Property Name="FIRM_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="PERIOD_LINK_ID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="MARKET_INFO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MARKET_SIZE" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="GROWTH_RATE" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="VARIATION_TYPE" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="VARIATION_SD" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="INITIAL_QUALITY" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="VARIATION_PARAM_1" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="VARIATION_PARAM_2" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="VARIATION_PARAM_3" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+    <Property Name="ALPHA" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="BETA" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+  </EntityType>
+  <EntityType Name="MARKETING_DECISIONS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRICE" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="IN_GAME_TIME_IN_DAY" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="FIRM_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="PERIOD_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="USER_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PERIODs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERIOD_NAME" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PERIOD_NUMBER" Type="int" Nullable="true" />
+    <Property Name="STATUS" Type="int" Nullable="true" />
+    <Property Name="START_TIME" Type="datetime" Nullable="true" />
+    <Property Name="END_TIME" Type="datetime" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+    <Property Name="EXPECTED_START" Type="datetime" Nullable="true" />
+    <Property Name="EXPECTED_END" Type="datetime" Nullable="true" />
+    <Property Name="SIMULATION_DURATION" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="GAME_LINK_ID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PRODUCTION_DECISIONS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QUANTITY" Type="int" Nullable="true" />
+    <Property Name="FIRM_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="PERIOD_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="IN_GAME_TIME_IN_DAY" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="USER_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="REVENUE_AND_COST_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="RESULTs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MARKETING_DECISION_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="PRODUCTION_DECISION_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="RND_DECISION_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="FINANCE_DECISION_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="QUALITY_CHANGE" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="MARKET_SHARE_CHANGE" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="ACTION_FIRM_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="PERIOD_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="IN_GAME_TIME_IN_DAY" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+    <Property Name="TARGET_FIRM_ID" Type="int" Nullable="true" />
+    <Property Name="PRODUCTION_COST_CHANGE" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+  </EntityType>
+  <EntityType Name="REVENUE_AND_COST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FLOW_TYPE" Type="int" Nullable="true" />
+    <Property Name="PAYMENT_TYPE" Type="int" Nullable="true" />
+    <Property Name="RECURSIVE_DURATION" Type="int" Nullable="true" />
+    <Property Name="PAYMENT_AMOUNT" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="NAME" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="PARENT_REVENUE_AND_COST_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="DESCRIPTION" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="FIRM_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="PERIOD_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+    <Property Name="PERIOD_NUMBER" Type="int" Nullable="true" />
+    <Property Name="TARGET_TYPE" Type="int" Nullable="true" />
+    <Property Name="FIRST_PAYMENT_DATE" Type="decimal" Nullable="true" Precision="18" Scale="5" />
+    <Property Name="BUSINESS_ASPECT" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="RND_DECISIONS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIRM_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="PERIOD_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="USER_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="REVENUE_AND_COST_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="USERs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USER_NAME" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="FIRST_NAME" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="LAST_NAME" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="POSITION" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="DEPARTMENT" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="GROUP" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="MOBILE_PERSONAL" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="MOBILE_OFFICE" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="LAND_LINE_OFFICE" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="LAND_LINE_HOME" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="EMAIL_PRIMARY" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="EMAIL_SECONDARY" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="SECURITY_LEVEL" Type="smallint" Nullable="true" />
+    <Property Name="LOGIN_ALLOWED" Type="bit" Nullable="true" />
+    <Property Name="PASSWORD_HASH" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="PASSWORD_SALT" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="IS_AVAILABLE" Type="bit" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+    <Property Name="PIN_NUMBER_HASH" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="PIN_NUMBER_SALT" Type="varchar(max)" Nullable="true" />
+    <Property Name="IMAGE_MANAGER_LINK_ID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="USER_ROLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USER_ROLE_NAME" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="AUTHORIZATION_LEVEL" Type="int" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USER_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="USER_ROLE_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="GAME_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="FIRM_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="VIDEO_STORAGE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="VIDEO_STRING" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="WEB_API_AUTHORIZATION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LOGGED_IN_PERSONNEL_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="LOGGED_IN_DATE_TIME" Type="datetime" Nullable="true" />
+    <Property Name="UNIQUE_TOKEN" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="EXPIRE_DATE_TIME" Type="datetime" Nullable="true" />
+    <Property Name="LAST_REQUESTED_DATE_TIME" Type="datetime" Nullable="true" />
+    <Property Name="REQUEST_COUNT" Type="int" Nullable="true" />
+    <Property Name="IS_DELETED" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="WEB_API_TRANSACTION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WEB_API_AUTHORIZATION_LINK_ID" Type="int" Nullable="true" />
+    <Property Name="TRANSACTION_URL" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TRANSACTION_DATE_TIME" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TRANSACTION_TYPE" Type="int" Nullable="true" />
+    <Property Name="TRANSACTION_HEADERS" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TRANSACTION_BODY" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="USER_AGENT" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SERVER_VARIABLES" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <Association Name="FK_ARC_APP_ACTION_TRANSACTIONS_ARC_APP_DEVICES">
+    <End Role="APP_DEVICES" Type="FYP_DATABASEModel.Store.APP_DEVICES" Multiplicity="0..1" />
+    <End Role="ACTION_TRANSACTIONS" Type="FYP_DATABASEModel.Store.ACTION_TRANSACTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APP_DEVICES">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ACTION_TRANSACTIONS">
+        <PropertyRef Name="DEVICE_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ARC_APP_ACTION_TRANSACTIONS_PERSONNEL">
+    <End Role="USER" Type="FYP_DATABASEModel.Store.USERs" Multiplicity="0..1" />
+    <End Role="ACTION_TRANSACTIONS" Type="FYP_DATABASEModel.Store.ACTION_TRANSACTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ACTION_TRANSACTIONS">
+        <PropertyRef Name="PERSONNEL_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ARC_APP_DEVICES_PERSONNEL">
+    <End Role="USER" Type="FYP_DATABASEModel.Store.USERs" Multiplicity="0..1" />
+    <End Role="APP_DEVICES" Type="FYP_DATABASEModel.Store.APP_DEVICES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="APP_DEVICES">
+        <PropertyRef Name="PERSONNEL_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTENT_MANAGER_AUDIO_STORAGE">
+    <End Role="AUDIO_STORAGE" Type="FYP_DATABASEModel.Store.AUDIO_STORAGE" Multiplicity="0..1" />
+    <End Role="CONTENT_MANAGER" Type="FYP_DATABASEModel.Store.CONTENT_MANAGER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUDIO_STORAGE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CONTENT_MANAGER">
+        <PropertyRef Name="AUDIO_STORAGE_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BALANCE_SHEET_TRANSACTION_BALANCE_SHEET">
+    <End Role="BALANCE_SHEET" Type="FYP_DATABASEModel.Store.BALANCE_SHEET" Multiplicity="0..1" />
+    <End Role="BALANCE_SHEET_TRANSACTION" Type="FYP_DATABASEModel.Store.BALANCE_SHEET_TRANSACTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BALANCE_SHEET">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BALANCE_SHEET_TRANSACTION">
+        <PropertyRef Name="BALANCE_SHEET_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAME_FIRM_BALANCE_SHEET">
+    <End Role="BALANCE_SHEET" Type="FYP_DATABASEModel.Store.BALANCE_SHEET" Multiplicity="0..1" />
+    <End Role="GAME_FIRM" Type="FYP_DATABASEModel.Store.GAME_FIRM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BALANCE_SHEET">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GAME_FIRM">
+        <PropertyRef Name="BALANCE_SHEET_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BALANCE_SHEET_TRANSACTION_REVENUE_AND_COST">
+    <End Role="REVENUE_AND_COST" Type="FYP_DATABASEModel.Store.REVENUE_AND_COST" Multiplicity="0..1" />
+    <End Role="BALANCE_SHEET_TRANSACTION" Type="FYP_DATABASEModel.Store.BALANCE_SHEET_TRANSACTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REVENUE_AND_COST">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BALANCE_SHEET_TRANSACTION">
+        <PropertyRef Name="REVENUE_AND_COST_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTENT_MANAGER_CONTENT_MANAGER">
+    <End Role="CONTENT_MANAGER" Type="FYP_DATABASEModel.Store.CONTENT_MANAGER" Multiplicity="0..1" />
+    <End Role="CONTENT_MANAGER1" Type="FYP_DATABASEModel.Store.CONTENT_MANAGER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTENT_MANAGER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CONTENT_MANAGER1">
+        <PropertyRef Name="PARENT_VERSION_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTENT_MANAGER_FILE_STORAGE">
+    <End Role="FILE_STORAGE" Type="FYP_DATABASEModel.Store.FILE_STORAGE" Multiplicity="0..1" />
+    <End Role="CONTENT_MANAGER" Type="FYP_DATABASEModel.Store.CONTENT_MANAGER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FILE_STORAGE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CONTENT_MANAGER">
+        <PropertyRef Name="FILE_STORAGE_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTENT_MANAGER_VIDEO_STORAGE">
+    <End Role="VIDEO_STORAGE" Type="FYP_DATABASEModel.Store.VIDEO_STORAGE" Multiplicity="0..1" />
+    <End Role="CONTENT_MANAGER" Type="FYP_DATABASEModel.Store.CONTENT_MANAGER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VIDEO_STORAGE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CONTENT_MANAGER">
+        <PropertyRef Name="VIDEO_STORAGE_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAME_CONTENT_MANAGER">
+    <End Role="CONTENT_MANAGER" Type="FYP_DATABASEModel.Store.CONTENT_MANAGER" Multiplicity="0..1" />
+    <End Role="GAME" Type="FYP_DATABASEModel.Store.GAMEs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTENT_MANAGER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GAME">
+        <PropertyRef Name="IMAGE_MANAGER_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAME_TYPE_CONTENT_MANAGER">
+    <End Role="CONTENT_MANAGER" Type="FYP_DATABASEModel.Store.CONTENT_MANAGER" Multiplicity="0..1" />
+    <End Role="GAME_TYPE" Type="FYP_DATABASEModel.Store.GAME_TYPE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTENT_MANAGER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GAME_TYPE">
+        <PropertyRef Name="IMAGE_MANAGER_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IMAGE_STRING_MANAGER_IMAGE_STRING">
+    <End Role="IMAGE_STRING" Type="FYP_DATABASEModel.Store.IMAGE_STRING" Multiplicity="0..1" />
+    <End Role="CONTENT_MANAGER" Type="FYP_DATABASEModel.Store.CONTENT_MANAGER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IMAGE_STRING">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CONTENT_MANAGER">
+        <PropertyRef Name="IMAGE_STRING_ID_LINK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IMAGE_STRING_MANAGER_PERSONNEL">
+    <End Role="USER" Type="FYP_DATABASEModel.Store.USERs" Multiplicity="0..1" />
+    <End Role="CONTENT_MANAGER" Type="FYP_DATABASEModel.Store.CONTENT_MANAGER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CONTENT_MANAGER">
+        <PropertyRef Name="PERSONNEL_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_CONTENT_MANAGER">
+    <End Role="CONTENT_MANAGER" Type="FYP_DATABASEModel.Store.CONTENT_MANAGER" Multiplicity="0..1" />
+    <End Role="USER" Type="FYP_DATABASEModel.Store.USERs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTENT_MANAGER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER">
+        <PropertyRef Name="IMAGE_MANAGER_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESULT_FINANCE_DECISIONS">
+    <End Role="FINANCE_DECISIONS" Type="FYP_DATABASEModel.Store.FINANCE_DECISIONS" Multiplicity="0..1" />
+    <End Role="RESULT" Type="FYP_DATABASEModel.Store.RESULTs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FINANCE_DECISIONS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RESULT">
+        <PropertyRef Name="FINANCE_DECISION_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAME_FIRM_GAME">
+    <End Role="GAME" Type="FYP_DATABASEModel.Store.GAMEs" Multiplicity="0..1" />
+    <End Role="GAME_FIRM" Type="FYP_DATABASEModel.Store.GAME_FIRM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAME">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GAME_FIRM">
+        <PropertyRef Name="GAME_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAME_GAME_TYPE">
+    <End Role="GAME_TYPE" Type="FYP_DATABASEModel.Store.GAME_TYPE" Multiplicity="0..1" />
+    <End Role="GAME" Type="FYP_DATABASEModel.Store.GAMEs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAME_TYPE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GAME">
+        <PropertyRef Name="GAME_TYPE_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PERIOD_GAME">
+    <End Role="GAME" Type="FYP_DATABASEModel.Store.GAMEs" Multiplicity="0..1" />
+    <End Role="PERIOD" Type="FYP_DATABASEModel.Store.PERIODs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAME">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PERIOD">
+        <PropertyRef Name="GAME_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME">
+    <End Role="GAME" Type="FYP_DATABASEModel.Store.GAMEs" Multiplicity="0..1" />
+    <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Type="FYP_DATABASEModel.Store.USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAME">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
+        <PropertyRef Name="GAME_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GAME_FIRM_MARKET_INFO_GAME_FIRM">
+    <End Role="MARKET_INFO" Type="FYP_DATABASEModel.Store.MARKET_INFO" Multiplicity="0..1" />
+    <End Role="GAME_FIRM" Type="FYP_DATABASEModel.Store.GAME_FIRM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MARKET_INFO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GAME_FIRM">
+        <PropertyRef Name="MARKET_INFO_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INCOME_STATEMENT_FIRM_INCOME_STATEMENT">
+    <End Role="GAME_FIRM" Type="FYP_DATABASEModel.Store.GAME_FIRM" Multiplicity="0..1" />
+    <End Role="INCOME_STATEMENT" Type="FYP_DATABASEModel.Store.INCOME_STATEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAME_FIRM">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INCOME_STATEMENT">
+        <PropertyRef Name="FIRM_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MARKETING_DECISIONS_GAME_FIRM">
+    <End Role="GAME_FIRM" Type="FYP_DATABASEModel.Store.GAME_FIRM" Multiplicity="0..1" />
+    <End Role="MARKETING_DECISIONS" Type="FYP_DATABASEModel.Store.MARKETING_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAME_FIRM">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MARKETING_DECISIONS">
+        <PropertyRef Name="FIRM_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCTION_DECISIONS_GAME_FIRM">
+    <End Role="GAME_FIRM" Type="FYP_DATABASEModel.Store.GAME_FIRM" Multiplicity="0..1" />
+    <End Role="PRODUCTION_DECISIONS" Type="FYP_DATABASEModel.Store.PRODUCTION_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAME_FIRM">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUCTION_DECISIONS">
+        <PropertyRef Name="FIRM_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESULT_GAME_FIRM">
+    <End Role="GAME_FIRM" Type="FYP_DATABASEModel.Store.GAME_FIRM" Multiplicity="0..1" />
+    <End Role="RESULT" Type="FYP_DATABASEModel.Store.RESULTs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAME_FIRM">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RESULT">
+        <PropertyRef Name="ACTION_FIRM_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESULT_GAME_FIRM1">
+    <End Role="GAME_FIRM" Type="FYP_DATABASEModel.Store.GAME_FIRM" Multiplicity="0..1" />
+    <End Role="RESULT" Type="FYP_DATABASEModel.Store.RESULTs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAME_FIRM">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RESULT">
+        <PropertyRef Name="TARGET_FIRM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REVENUE_AND_COST_GAME_FIRM">
+    <End Role="GAME_FIRM" Type="FYP_DATABASEModel.Store.GAME_FIRM" Multiplicity="0..1" />
+    <End Role="REVENUE_AND_COST" Type="FYP_DATABASEModel.Store.REVENUE_AND_COST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAME_FIRM">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REVENUE_AND_COST">
+        <PropertyRef Name="FIRM_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RND_DECISIONS_GAME_FIRM">
+    <End Role="GAME_FIRM" Type="FYP_DATABASEModel.Store.GAME_FIRM" Multiplicity="0..1" />
+    <End Role="RND_DECISIONS" Type="FYP_DATABASEModel.Store.RND_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAME_FIRM">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RND_DECISIONS">
+        <PropertyRef Name="FIRM_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME_FIRM">
+    <End Role="GAME_FIRM" Type="FYP_DATABASEModel.Store.GAME_FIRM" Multiplicity="0..1" />
+    <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Type="FYP_DATABASEModel.Store.USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAME_FIRM">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
+        <PropertyRef Name="FIRM_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INCOME_STATEMENT_PERIOD_INCOME_STATEMENT">
+    <End Role="PERIOD" Type="FYP_DATABASEModel.Store.PERIODs" Multiplicity="0..1" />
+    <End Role="INCOME_STATEMENT" Type="FYP_DATABASEModel.Store.INCOME_STATEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIOD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INCOME_STATEMENT">
+        <PropertyRef Name="PERIOD_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MARKETING_DECISIONS_PERIOD">
+    <End Role="PERIOD" Type="FYP_DATABASEModel.Store.PERIODs" Multiplicity="0..1" />
+    <End Role="MARKETING_DECISIONS" Type="FYP_DATABASEModel.Store.MARKETING_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIOD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MARKETING_DECISIONS">
+        <PropertyRef Name="PERIOD_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MARKETING_DECISIONS_USER">
+    <End Role="USER" Type="FYP_DATABASEModel.Store.USERs" Multiplicity="0..1" />
+    <End Role="MARKETING_DECISIONS" Type="FYP_DATABASEModel.Store.MARKETING_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MARKETING_DECISIONS">
+        <PropertyRef Name="USER_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESULT_MARKETING_DECISIONS">
+    <End Role="MARKETING_DECISIONS" Type="FYP_DATABASEModel.Store.MARKETING_DECISIONS" Multiplicity="0..1" />
+    <End Role="RESULT" Type="FYP_DATABASEModel.Store.RESULTs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MARKETING_DECISIONS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RESULT">
+        <PropertyRef Name="MARKETING_DECISION_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCTION_DECISIONS_PERIOD">
+    <End Role="PERIOD" Type="FYP_DATABASEModel.Store.PERIODs" Multiplicity="0..1" />
+    <End Role="PRODUCTION_DECISIONS" Type="FYP_DATABASEModel.Store.PRODUCTION_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIOD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUCTION_DECISIONS">
+        <PropertyRef Name="PERIOD_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESULT_PERIOD">
+    <End Role="PERIOD" Type="FYP_DATABASEModel.Store.PERIODs" Multiplicity="0..1" />
+    <End Role="RESULT" Type="FYP_DATABASEModel.Store.RESULTs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIOD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RESULT">
+        <PropertyRef Name="PERIOD_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REVENUE_AND_COST_PERIOD">
+    <End Role="PERIOD" Type="FYP_DATABASEModel.Store.PERIODs" Multiplicity="0..1" />
+    <End Role="REVENUE_AND_COST" Type="FYP_DATABASEModel.Store.REVENUE_AND_COST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIOD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REVENUE_AND_COST">
+        <PropertyRef Name="PERIOD_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RND_DECISIONS_PERIOD">
+    <End Role="PERIOD" Type="FYP_DATABASEModel.Store.PERIODs" Multiplicity="0..1" />
+    <End Role="RND_DECISIONS" Type="FYP_DATABASEModel.Store.RND_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIOD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RND_DECISIONS">
+        <PropertyRef Name="PERIOD_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCTION_DECISIONS_REVENUE_AND_COST">
+    <End Role="REVENUE_AND_COST" Type="FYP_DATABASEModel.Store.REVENUE_AND_COST" Multiplicity="0..1" />
+    <End Role="PRODUCTION_DECISIONS" Type="FYP_DATABASEModel.Store.PRODUCTION_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REVENUE_AND_COST">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUCTION_DECISIONS">
+        <PropertyRef Name="REVENUE_AND_COST_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCTION_DECISIONS_USER">
+    <End Role="USER" Type="FYP_DATABASEModel.Store.USERs" Multiplicity="0..1" />
+    <End Role="PRODUCTION_DECISIONS" Type="FYP_DATABASEModel.Store.PRODUCTION_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUCTION_DECISIONS">
+        <PropertyRef Name="USER_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESULT_PRODUCTION_DECISIONS">
+    <End Role="PRODUCTION_DECISIONS" Type="FYP_DATABASEModel.Store.PRODUCTION_DECISIONS" Multiplicity="0..1" />
+    <End Role="RESULT" Type="FYP_DATABASEModel.Store.RESULTs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTION_DECISIONS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RESULT">
+        <PropertyRef Name="PRODUCTION_DECISION_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESULT_RND_DECISIONS">
+    <End Role="RND_DECISIONS" Type="FYP_DATABASEModel.Store.RND_DECISIONS" Multiplicity="0..1" />
+    <End Role="RESULT" Type="FYP_DATABASEModel.Store.RESULTs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RND_DECISIONS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RESULT">
+        <PropertyRef Name="RND_DECISION_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REVENUE_AND_COST_REVENUE_AND_COST">
+    <End Role="REVENUE_AND_COST" Type="FYP_DATABASEModel.Store.REVENUE_AND_COST" Multiplicity="0..1" />
+    <End Role="REVENUE_AND_COST1" Type="FYP_DATABASEModel.Store.REVENUE_AND_COST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REVENUE_AND_COST">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="REVENUE_AND_COST1">
+        <PropertyRef Name="PARENT_REVENUE_AND_COST_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RND_DECISIONS_REVENUE_AND_COST">
+    <End Role="REVENUE_AND_COST" Type="FYP_DATABASEModel.Store.REVENUE_AND_COST" Multiplicity="0..1" />
+    <End Role="RND_DECISIONS" Type="FYP_DATABASEModel.Store.RND_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REVENUE_AND_COST">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RND_DECISIONS">
+        <PropertyRef Name="REVENUE_AND_COST_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RND_DECISIONS_USER">
+    <End Role="USER" Type="FYP_DATABASEModel.Store.USERs" Multiplicity="0..1" />
+    <End Role="RND_DECISIONS" Type="FYP_DATABASEModel.Store.RND_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RND_DECISIONS">
+        <PropertyRef Name="USER_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER">
+    <End Role="USER" Type="FYP_DATABASEModel.Store.USERs" Multiplicity="0..1" />
+    <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Type="FYP_DATABASEModel.Store.USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
+        <PropertyRef Name="USER_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WEB_API_AUTHORIZATION_PERSONNEL">
+    <End Role="USER" Type="FYP_DATABASEModel.Store.USERs" Multiplicity="0..1" />
+    <End Role="WEB_API_AUTHORIZATION" Type="FYP_DATABASEModel.Store.WEB_API_AUTHORIZATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WEB_API_AUTHORIZATION">
+        <PropertyRef Name="LOGGED_IN_PERSONNEL_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_USER_ROLE_GAME_RELATIONSHIP_USER_ROLE">
+    <End Role="USER_ROLE" Type="FYP_DATABASEModel.Store.USER_ROLE" Multiplicity="0..1" />
+    <End Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Type="FYP_DATABASEModel.Store.USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER_ROLE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
+        <PropertyRef Name="USER_ROLE_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WEB_API_TRANSACTION_WEB_API_AUTHORIZATION">
+    <End Role="WEB_API_AUTHORIZATION" Type="FYP_DATABASEModel.Store.WEB_API_AUTHORIZATION" Multiplicity="0..1" />
+    <End Role="WEB_API_TRANSACTION" Type="FYP_DATABASEModel.Store.WEB_API_TRANSACTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEB_API_AUTHORIZATION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WEB_API_TRANSACTION">
+        <PropertyRef Name="WEB_API_AUTHORIZATION_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS">
+    <End Role="GAME_FIRM" Type="FYP_DATABASEModel.Store.GAME_FIRM" Multiplicity="0..1" />
+    <End Role="FINANCE_DECISIONS" Type="FYP_DATABASEModel.Store.FINANCE_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GAME_FIRM">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FINANCE_DECISIONS">
+        <PropertyRef Name="FIRM_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FINANCE_DECISIONS_PERIOD_FINANCE_DECISIONS">
+    <End Role="PERIOD" Type="FYP_DATABASEModel.Store.PERIODs" Multiplicity="0..1" />
+    <End Role="FINANCE_DECISIONS" Type="FYP_DATABASEModel.Store.FINANCE_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIOD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FINANCE_DECISIONS">
+        <PropertyRef Name="PERIOD_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FINANCE_DECISIONS_USER_FINANCE_DECISIONS">
+    <End Role="USER" Type="FYP_DATABASEModel.Store.USERs" Multiplicity="0..1" />
+    <End Role="FINANCE_DECISIONS" Type="FYP_DATABASEModel.Store.FINANCE_DECISIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FINANCE_DECISIONS">
+        <PropertyRef Name="USER_LINK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FYP_DATABASEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1357,8 +1356,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="RESULTs" Relationship="Self.FK_RESULT_FINANCE_DECISIONS" FromRole="FINANCE_DECISIONS" ToRole="RESULT" />
-          <Property Name="ST_LOAN" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="LT_LOAN" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ST_LOAN" Type="Decimal" Scale="0" Precision="18" />
+          <Property Name="LT_LOAN" Type="Decimal" Scale="0" Precision="18" />
           <Property Name="FIRM_LINK_ID" Type="Int32" />
           <Property Name="PERIOD_LINK_ID" Type="Int32" />
           <Property Name="USER_LINK_ID" Type="Int32" />
@@ -1415,6 +1414,8 @@
           <NavigationProperty Name="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" Relationship="Self.FK_USER_USER_ROLE_GAME_RELATIONSHIP_GAME_FIRM" FromRole="GAME_FIRM" ToRole="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP" />
           <Property Name="PRODUCTION_COST" Type="Double" />
           <NavigationProperty Name="FINANCE_DECISIONS" Relationship="FYP_DATABASEModel.FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS" FromRole="GAME_FIRM" ToRole="FINANCE_DECISIONS" />
+          <Property Name="ST_LOAN_LIMIT" Type="Int32" />
+          <Property Name="LT_LOAN_LIMIT" Type="Int32" />
         </EntityType>
         <EntityType Name="GAME_TYPE">
           <Key>
@@ -2494,7 +2495,7 @@
             <End Role="WEB_API_TRANSACTION" EntitySet="WEB_API_TRANSACTION" />
           </AssociationSet>
           <FunctionImport Name="GetEntityClass">
-          <Parameter Name="TableName" Mode="In" Type="String" />
+          <Parameter Name="TableName" Type="String" Mode="In" />
           </FunctionImport>
           <AssociationSet Name="FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS" Association="FYP_DATABASEModel.FK_FINANCE_DECISIONS_FIRM_FINANCE_DECISIONS">
             <End Role="GAME_FIRM" EntitySet="GAME_FIRM" />
@@ -2549,408 +2550,408 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FYP_DATABASEModelStoreContainer" CdmEntityContainer="FYP_DATABASEEntities">
-          <EntitySetMapping Name="ACTION_TRANSACTIONS">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.ACTION_TRANSACTIONS">
-              <MappingFragment StoreEntitySet="ACTION_TRANSACTIONS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="DEVICE_LINK_ID" ColumnName="DEVICE_LINK_ID" />
-                <ScalarProperty Name="PERSONNEL_LINK_ID" ColumnName="PERSONNEL_LINK_ID" />
-                <ScalarProperty Name="ACTION_PERFORMED" ColumnName="ACTION_PERFORMED" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-                <ScalarProperty Name="DATE_TIME" ColumnName="DATE_TIME" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="APP_DEVICES">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.APP_DEVICES">
-              <MappingFragment StoreEntitySet="APP_DEVICES">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="PERSONNEL_LINK_ID" ColumnName="PERSONNEL_LINK_ID" />
-                <ScalarProperty Name="DEVICE_TYPE" ColumnName="DEVICE_TYPE" />
-                <ScalarProperty Name="DEVICE_UNIQUE_ID" ColumnName="DEVICE_UNIQUE_ID" />
-                <ScalarProperty Name="AUTHENTICATION_TOKEN" ColumnName="AUTHENTICATION_TOKEN" />
-                <ScalarProperty Name="PUSH_NOTIFICATION_TOKEN" ColumnName="PUSH_NOTIFICATION_TOKEN" />
-                <ScalarProperty Name="CURRENT_ARC_APP_VERSION" ColumnName="CURRENT_ARC_APP_VERSION" />
-                <ScalarProperty Name="CURRENT_API_VERSION" ColumnName="CURRENT_API_VERSION" />
-                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
-                <ScalarProperty Name="LAST_ACCESSED_DATE_TIME" ColumnName="LAST_ACCESSED_DATE_TIME" />
-                <ScalarProperty Name="DATE_TIME_DEVICE_ADDED" ColumnName="DATE_TIME_DEVICE_ADDED" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AUDIO_STORAGE">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.AUDIO_STORAGE">
-              <MappingFragment StoreEntitySet="AUDIO_STORAGE">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="AUDIO_STRING" ColumnName="AUDIO_STRING" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BALANCE_SHEET">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.BALANCE_SHEET">
-              <MappingFragment StoreEntitySet="BALANCE_SHEET">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TOTAL_ASSET" ColumnName="TOTAL_ASSET" />
-                <ScalarProperty Name="TOTAL_LIABILITY" ColumnName="TOTAL_LIABILITY" />
-                <ScalarProperty Name="TOTAL_EQUITY" ColumnName="TOTAL_EQUITY" />
-                <ScalarProperty Name="INITIAL_ASSET" ColumnName="INITIAL_ASSET" />
-                <ScalarProperty Name="INITIAL_LIABILITY" ColumnName="INITIAL_LIABILITY" />
-                <ScalarProperty Name="INITIAL_EQUITY" ColumnName="INITIAL_EQUITY" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="LAST_MODIFIED" ColumnName="LAST_MODIFIED" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BALANCE_SHEET_TRANSACTION">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.BALANCE_SHEET_TRANSACTION">
-              <MappingFragment StoreEntitySet="BALANCE_SHEET_TRANSACTION">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TRANSACTION_STATUS" ColumnName="TRANSACTION_STATUS" />
-                <ScalarProperty Name="BALANCE_SHEET_LINK_ID" ColumnName="BALANCE_SHEET_LINK_ID" />
-                <ScalarProperty Name="TRANSACTION_AMOUNT" ColumnName="TRANSACTION_AMOUNT" />
-                <ScalarProperty Name="TRANSACTION_NAME" ColumnName="TRANSACTION_NAME" />
-                <ScalarProperty Name="TRANSACTION_TYPE" ColumnName="TRANSACTION_TYPE" />
-                <ScalarProperty Name="TRANSACTION_JSON" ColumnName="TRANSACTION_JSON" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="DATE_TIME_INSERTED" ColumnName="DATE_TIME_INSERTED" />
-                <ScalarProperty Name="REVENUE_AND_COST_LINK_ID" ColumnName="REVENUE_AND_COST_LINK_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CONTENT_MANAGER">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.CONTENT_MANAGER">
-              <MappingFragment StoreEntitySet="CONTENT_MANAGER">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CONTENT_NAME" ColumnName="CONTENT_NAME" />
-                <ScalarProperty Name="CONTENT_TYPE" ColumnName="CONTENT_TYPE" />
-                <ScalarProperty Name="CONTENT_GROUP" ColumnName="CONTENT_GROUP" />
-                <ScalarProperty Name="CONTENT_CATEGORY" ColumnName="CONTENT_CATEGORY" />
-                <ScalarProperty Name="CONTENT_THUMBNAIL" ColumnName="CONTENT_THUMBNAIL" />
-                <ScalarProperty Name="IMAGE_STRING_ID_LINK" ColumnName="IMAGE_STRING_ID_LINK" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="PERSONNEL_LINK_ID" ColumnName="PERSONNEL_LINK_ID" />
-                <ScalarProperty Name="CREATED_DATE_TIME" ColumnName="CREATED_DATE_TIME" />
-                <ScalarProperty Name="EDIT_DATE_TIME" ColumnName="EDIT_DATE_TIME" />
-                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
-                <ScalarProperty Name="CONTENT_MANAGER_TYPE" ColumnName="CONTENT_MANAGER_TYPE" />
-                <ScalarProperty Name="FILE_STORAGE_LINK_ID" ColumnName="FILE_STORAGE_LINK_ID" />
-                <ScalarProperty Name="AUDIO_STORAGE_LINK_ID" ColumnName="AUDIO_STORAGE_LINK_ID" />
-                <ScalarProperty Name="VIDEO_STORAGE_LINK_ID" ColumnName="VIDEO_STORAGE_LINK_ID" />
-                <ScalarProperty Name="PARENT_VERSION_LINK_ID" ColumnName="PARENT_VERSION_LINK_ID" />
-                <ScalarProperty Name="VERSION_NUMBER" ColumnName="VERSION_NUMBER" />
-                <ScalarProperty Name="IS_ARCHIVED" ColumnName="IS_ARCHIVED" />
-                <ScalarProperty Name="IS_DEFAULT" ColumnName="IS_DEFAULT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FILE_STORAGE">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.FILE_STORAGE">
-              <MappingFragment StoreEntitySet="FILE_STORAGE">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
-                <ScalarProperty Name="DIRECTORY" ColumnName="DIRECTORY" />
-                <ScalarProperty Name="DATABASE_TABLE" ColumnName="DATABASE_TABLE" />
-                <ScalarProperty Name="DATABASE_TABLE_ID" ColumnName="DATABASE_TABLE_ID" />
-                <ScalarProperty Name="SALES_SCHEDULING_ID" ColumnName="SALES_SCHEDULING_ID" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="FILE_STRING" ColumnName="FILE_STRING" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FINANCE_DECISIONS">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.FINANCE_DECISIONS">
-              <MappingFragment StoreEntitySet="FINANCE_DECISIONS">
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="USER_LINK_ID" ColumnName="USER_LINK_ID" />
-                <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
-                <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
-                <ScalarProperty Name="LT_LOAN" ColumnName="LT_LOAN" />
-                <ScalarProperty Name="ST_LOAN" ColumnName="ST_LOAN" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GAMEs">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.GAME">
-              <MappingFragment StoreEntitySet="GAME">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="GAME_NAME" ColumnName="GAME_NAME" />
-                <ScalarProperty Name="GAME_TYPE_LINK_ID" ColumnName="GAME_TYPE_LINK_ID" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="IMAGE_MANAGER_LINK_ID" ColumnName="IMAGE_MANAGER_LINK_ID" />
-                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
-                <ScalarProperty Name="GAME_PASSWORD" ColumnName="GAME_PASSWORD" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GAME_FIRM">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.GAME_FIRM">
-              <MappingFragment StoreEntitySet="GAME_FIRM">
-                <ScalarProperty Name="PRODUCTION_COST" ColumnName="PRODUCTION_COST" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FIRM_NAME" ColumnName="FIRM_NAME" />
-                <ScalarProperty Name="GAME_LINK_ID" ColumnName="GAME_LINK_ID" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-                <ScalarProperty Name="MAX_NUMBER_OF_PLAYER" ColumnName="MAX_NUMBER_OF_PLAYER" />
-                <ScalarProperty Name="BALANCE_SHEET_LINK_ID" ColumnName="BALANCE_SHEET_LINK_ID" />
-                <ScalarProperty Name="PRODUCTION_PRICE" ColumnName="PRODUCTION_PRICE" />
-                <ScalarProperty Name="PRODUCTION_QUALITY" ColumnName="PRODUCTION_QUALITY" />
-                <ScalarProperty Name="MARKET_SHARE" ColumnName="MARKET_SHARE" />
-                <ScalarProperty Name="MARKET_SHARE_QTY" ColumnName="MARKET_SHARE_QTY" />
-                <ScalarProperty Name="MARKET_INFO_LINK_ID" ColumnName="MARKET_INFO_LINK_ID" />
-                <ScalarProperty Name="ALPHA_VALUE" ColumnName="ALPHA_VALUE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GAME_TYPE">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.GAME_TYPE">
-              <MappingFragment StoreEntitySet="GAME_TYPE">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="GAME_TYPE_NAME" ColumnName="GAME_TYPE_NAME" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="IMAGE_MANAGER_LINK_ID" ColumnName="IMAGE_MANAGER_LINK_ID" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="IMAGE_STRING">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.IMAGE_STRING">
-              <MappingFragment StoreEntitySet="IMAGE_STRING">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="IMAGE_HEX_STRING" ColumnName="IMAGE_HEX_STRING" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="IMAGE_STRING_ID_FOR_INTERNAL_REFERENCE_TO_UNDO_AND_REDO" ColumnName="IMAGE_STRING_ID_FOR_INTERNAL_REFERENCE_TO_UNDO_AND_REDO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="INCOME_STATEMENT">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.INCOME_STATEMENT">
-              <MappingFragment StoreEntitySet="INCOME_STATEMENT">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="REVENUE_JSON" ColumnName="REVENUE_JSON" />
-                <ScalarProperty Name="COST_JSON" ColumnName="COST_JSON" />
-                <ScalarProperty Name="PROFIT" ColumnName="PROFIT" />
-                <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
-                <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MARKET_INFO">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.MARKET_INFO">
-              <MappingFragment StoreEntitySet="MARKET_INFO">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MARKET_SIZE" ColumnName="MARKET_SIZE" />
-                <ScalarProperty Name="GROWTH_RATE" ColumnName="GROWTH_RATE" />
-                <ScalarProperty Name="VARIATION_TYPE" ColumnName="VARIATION_TYPE" />
-                <ScalarProperty Name="VARIATION_SD" ColumnName="VARIATION_SD" />
-                <ScalarProperty Name="INITIAL_QUALITY" ColumnName="INITIAL_QUALITY" />
-                <ScalarProperty Name="VARIATION_PARAM_1" ColumnName="VARIATION_PARAM_1" />
-                <ScalarProperty Name="VARIATION_PARAM_2" ColumnName="VARIATION_PARAM_2" />
-                <ScalarProperty Name="VARIATION_PARAM_3" ColumnName="VARIATION_PARAM_3" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="ALPHA" ColumnName="ALPHA" />
-                <ScalarProperty Name="BETA" ColumnName="BETA" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MARKETING_DECISIONS">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.MARKETING_DECISIONS">
-              <MappingFragment StoreEntitySet="MARKETING_DECISIONS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
-                <ScalarProperty Name="IN_GAME_TIME_IN_DAY" ColumnName="IN_GAME_TIME_IN_DAY" />
-                <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
-                <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
-                <ScalarProperty Name="USER_LINK_ID" ColumnName="USER_LINK_ID" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PERIODs">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.PERIOD">
-              <MappingFragment StoreEntitySet="PERIOD">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="PERIOD_NAME" ColumnName="PERIOD_NAME" />
-                <ScalarProperty Name="PERIOD_NUMBER" ColumnName="PERIOD_NUMBER" />
-                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
-                <ScalarProperty Name="START_TIME" ColumnName="START_TIME" />
-                <ScalarProperty Name="END_TIME" ColumnName="END_TIME" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="EXPECTED_START" ColumnName="EXPECTED_START" />
-                <ScalarProperty Name="EXPECTED_END" ColumnName="EXPECTED_END" />
-                <ScalarProperty Name="SIMULATION_DURATION" ColumnName="SIMULATION_DURATION" />
-                <ScalarProperty Name="GAME_LINK_ID" ColumnName="GAME_LINK_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PRODUCTION_DECISIONS">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.PRODUCTION_DECISIONS">
-              <MappingFragment StoreEntitySet="PRODUCTION_DECISIONS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
-                <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
-                <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
-                <ScalarProperty Name="IN_GAME_TIME_IN_DAY" ColumnName="IN_GAME_TIME_IN_DAY" />
-                <ScalarProperty Name="USER_LINK_ID" ColumnName="USER_LINK_ID" />
-                <ScalarProperty Name="REVENUE_AND_COST_LINK_ID" ColumnName="REVENUE_AND_COST_LINK_ID" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RESULTs">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.RESULT">
-              <MappingFragment StoreEntitySet="RESULT">
-                <ScalarProperty Name="PRODUCTION_COST_CHANGE" ColumnName="PRODUCTION_COST_CHANGE" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MARKETING_DECISION_LINK_ID" ColumnName="MARKETING_DECISION_LINK_ID" />
-                <ScalarProperty Name="PRODUCTION_DECISION_LINK_ID" ColumnName="PRODUCTION_DECISION_LINK_ID" />
-                <ScalarProperty Name="RND_DECISION_LINK_ID" ColumnName="RND_DECISION_LINK_ID" />
-                <ScalarProperty Name="FINANCE_DECISION_LINK_ID" ColumnName="FINANCE_DECISION_LINK_ID" />
-                <ScalarProperty Name="QUALITY_CHANGE" ColumnName="QUALITY_CHANGE" />
-                <ScalarProperty Name="MARKET_SHARE_CHANGE" ColumnName="MARKET_SHARE_CHANGE" />
-                <ScalarProperty Name="ACTION_FIRM_LINK_ID" ColumnName="ACTION_FIRM_LINK_ID" />
-                <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
-                <ScalarProperty Name="IN_GAME_TIME_IN_DAY" ColumnName="IN_GAME_TIME_IN_DAY" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="TARGET_FIRM_ID" ColumnName="TARGET_FIRM_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="REVENUE_AND_COST">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.REVENUE_AND_COST">
-              <MappingFragment StoreEntitySet="REVENUE_AND_COST">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FLOW_TYPE" ColumnName="FLOW_TYPE" />
-                <ScalarProperty Name="PAYMENT_TYPE" ColumnName="PAYMENT_TYPE" />
-                <ScalarProperty Name="RECURSIVE_DURATION" ColumnName="RECURSIVE_DURATION" />
-                <ScalarProperty Name="PAYMENT_AMOUNT" ColumnName="PAYMENT_AMOUNT" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="PARENT_REVENUE_AND_COST_LINK_ID" ColumnName="PARENT_REVENUE_AND_COST_LINK_ID" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-                <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
-                <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="PERIOD_NUMBER" ColumnName="PERIOD_NUMBER" />
-                <ScalarProperty Name="TARGET_TYPE" ColumnName="TARGET_TYPE" />
-                <ScalarProperty Name="FIRST_PAYMENT_DATE" ColumnName="FIRST_PAYMENT_DATE" />
-                <ScalarProperty Name="BUSINESS_ASPECT" ColumnName="BUSINESS_ASPECT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RND_DECISIONS">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.RND_DECISIONS">
-              <MappingFragment StoreEntitySet="RND_DECISIONS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
-                <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
-                <ScalarProperty Name="USER_LINK_ID" ColumnName="USER_LINK_ID" />
-                <ScalarProperty Name="REVENUE_AND_COST_LINK_ID" ColumnName="REVENUE_AND_COST_LINK_ID" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USERs">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.USER">
-              <MappingFragment StoreEntitySet="USER">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
-                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
-                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
-                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
-                <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
-                <ScalarProperty Name="GROUP" ColumnName="GROUP" />
-                <ScalarProperty Name="MOBILE_PERSONAL" ColumnName="MOBILE_PERSONAL" />
-                <ScalarProperty Name="MOBILE_OFFICE" ColumnName="MOBILE_OFFICE" />
-                <ScalarProperty Name="LAND_LINE_OFFICE" ColumnName="LAND_LINE_OFFICE" />
-                <ScalarProperty Name="LAND_LINE_HOME" ColumnName="LAND_LINE_HOME" />
-                <ScalarProperty Name="EMAIL_PRIMARY" ColumnName="EMAIL_PRIMARY" />
-                <ScalarProperty Name="EMAIL_SECONDARY" ColumnName="EMAIL_SECONDARY" />
-                <ScalarProperty Name="SECURITY_LEVEL" ColumnName="SECURITY_LEVEL" />
-                <ScalarProperty Name="LOGIN_ALLOWED" ColumnName="LOGIN_ALLOWED" />
-                <ScalarProperty Name="PASSWORD_HASH" ColumnName="PASSWORD_HASH" />
-                <ScalarProperty Name="PASSWORD_SALT" ColumnName="PASSWORD_SALT" />
-                <ScalarProperty Name="IS_AVAILABLE" ColumnName="IS_AVAILABLE" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-                <ScalarProperty Name="PIN_NUMBER_HASH" ColumnName="PIN_NUMBER_HASH" />
-                <ScalarProperty Name="PIN_NUMBER_SALT" ColumnName="PIN_NUMBER_SALT" />
-                <ScalarProperty Name="IMAGE_MANAGER_LINK_ID" ColumnName="IMAGE_MANAGER_LINK_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USER_ROLE">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.USER_ROLE">
-              <MappingFragment StoreEntitySet="USER_ROLE">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="USER_ROLE_NAME" ColumnName="USER_ROLE_NAME" />
-                <ScalarProperty Name="AUTHORIZATION_LEVEL" ColumnName="AUTHORIZATION_LEVEL" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
-              <MappingFragment StoreEntitySet="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="USER_LINK_ID" ColumnName="USER_LINK_ID" />
-                <ScalarProperty Name="USER_ROLE_LINK_ID" ColumnName="USER_ROLE_LINK_ID" />
-                <ScalarProperty Name="GAME_LINK_ID" ColumnName="GAME_LINK_ID" />
-                <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VIDEO_STORAGE">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.VIDEO_STORAGE">
-              <MappingFragment StoreEntitySet="VIDEO_STORAGE">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="VIDEO_STRING" ColumnName="VIDEO_STRING" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WEB_API_AUTHORIZATION">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.WEB_API_AUTHORIZATION">
-              <MappingFragment StoreEntitySet="WEB_API_AUTHORIZATION">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="LOGGED_IN_PERSONNEL_LINK_ID" ColumnName="LOGGED_IN_PERSONNEL_LINK_ID" />
-                <ScalarProperty Name="LOGGED_IN_DATE_TIME" ColumnName="LOGGED_IN_DATE_TIME" />
-                <ScalarProperty Name="UNIQUE_TOKEN" ColumnName="UNIQUE_TOKEN" />
-                <ScalarProperty Name="EXPIRE_DATE_TIME" ColumnName="EXPIRE_DATE_TIME" />
-                <ScalarProperty Name="LAST_REQUESTED_DATE_TIME" ColumnName="LAST_REQUESTED_DATE_TIME" />
-                <ScalarProperty Name="REQUEST_COUNT" ColumnName="REQUEST_COUNT" />
-                <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WEB_API_TRANSACTION">
-            <EntityTypeMapping TypeName="FYP_DATABASEModel.WEB_API_TRANSACTION">
-              <MappingFragment StoreEntitySet="WEB_API_TRANSACTION">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="WEB_API_AUTHORIZATION_LINK_ID" ColumnName="WEB_API_AUTHORIZATION_LINK_ID" />
-                <ScalarProperty Name="TRANSACTION_URL" ColumnName="TRANSACTION_URL" />
-                <ScalarProperty Name="TRANSACTION_DATE_TIME" ColumnName="TRANSACTION_DATE_TIME" />
-                <ScalarProperty Name="TRANSACTION_TYPE" ColumnName="TRANSACTION_TYPE" />
-                <ScalarProperty Name="TRANSACTION_HEADERS" ColumnName="TRANSACTION_HEADERS" />
-                <ScalarProperty Name="TRANSACTION_BODY" ColumnName="TRANSACTION_BODY" />
-                <ScalarProperty Name="USER_AGENT" ColumnName="USER_AGENT" />
-                <ScalarProperty Name="SERVER_VARIABLES" ColumnName="SERVER_VARIABLES" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetEntityClass" FunctionName="FYP_DATABASEModel.Store.GetEntityClass" />
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FYP_DATABASEModelStoreContainer" CdmEntityContainer="FYP_DATABASEEntities">
+    <EntitySetMapping Name="ACTION_TRANSACTIONS">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.ACTION_TRANSACTIONS)">
+        <MappingFragment StoreEntitySet="ACTION_TRANSACTIONS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DEVICE_LINK_ID" ColumnName="DEVICE_LINK_ID" />
+          <ScalarProperty Name="PERSONNEL_LINK_ID" ColumnName="PERSONNEL_LINK_ID" />
+          <ScalarProperty Name="ACTION_PERFORMED" ColumnName="ACTION_PERFORMED" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="DATE_TIME" ColumnName="DATE_TIME" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APP_DEVICES">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.APP_DEVICES)">
+        <MappingFragment StoreEntitySet="APP_DEVICES">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PERSONNEL_LINK_ID" ColumnName="PERSONNEL_LINK_ID" />
+          <ScalarProperty Name="DEVICE_TYPE" ColumnName="DEVICE_TYPE" />
+          <ScalarProperty Name="DEVICE_UNIQUE_ID" ColumnName="DEVICE_UNIQUE_ID" />
+          <ScalarProperty Name="AUTHENTICATION_TOKEN" ColumnName="AUTHENTICATION_TOKEN" />
+          <ScalarProperty Name="PUSH_NOTIFICATION_TOKEN" ColumnName="PUSH_NOTIFICATION_TOKEN" />
+          <ScalarProperty Name="CURRENT_ARC_APP_VERSION" ColumnName="CURRENT_ARC_APP_VERSION" />
+          <ScalarProperty Name="CURRENT_API_VERSION" ColumnName="CURRENT_API_VERSION" />
+          <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+          <ScalarProperty Name="LAST_ACCESSED_DATE_TIME" ColumnName="LAST_ACCESSED_DATE_TIME" />
+          <ScalarProperty Name="DATE_TIME_DEVICE_ADDED" ColumnName="DATE_TIME_DEVICE_ADDED" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUDIO_STORAGE">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.AUDIO_STORAGE)">
+        <MappingFragment StoreEntitySet="AUDIO_STORAGE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="AUDIO_STRING" ColumnName="AUDIO_STRING" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BALANCE_SHEET">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.BALANCE_SHEET)">
+        <MappingFragment StoreEntitySet="BALANCE_SHEET">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TOTAL_ASSET" ColumnName="TOTAL_ASSET" />
+          <ScalarProperty Name="TOTAL_LIABILITY" ColumnName="TOTAL_LIABILITY" />
+          <ScalarProperty Name="TOTAL_EQUITY" ColumnName="TOTAL_EQUITY" />
+          <ScalarProperty Name="INITIAL_ASSET" ColumnName="INITIAL_ASSET" />
+          <ScalarProperty Name="INITIAL_LIABILITY" ColumnName="INITIAL_LIABILITY" />
+          <ScalarProperty Name="INITIAL_EQUITY" ColumnName="INITIAL_EQUITY" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="LAST_MODIFIED" ColumnName="LAST_MODIFIED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BALANCE_SHEET_TRANSACTION">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.BALANCE_SHEET_TRANSACTION)">
+        <MappingFragment StoreEntitySet="BALANCE_SHEET_TRANSACTION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TRANSACTION_STATUS" ColumnName="TRANSACTION_STATUS" />
+          <ScalarProperty Name="BALANCE_SHEET_LINK_ID" ColumnName="BALANCE_SHEET_LINK_ID" />
+          <ScalarProperty Name="TRANSACTION_AMOUNT" ColumnName="TRANSACTION_AMOUNT" />
+          <ScalarProperty Name="TRANSACTION_NAME" ColumnName="TRANSACTION_NAME" />
+          <ScalarProperty Name="TRANSACTION_TYPE" ColumnName="TRANSACTION_TYPE" />
+          <ScalarProperty Name="TRANSACTION_JSON" ColumnName="TRANSACTION_JSON" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="DATE_TIME_INSERTED" ColumnName="DATE_TIME_INSERTED" />
+          <ScalarProperty Name="REVENUE_AND_COST_LINK_ID" ColumnName="REVENUE_AND_COST_LINK_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONTENT_MANAGER">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.CONTENT_MANAGER)">
+        <MappingFragment StoreEntitySet="CONTENT_MANAGER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CONTENT_NAME" ColumnName="CONTENT_NAME" />
+          <ScalarProperty Name="CONTENT_TYPE" ColumnName="CONTENT_TYPE" />
+          <ScalarProperty Name="CONTENT_GROUP" ColumnName="CONTENT_GROUP" />
+          <ScalarProperty Name="CONTENT_CATEGORY" ColumnName="CONTENT_CATEGORY" />
+          <ScalarProperty Name="CONTENT_THUMBNAIL" ColumnName="CONTENT_THUMBNAIL" />
+          <ScalarProperty Name="IMAGE_STRING_ID_LINK" ColumnName="IMAGE_STRING_ID_LINK" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="PERSONNEL_LINK_ID" ColumnName="PERSONNEL_LINK_ID" />
+          <ScalarProperty Name="CREATED_DATE_TIME" ColumnName="CREATED_DATE_TIME" />
+          <ScalarProperty Name="EDIT_DATE_TIME" ColumnName="EDIT_DATE_TIME" />
+          <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+          <ScalarProperty Name="CONTENT_MANAGER_TYPE" ColumnName="CONTENT_MANAGER_TYPE" />
+          <ScalarProperty Name="FILE_STORAGE_LINK_ID" ColumnName="FILE_STORAGE_LINK_ID" />
+          <ScalarProperty Name="AUDIO_STORAGE_LINK_ID" ColumnName="AUDIO_STORAGE_LINK_ID" />
+          <ScalarProperty Name="VIDEO_STORAGE_LINK_ID" ColumnName="VIDEO_STORAGE_LINK_ID" />
+          <ScalarProperty Name="PARENT_VERSION_LINK_ID" ColumnName="PARENT_VERSION_LINK_ID" />
+          <ScalarProperty Name="VERSION_NUMBER" ColumnName="VERSION_NUMBER" />
+          <ScalarProperty Name="IS_ARCHIVED" ColumnName="IS_ARCHIVED" />
+          <ScalarProperty Name="IS_DEFAULT" ColumnName="IS_DEFAULT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FILE_STORAGE">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.FILE_STORAGE)">
+        <MappingFragment StoreEntitySet="FILE_STORAGE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
+          <ScalarProperty Name="DIRECTORY" ColumnName="DIRECTORY" />
+          <ScalarProperty Name="DATABASE_TABLE" ColumnName="DATABASE_TABLE" />
+          <ScalarProperty Name="DATABASE_TABLE_ID" ColumnName="DATABASE_TABLE_ID" />
+          <ScalarProperty Name="SALES_SCHEDULING_ID" ColumnName="SALES_SCHEDULING_ID" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="FILE_STRING" ColumnName="FILE_STRING" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FINANCE_DECISIONS">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.FINANCE_DECISIONS)">
+        <MappingFragment StoreEntitySet="FINANCE_DECISIONS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ST_LOAN" ColumnName="ST_LOAN" />
+          <ScalarProperty Name="LT_LOAN" ColumnName="LT_LOAN" />
+          <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
+          <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
+          <ScalarProperty Name="USER_LINK_ID" ColumnName="USER_LINK_ID" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GAMEs">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.GAME)">
+        <MappingFragment StoreEntitySet="GAMEs">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GAME_NAME" ColumnName="GAME_NAME" />
+          <ScalarProperty Name="GAME_TYPE_LINK_ID" ColumnName="GAME_TYPE_LINK_ID" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="IMAGE_MANAGER_LINK_ID" ColumnName="IMAGE_MANAGER_LINK_ID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="GAME_PASSWORD" ColumnName="GAME_PASSWORD" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GAME_FIRM">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.GAME_FIRM)">
+        <MappingFragment StoreEntitySet="GAME_FIRM">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FIRM_NAME" ColumnName="FIRM_NAME" />
+          <ScalarProperty Name="GAME_LINK_ID" ColumnName="GAME_LINK_ID" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="MAX_NUMBER_OF_PLAYER" ColumnName="MAX_NUMBER_OF_PLAYER" />
+          <ScalarProperty Name="BALANCE_SHEET_LINK_ID" ColumnName="BALANCE_SHEET_LINK_ID" />
+          <ScalarProperty Name="PRODUCTION_PRICE" ColumnName="PRODUCTION_PRICE" />
+          <ScalarProperty Name="PRODUCTION_QUALITY" ColumnName="PRODUCTION_QUALITY" />
+          <ScalarProperty Name="MARKET_SHARE" ColumnName="MARKET_SHARE" />
+          <ScalarProperty Name="MARKET_SHARE_QTY" ColumnName="MARKET_SHARE_QTY" />
+          <ScalarProperty Name="MARKET_INFO_LINK_ID" ColumnName="MARKET_INFO_LINK_ID" />
+          <ScalarProperty Name="ALPHA_VALUE" ColumnName="ALPHA_VALUE" />
+          <ScalarProperty Name="PRODUCTION_COST" ColumnName="PRODUCTION_COST" />
+          <ScalarProperty Name="ST_LOAN_LIMIT" ColumnName="ST_LOAN_LIMIT" />
+          <ScalarProperty Name="LT_LOAN_LIMIT" ColumnName="LT_LOAN_LIMIT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GAME_TYPE">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.GAME_TYPE)">
+        <MappingFragment StoreEntitySet="GAME_TYPE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GAME_TYPE_NAME" ColumnName="GAME_TYPE_NAME" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="IMAGE_MANAGER_LINK_ID" ColumnName="IMAGE_MANAGER_LINK_ID" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMAGE_STRING">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.IMAGE_STRING)">
+        <MappingFragment StoreEntitySet="IMAGE_STRING">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="IMAGE_HEX_STRING" ColumnName="IMAGE_HEX_STRING" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="IMAGE_STRING_ID_FOR_INTERNAL_REFERENCE_TO_UNDO_AND_REDO" ColumnName="IMAGE_STRING_ID_FOR_INTERNAL_REFERENCE_TO_UNDO_AND_REDO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INCOME_STATEMENT">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.INCOME_STATEMENT)">
+        <MappingFragment StoreEntitySet="INCOME_STATEMENT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="REVENUE_JSON" ColumnName="REVENUE_JSON" />
+          <ScalarProperty Name="COST_JSON" ColumnName="COST_JSON" />
+          <ScalarProperty Name="PROFIT" ColumnName="PROFIT" />
+          <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
+          <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MARKET_INFO">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.MARKET_INFO)">
+        <MappingFragment StoreEntitySet="MARKET_INFO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MARKET_SIZE" ColumnName="MARKET_SIZE" />
+          <ScalarProperty Name="GROWTH_RATE" ColumnName="GROWTH_RATE" />
+          <ScalarProperty Name="VARIATION_TYPE" ColumnName="VARIATION_TYPE" />
+          <ScalarProperty Name="VARIATION_SD" ColumnName="VARIATION_SD" />
+          <ScalarProperty Name="INITIAL_QUALITY" ColumnName="INITIAL_QUALITY" />
+          <ScalarProperty Name="VARIATION_PARAM_1" ColumnName="VARIATION_PARAM_1" />
+          <ScalarProperty Name="VARIATION_PARAM_2" ColumnName="VARIATION_PARAM_2" />
+          <ScalarProperty Name="VARIATION_PARAM_3" ColumnName="VARIATION_PARAM_3" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="ALPHA" ColumnName="ALPHA" />
+          <ScalarProperty Name="BETA" ColumnName="BETA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MARKETING_DECISIONS">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.MARKETING_DECISIONS)">
+        <MappingFragment StoreEntitySet="MARKETING_DECISIONS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="IN_GAME_TIME_IN_DAY" ColumnName="IN_GAME_TIME_IN_DAY" />
+          <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
+          <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
+          <ScalarProperty Name="USER_LINK_ID" ColumnName="USER_LINK_ID" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERIODs">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.PERIOD)">
+        <MappingFragment StoreEntitySet="PERIODs">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PERIOD_NAME" ColumnName="PERIOD_NAME" />
+          <ScalarProperty Name="PERIOD_NUMBER" ColumnName="PERIOD_NUMBER" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="START_TIME" ColumnName="START_TIME" />
+          <ScalarProperty Name="END_TIME" ColumnName="END_TIME" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="EXPECTED_START" ColumnName="EXPECTED_START" />
+          <ScalarProperty Name="EXPECTED_END" ColumnName="EXPECTED_END" />
+          <ScalarProperty Name="SIMULATION_DURATION" ColumnName="SIMULATION_DURATION" />
+          <ScalarProperty Name="GAME_LINK_ID" ColumnName="GAME_LINK_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTION_DECISIONS">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.PRODUCTION_DECISIONS)">
+        <MappingFragment StoreEntitySet="PRODUCTION_DECISIONS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
+          <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
+          <ScalarProperty Name="IN_GAME_TIME_IN_DAY" ColumnName="IN_GAME_TIME_IN_DAY" />
+          <ScalarProperty Name="USER_LINK_ID" ColumnName="USER_LINK_ID" />
+          <ScalarProperty Name="REVENUE_AND_COST_LINK_ID" ColumnName="REVENUE_AND_COST_LINK_ID" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESULTs">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.RESULT)">
+        <MappingFragment StoreEntitySet="RESULTs">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MARKETING_DECISION_LINK_ID" ColumnName="MARKETING_DECISION_LINK_ID" />
+          <ScalarProperty Name="PRODUCTION_DECISION_LINK_ID" ColumnName="PRODUCTION_DECISION_LINK_ID" />
+          <ScalarProperty Name="RND_DECISION_LINK_ID" ColumnName="RND_DECISION_LINK_ID" />
+          <ScalarProperty Name="FINANCE_DECISION_LINK_ID" ColumnName="FINANCE_DECISION_LINK_ID" />
+          <ScalarProperty Name="QUALITY_CHANGE" ColumnName="QUALITY_CHANGE" />
+          <ScalarProperty Name="MARKET_SHARE_CHANGE" ColumnName="MARKET_SHARE_CHANGE" />
+          <ScalarProperty Name="ACTION_FIRM_LINK_ID" ColumnName="ACTION_FIRM_LINK_ID" />
+          <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
+          <ScalarProperty Name="IN_GAME_TIME_IN_DAY" ColumnName="IN_GAME_TIME_IN_DAY" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="TARGET_FIRM_ID" ColumnName="TARGET_FIRM_ID" />
+          <ScalarProperty Name="PRODUCTION_COST_CHANGE" ColumnName="PRODUCTION_COST_CHANGE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REVENUE_AND_COST">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.REVENUE_AND_COST)">
+        <MappingFragment StoreEntitySet="REVENUE_AND_COST">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FLOW_TYPE" ColumnName="FLOW_TYPE" />
+          <ScalarProperty Name="PAYMENT_TYPE" ColumnName="PAYMENT_TYPE" />
+          <ScalarProperty Name="RECURSIVE_DURATION" ColumnName="RECURSIVE_DURATION" />
+          <ScalarProperty Name="PAYMENT_AMOUNT" ColumnName="PAYMENT_AMOUNT" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="PARENT_REVENUE_AND_COST_LINK_ID" ColumnName="PARENT_REVENUE_AND_COST_LINK_ID" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
+          <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="PERIOD_NUMBER" ColumnName="PERIOD_NUMBER" />
+          <ScalarProperty Name="TARGET_TYPE" ColumnName="TARGET_TYPE" />
+          <ScalarProperty Name="FIRST_PAYMENT_DATE" ColumnName="FIRST_PAYMENT_DATE" />
+          <ScalarProperty Name="BUSINESS_ASPECT" ColumnName="BUSINESS_ASPECT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RND_DECISIONS">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.RND_DECISIONS)">
+        <MappingFragment StoreEntitySet="RND_DECISIONS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
+          <ScalarProperty Name="PERIOD_LINK_ID" ColumnName="PERIOD_LINK_ID" />
+          <ScalarProperty Name="USER_LINK_ID" ColumnName="USER_LINK_ID" />
+          <ScalarProperty Name="REVENUE_AND_COST_LINK_ID" ColumnName="REVENUE_AND_COST_LINK_ID" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERs">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.USER)">
+        <MappingFragment StoreEntitySet="USERs">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+          <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+          <ScalarProperty Name="GROUP" ColumnName="GROUP" />
+          <ScalarProperty Name="MOBILE_PERSONAL" ColumnName="MOBILE_PERSONAL" />
+          <ScalarProperty Name="MOBILE_OFFICE" ColumnName="MOBILE_OFFICE" />
+          <ScalarProperty Name="LAND_LINE_OFFICE" ColumnName="LAND_LINE_OFFICE" />
+          <ScalarProperty Name="LAND_LINE_HOME" ColumnName="LAND_LINE_HOME" />
+          <ScalarProperty Name="EMAIL_PRIMARY" ColumnName="EMAIL_PRIMARY" />
+          <ScalarProperty Name="EMAIL_SECONDARY" ColumnName="EMAIL_SECONDARY" />
+          <ScalarProperty Name="SECURITY_LEVEL" ColumnName="SECURITY_LEVEL" />
+          <ScalarProperty Name="LOGIN_ALLOWED" ColumnName="LOGIN_ALLOWED" />
+          <ScalarProperty Name="PASSWORD_HASH" ColumnName="PASSWORD_HASH" />
+          <ScalarProperty Name="PASSWORD_SALT" ColumnName="PASSWORD_SALT" />
+          <ScalarProperty Name="IS_AVAILABLE" ColumnName="IS_AVAILABLE" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="PIN_NUMBER_HASH" ColumnName="PIN_NUMBER_HASH" />
+          <ScalarProperty Name="PIN_NUMBER_SALT" ColumnName="PIN_NUMBER_SALT" />
+          <ScalarProperty Name="IMAGE_MANAGER_LINK_ID" ColumnName="IMAGE_MANAGER_LINK_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_ROLE">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.USER_ROLE)">
+        <MappingFragment StoreEntitySet="USER_ROLE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="USER_ROLE_NAME" ColumnName="USER_ROLE_NAME" />
+          <ScalarProperty Name="AUTHORIZATION_LEVEL" ColumnName="AUTHORIZATION_LEVEL" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.USER_USER_ROLE_GAME_FIRM_RELATIONSHIP)">
+        <MappingFragment StoreEntitySet="USER_USER_ROLE_GAME_FIRM_RELATIONSHIP">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="USER_LINK_ID" ColumnName="USER_LINK_ID" />
+          <ScalarProperty Name="USER_ROLE_LINK_ID" ColumnName="USER_ROLE_LINK_ID" />
+          <ScalarProperty Name="GAME_LINK_ID" ColumnName="GAME_LINK_ID" />
+          <ScalarProperty Name="FIRM_LINK_ID" ColumnName="FIRM_LINK_ID" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIDEO_STORAGE">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.VIDEO_STORAGE)">
+        <MappingFragment StoreEntitySet="VIDEO_STORAGE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="VIDEO_STRING" ColumnName="VIDEO_STRING" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WEB_API_AUTHORIZATION">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.WEB_API_AUTHORIZATION)">
+        <MappingFragment StoreEntitySet="WEB_API_AUTHORIZATION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LOGGED_IN_PERSONNEL_LINK_ID" ColumnName="LOGGED_IN_PERSONNEL_LINK_ID" />
+          <ScalarProperty Name="LOGGED_IN_DATE_TIME" ColumnName="LOGGED_IN_DATE_TIME" />
+          <ScalarProperty Name="UNIQUE_TOKEN" ColumnName="UNIQUE_TOKEN" />
+          <ScalarProperty Name="EXPIRE_DATE_TIME" ColumnName="EXPIRE_DATE_TIME" />
+          <ScalarProperty Name="LAST_REQUESTED_DATE_TIME" ColumnName="LAST_REQUESTED_DATE_TIME" />
+          <ScalarProperty Name="REQUEST_COUNT" ColumnName="REQUEST_COUNT" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WEB_API_TRANSACTION">
+      <EntityTypeMapping TypeName="IsTypeOf(FYP_DATABASEModel.WEB_API_TRANSACTION)">
+        <MappingFragment StoreEntitySet="WEB_API_TRANSACTION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WEB_API_AUTHORIZATION_LINK_ID" ColumnName="WEB_API_AUTHORIZATION_LINK_ID" />
+          <ScalarProperty Name="TRANSACTION_URL" ColumnName="TRANSACTION_URL" />
+          <ScalarProperty Name="TRANSACTION_DATE_TIME" ColumnName="TRANSACTION_DATE_TIME" />
+          <ScalarProperty Name="TRANSACTION_TYPE" ColumnName="TRANSACTION_TYPE" />
+          <ScalarProperty Name="TRANSACTION_HEADERS" ColumnName="TRANSACTION_HEADERS" />
+          <ScalarProperty Name="TRANSACTION_BODY" ColumnName="TRANSACTION_BODY" />
+          <ScalarProperty Name="USER_AGENT" ColumnName="USER_AGENT" />
+          <ScalarProperty Name="SERVER_VARIABLES" ColumnName="SERVER_VARIABLES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -2964,7 +2965,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

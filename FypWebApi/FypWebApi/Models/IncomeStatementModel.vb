@@ -16,6 +16,7 @@ Public Class IncomeStatementModel
     Public Property costTransactions As New List(Of BalanceTransactionModel)
     Public Property marketingDecisions As New List(Of MarketingDecisionModel)
     Public Property productionDecisions As New List(Of ProductionDecisionModel)
+    Public Property financeDecisions As New List(Of FinanceDecisionModel)
     'Public Property rndDecisions As New List(Of RndDecisionModel)
 
     Public Property totalRevenue As Decimal

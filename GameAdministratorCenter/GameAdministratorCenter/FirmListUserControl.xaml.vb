@@ -41,6 +41,12 @@ Public Class FirmListUserControl
     Private Sub addButton_Click(sender As Object, e As RoutedEventArgs) Handles addButton.Click
         passwordInputPopup.PlacementTarget = sender
         confirmButtonClickDelegate = AddressOf addFirm
+        If PublicVariables.hasAccess Then
+            If confirmButtonClickDelegate IsNot Nothing Then
+                confirmButtonClickDelegate()
+            End If
+            Return
+        End If
         passwordTextEdit.Text = ""
         passwordInputPopup.IsOpen = True
     End Sub
@@ -119,10 +125,13 @@ Public Class FirmListUserControl
         templateFirmCombobox.UnselectAllItems()
 
         templateFirmCombobox.ItemsSource = templateList
-        AddHandler templateFirmCombobox.PopupClosed, AddressOf addTemplateFirms
     End Sub
 
-    Private Sub addTemplateFirms(sender As Object, e As RoutedEventArgs)
+    Private Sub templateFirmCombobox_PopupClosed(sender As Object, e As DevExpress.Xpf.Editors.ClosePopupEventArgs)
+        addTemplateFirms()
+    End Sub
+
+    Private Sub addTemplateFirms()
         If templateFirmCombobox.SelectedItems IsNot Nothing Then
             For Each item In templateFirmCombobox.SelectedItems
                 Dim templateFirmEntity As GAME_FIRM = DirectCast(item, GAME_FIRM)
@@ -145,7 +154,7 @@ Public Class FirmListUserControl
         newFirm.PRODUCTION_QUALITY = templateFirmEntity.PRODUCTION_QUALITY
         newFirm.PRODUCTION_PRICE = templateFirmEntity.PRODUCTION_PRICE
         newFirm.PRODUCTION_COST = templateFirmEntity.PRODUCTION_COST
-        newFirm.MARKET_INFO_LINK_ID = 1
+        newFirm.MARKET_INFO_LINK_ID = 3
         getDatabaseEntity.GAME_FIRM.Add(newFirm)
 
         If templateFirmEntity.BALANCE_SHEET IsNot Nothing Then
@@ -190,4 +199,6 @@ Public Class FirmListUserControl
         End If
         passwordInputPopup.IsOpen = False
     End Sub
+
+
 End Class

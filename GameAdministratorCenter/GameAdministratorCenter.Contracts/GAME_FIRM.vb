@@ -25,6 +25,8 @@ Partial Public Class GAME_FIRM
     Public Property MARKET_INFO_LINK_ID As Nullable(Of Integer)
     Public Property ALPHA_VALUE As Nullable(Of Double)
     Public Property PRODUCTION_COST As Nullable(Of Double)
+    Public Property ST_LOAN_LIMIT As Nullable(Of Integer)
+    Public Property LT_LOAN_LIMIT As Nullable(Of Integer)
 
     Public Overridable Property BALANCE_SHEET As BALANCE_SHEET
     Public Overridable Property GAME As GAME

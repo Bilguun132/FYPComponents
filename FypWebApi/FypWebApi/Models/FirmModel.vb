@@ -17,4 +17,6 @@ Public Class FirmModel
     Public Property productionQuality As Integer?
     Public Property marketShare As Double?
     Public Property marketSharePercentage As Double?
+    Public Property stLoanLimit As Integer?
+    Public Property ltLoanLimit As Integer?
 End Class

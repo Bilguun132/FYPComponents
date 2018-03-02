@@ -43,6 +43,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Mvvm.v16.2, Version=16.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -228,6 +231,7 @@
       <DependentUpon>FYP_DATABASE.edmx</DependentUpon>
       <LastGenOutput>FYP_DATABASE.Context.vb</LastGenOutput>
     </Content>
+    <Content Include="FYP_DATABASE.edmx.sql" />
     <Content Include="FYP_DATABASE.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FYP_DATABASE.edmx</DependentUpon>

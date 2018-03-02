@@ -90,6 +90,15 @@ Public Class AddEditGameUserControl
         selectedGame.DESCRIPTION = gameDescTextBox.Text
         selectedGame.GAME_TYPE = gameType
 
+        'Dim newMarket As MARKET_INFO = New MARKET_INFO With {
+        '    .ALPHA = 0.3,
+        '    .BETA = 0.3,
+        '    .INITIAL_QUALITY = 100,
+        '    .MARKET_SIZE = 50000
+        '    }
+        'getDatabaseEntity.MARKET_INFO.Add(newMarket)
+        'getDatabaseEntity.SaveChanges()
+
         Dim periodList As List(Of PERIOD) = DirectCast(periodGridControl.ItemsSource, List(Of PERIOD))
         Dim periodNumber As Integer = 1
         For Each period In periodList

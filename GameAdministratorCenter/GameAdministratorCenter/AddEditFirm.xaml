@@ -44,6 +44,9 @@
         <dxlc:LayoutItem Label="Initial Quality: " LabelPosition="Left">
             <dxe:SpinEdit x:Name="productionQualitySpinEdit" EditValue="0"/>
         </dxlc:LayoutItem>
+        <dxlc:LayoutItem Label="Market Info: " LabelPosition="Left">
+            <dxe:SpinEdit x:Name="marketInfoSpinEdit" EditValue="1"/>
+        </dxlc:LayoutItem>
         <dxlc:LayoutControl Header="Period List" VerticalAlignment="Top" Padding="0" Orientation="Vertical">
             <TextBlock Text="Revenue and Cost sources" FontWeight="DemiBold" FontSize="14"></TextBlock>
             <dxg:GridControl x:Name="revenueCostGrid" FontSize="12" ClipboardCopyMode="None" SelectionMode="None" MaxHeight="1000"
